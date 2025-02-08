@@ -1,0 +1,134 @@
+/* CSS Document
+Project Name: Dormant Neurons Website
+Version:  1.0
+Owner: Lea Schönherr
+Developed By: Soumya Shaw
+
+*****=====***** TABLE OF CONTENT *****=====*****
+
+01. GENERAL CSS
+        => Scrollbar CSS
+        => General CSS
+02. Pre Loader CSS
+03. Navigation Bar CSS
+04. Home CSS
+05. Technology CSS
+06. About Us CSS
+07. Team CSS
+08. Contact Us CSS
+09. Footer CSS
+*/
+
+/*----------------------
+    01. General CSS
+----------------------*/
+body {
+    font-family: "Montserrat", serif;
+    font-weight: 400;
+    font-size: 15px;
+    background-color: white;
+    position: relative;
+    margin: 0px;;
+}
+
+/* Common CSS */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Montserrat", serif;
+    color: #111111;
+    line-height: 1.2;
+    font-weight: 400;
+    margin-top: 0;
+    margin-bottom: 0px;
+    padding: 0;
+    letter-spacing: 0;
+}
+
+a {
+    text-decoration: none;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+a:focus,
+a:hover {
+    outline: none;
+    text-decoration: none;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+/*-------------------------------
+    02. Navigation Bar CSS
+-------------------------------*/
+.navbar {
+    background-color: #1D262E;
+    margin: auto;
+    position: fixed;
+    width: 100%;
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
+    z-index: 1000;
+    padding: 10px;
+}
+
+.navbar-inner {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.dormant-neurons-logo {
+    
+}
+
+.dormant-neurons-logo img{
+    width: auto;
+    max-height: 90px;
+    max-width: 100%;
+    padding: 5px;
+    margin: auto;
+}
+
+.menu {
+    
+}
+
+.menu ul {
+    display: inline-flex;
+    list-style: none;
+    text-align: right;
+}
+
+.menu a {
+    color: white;
+    font-size: 25px;
+}
+
+.navbar-link {
+    margin: 5px;
+    padding-left: 15px;
+}
+
+.join-team-outer a {
+    color: white;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+.join-team {
+    margin: auto;
+    background-color: #F06A6A;
+    padding: 18px;
+}
