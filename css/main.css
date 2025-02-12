@@ -66,13 +66,14 @@ a:hover {
     -o-transition: all 0.3s ease-in-out;
     -ms-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
+    color: #5B9792;
 }
 
 /*-------------------------------
     02. Navigation Bar CSS
 -------------------------------*/
 .navbar {
-    background-color: #1D262E;
+    background-color: #FFFFFF;
     margin: auto;
     position: fixed;
     width: 100%;
@@ -112,8 +113,12 @@ a:hover {
 }
 
 .menu a {
-    color: white;
+    color: #272D33;
     font-size: 25px;
+}
+
+.menu a:hover {
+    color: #5B9792;
 }
 
 .navbar-link {
@@ -122,7 +127,7 @@ a:hover {
 }
 
 .join-team-outer a {
-    color: white;
+    color: #272D33;
     font-size: 20px;
     text-transform: uppercase;
 }
