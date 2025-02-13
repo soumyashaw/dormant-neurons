@@ -22,6 +22,10 @@ Developed By: Soumya Shaw
 /*----------------------
     01. General CSS
 ----------------------*/
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: "Montserrat", serif;
     font-weight: 400;
