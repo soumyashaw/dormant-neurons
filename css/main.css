@@ -393,6 +393,61 @@ transform: translateY(87px);
     background-color: #FAF9F6;
 }
 
+.decor {
+    position: absolute;
+    border-radius: 50%;
+}
+
+#decor-ball-1 {
+    width: 200px;
+    height: 200px;
+    background-color: #4158D0;
+    top: 35rem;
+    right: 20px;
+    z-index: -1;
+    opacity: 0.8;
+    filter: blur(7rem);
+}
+
+#decor-ball-2 {
+    width: 200px;
+    height: 200px;
+    background-color: #C850C0;
+    top: 42rem;
+    opacity: 0.7;
+    right: 130px;
+    filter: blur(6rem);
+}
+
+#decor-ball-3 {
+    width: 250px;
+    height: 250px;
+    background-color: #FFCC70;
+    top: 50rem;
+    right: 0px;
+    filter: blur(8rem);
+}
+
+#decor-ball-4 {
+    width: 200px;
+    height: 200px;
+    background-color: #D9AFD9;
+    top: 2rem;
+    left: 100px;
+    z-index: -1;
+    filter: blur(6rem);
+}
+
+#decor-ball-5 {
+    width: 250px;
+    height: 250px;
+    background-color: #97D9E1;
+    top: 5rem;
+    left: -100px;
+    opacity: 0.8;
+    z-index: -1;
+    filter: blur(5rem);
+}
 
 
 
@@ -403,7 +458,6 @@ transform: translateY(87px);
 .research-area {
     margin: 50px;
     height: 400px;
-    background-color: yellow;
 }
 
 .research-header h1{
@@ -414,6 +468,7 @@ transform: translateY(87px);
     letter-spacing: -.03em;
     color: #13233e;
     text-transform: uppercase;
+    margin-bottom: 50px;
 }
 
 /*-------------------------------
@@ -434,6 +489,7 @@ transform: translateY(87px);
     letter-spacing: -.03em;
     color: #13233e;
     text-transform: uppercase;
+    margin-bottom: 50px;
 }
 
 /*-------------------------------
@@ -442,8 +498,6 @@ transform: translateY(87px);
 
 .about-us-area {
     margin: 50px;
-    height: 400px;
-    background-color: yellow;
 }
 
 .about-us-header h1{
@@ -454,7 +508,172 @@ transform: translateY(87px);
     letter-spacing: -.03em;
     color: #13233e;
     text-transform: uppercase;
+    margin-bottom: 50px;
 }
+
+.about-us-inner {
+    margin: auto;
+    display: flex;
+    margin-bottom: 30px;
+    justify-content: center;
+}
+
+.card-outer {
+    height: 390px;
+    width: 320px;
+    background: linear-gradient(#EDEDED, #F5F5F5);
+    padding: 56px;
+    border-radius: 12px;
+}
+
+.portrait {
+    display: flex;
+    justify-content: center;
+}
+
+.portrait img {
+    width: 200px;
+    height: auto;
+    border-radius: 50%;
+    margin-bottom: 50px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.portrait img:hover {
+    transform: scale(1.05);
+}
+
+.name {
+    font-family: "Kanit", serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 35px;
+    color: #13233e;
+    margin: 20px;
+    text-align: center;
+}
+
+.position {
+    font-family: "Kanit", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 28px;
+    color: #13233e;
+    margin: 15px;
+    text-align: center;
+}
+
+.card-outer-phd {
+    height: 340px;
+    margin: 15px;
+    width: 20%;
+    background: linear-gradient(#EDEDED, #F5F5F5);
+    padding: 56px;
+    border-radius: 12px;
+}
+
+.portrait-phd {
+    display: flex;
+    justify-content: center;
+}
+
+.portrait-phd img {
+    width: 150px;
+    height: auto;
+    border-radius: 50%;
+    margin-bottom: 50px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.portrait-phd img:hover {
+    transform: scale(1.05);
+}
+
+.name-phd {
+    font-family: "Kanit", serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 30px;
+    color: #13233e;
+    margin: 20px;
+    text-align: center;
+}
+
+.position-phd {
+    font-family: "Kanit", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 25px;
+    color: #13233e;
+    margin: 15px;
+    text-align: center;
+}
+
+.card-outer-hiwi {
+    height: 290px;
+    margin: 10px;
+    width: 13%;
+    background: linear-gradient(#EDEDED, #F5F5F5);
+    padding: 25px;
+    border-radius: 12px;
+}
+
+.portrait-hiwi {
+    display: flex;
+    justify-content: center;
+}
+
+.portrait-hiwi img {
+    width: 130px;
+    height: auto;
+    border-radius: 50%;
+    margin-bottom: 25px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.portrait-hiwi img:hover {
+    transform: scale(1.05);
+}
+
+.name-hiwi {
+    font-family: "Kanit", serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 25px;
+    color: #13233e;
+    margin: 10px;
+    text-align: center;
+}
+
+.position-hiwi {
+    font-family: "Kanit", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 25px;
+    color: #13233e;
+    margin: 10px;
+    text-align: center;
+}
+
+.about-us-inner-intern {
+    margin: auto;
+    display: flex;
+    margin-bottom: 30px;
+    justify-content:space-evenly;
+}
+
 
 
 /*-------------------------------
@@ -464,7 +683,7 @@ transform: translateY(87px);
 .publications-area {
     margin: 50px;
     height: 400px;
-    background-color: yellow;
+    background-color: wheat;
 }
 
 .publications-header h1{
@@ -475,4 +694,49 @@ transform: translateY(87px);
     letter-spacing: -.03em;
     color: #13233e;
     text-transform: uppercase;
+    margin-bottom: 50px;
+}
+
+.publications-inner {
+    background-color: aquamarine;
+    
+}
+
+.paper-outer {
+    margin: 20px;
+}
+
+.paper-inner {
+    display: flex;
+}
+
+.paper-inner * {
+    padding-right: 20px;
+}
+
+.paper-title {
+    /*font-family: "Kanit", serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 30px;
+    color: #13233e;*/
+    width: 50%;
+}
+
+.paper-auth {
+    /*font-family: "Kanit", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 25px;
+    color: #13233e;*/
+    width: 20%;
+}
+
+.paper-journal {
+    /*font-family: "Kanit", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 25px;
+    color: #13233e;*/
+    width: 30%;
 }
