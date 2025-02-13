@@ -682,8 +682,6 @@ transform: translateY(87px);
 
 .publications-area {
     margin: 50px;
-    height: 400px;
-    background-color: wheat;
 }
 
 .publications-header h1{
@@ -697,13 +695,22 @@ transform: translateY(87px);
     margin-bottom: 50px;
 }
 
-.publications-inner {
-    background-color: aquamarine;
-    
-}
-
 .paper-outer {
     margin: 20px;
+}
+
+.date {
+    font-family: "Montserrat", serif;
+    font-weight: 400;
+    font-size: 18px;
+    color: #13233e;
+    padding: 10px;
+}
+
+.fa-calendar-days {
+    color: #13233e; /* Blue color for the icon */
+    font-size: 20px;
+    margin-right: 5px;
 }
 
 .paper-inner {
@@ -712,31 +719,32 @@ transform: translateY(87px);
 
 .paper-inner * {
     padding-right: 20px;
+    color: #13233e;
 }
 
 .paper-title {
-    /*font-family: "Kanit", serif;
-    font-weight: 500;
-    font-style: normal;
-    font-size: 30px;
-    color: #13233e;*/
-    width: 50%;
+    font-family: "Montserrat", serif;
+    font-weight: 400;
+    font-size: 22px;
+    color: #13233e;
+    padding: 10px;
+    width: 60%;
 }
 
 .paper-auth {
-    /*font-family: "Kanit", serif;
+    font-family: "Montserrat", serif;
     font-weight: 400;
-    font-style: normal;
-    font-size: 25px;
-    color: #13233e;*/
+    font-size: 20px;
+    color: #13233e;
+    padding: 10px;
     width: 20%;
 }
 
 .paper-journal {
-    /*font-family: "Kanit", serif;
+    font-family: "Montserrat", serif;
     font-weight: 400;
-    font-style: normal;
-    font-size: 25px;
-    color: #13233e;*/
-    width: 30%;
+    font-size: 20px;
+    color: #13233e;
+    padding: 10px;
+    width: 20%;
 }
