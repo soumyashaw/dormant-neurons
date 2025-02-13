@@ -74,8 +74,6 @@ a:hover {
 -------------------------------*/
 .navbar {
     background-color: #272D33;
-    margin: auto;
-    width: 100%;
     border-top-right-radius: 0px;
     border-top-left-radius: 0px;
     z-index: 1000;
@@ -387,12 +385,6 @@ transform: translateY(87px);
     width: 37%;
 }
 
-.about {
-    height: 1000px;
-    z-index: inherit;
-    background-color: #FAF9F6;
-}
-
 .decor {
     position: absolute;
     border-radius: 50%;
@@ -425,6 +417,7 @@ transform: translateY(87px);
     background-color: #FFCC70;
     top: 50rem;
     right: 0px;
+    z-index: -1;
     filter: blur(8rem);
 }
 
@@ -457,7 +450,6 @@ transform: translateY(87px);
 
 .research-area {
     margin: 50px;
-    height: 400px;
 }
 
 .research-header h1{
@@ -471,6 +463,98 @@ transform: translateY(87px);
     margin-bottom: 50px;
 }
 
+.research-inner {
+    display: flex;
+}
+
+.research-left {
+    width: 60%;
+    margin: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.research-header-1 h1 {
+    font-family: "Kanit", serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 75px;
+    letter-spacing: -.03em;
+    color: #13233e;
+}
+
+.research-content p {
+    font-size: 1.3em;
+    line-height: 1.2em;
+    font-weight: 500;
+    color: #13233e;
+    margin-right: 80px;
+}
+
+.research-right {
+    width: 40%;
+}
+
+.research-right video {
+    width: 100%;
+    border-radius: 15px;
+}
+
+.research-left video {
+    width: 100%;
+    border-radius: 15px;
+}
+
+#research-inner-2 {
+    margin-top: 30px;
+}
+
+#research-right-2 {
+    text-align: right;
+    width: 40%;
+    margin: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#research-content-2 p {
+    margin-right: 0px;
+}
+
+#decor-ball-6 {
+    width: 200px;
+    height: 200px;
+    background-color: #F7CE68;
+    top: 100rem;
+    left: 20px;
+    z-index: -1;
+    opacity: 0.8;
+    filter: blur(7rem);
+}
+
+#decor-ball-7 {
+    width: 200px;
+    height: 200px;
+    background-color: #85FFBD;
+    top: 105rem;
+    opacity: 0.7;
+    z-index: -1;
+    left: 130px;
+    filter: blur(6rem);
+}
+
+#decor-ball-8 {
+    width: 250px;
+    height: 250px;
+    background-color: #FFFB7D;
+    top: 110rem;
+    left: -30px;
+    z-index: -1;
+    filter: blur(8rem);
+}
+
 /*-------------------------------
     05. Latest News CSS
 -------------------------------*/
@@ -478,7 +562,7 @@ transform: translateY(87px);
 .latest-news-area {
     margin: 50px;
     height: 400px;
-    background-color: yellow;
+    /*background-color: yellow;*/
 }
 
 .latest-news-header h1{
@@ -692,11 +776,12 @@ transform: translateY(87px);
     letter-spacing: -.03em;
     color: #13233e;
     text-transform: uppercase;
-    margin-bottom: 50px;
+    margin-bottom: 0px;
 }
 
 .paper-outer {
     margin: 20px;
+    margin-top: -40px;
 }
 
 .date {
@@ -715,6 +800,16 @@ transform: translateY(87px);
 
 .paper-inner {
     display: flex;
+    margin-bottom: 25px;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background-color: #13233e;
+    margin: 10px 10px;
+    width: 100%;
+    transform: translate(0px, -23px);
 }
 
 .paper-inner * {
@@ -746,5 +841,27 @@ transform: translateY(87px);
     font-size: 20px;
     color: #13233e;
     padding: 10px;
+    width: 20%;
+}
+
+.bar-publications {
+    background: linear-gradient(135deg, rgba(139, 198, 236, 1) 0%, rgba(149, 153, 226, 1) 100%);
+    height: 90px;
+    width: 20%;
+    position: relative;
+    z-index: 2;
+    mix-blend-mode: difference;
+    filter: invert(100%);
+
+    translate: none;
+    rotate: none;
+    scale: none;
+    transform: translate(0px, 0px);
+    will-change: transform;
+}
+
+#bar-publications-1 {
+    top: -55px;
+    left: -20px;
     width: 20%;
 }
