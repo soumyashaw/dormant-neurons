@@ -183,7 +183,7 @@ a:hover {
 }
 
 .home-content-left {
-    margin: 20px;
+    width: 500px;
 }
 
 .home-content-right {
@@ -501,6 +501,7 @@ transform: translateY(87px);
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background-color: #FFCC70;
 }
 
 .research-header-1 h1 {
@@ -522,6 +523,7 @@ transform: translateY(87px);
 
 .research-right {
     width: 40%;
+    background-color: #C850C0;
 }
 
 .research-right video {
