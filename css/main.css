@@ -32,7 +32,13 @@ body {
     font-size: 15px;
     background-color: #FAF9F6;
     position: relative;
-    margin: 0px;;
+    margin: 0px;
+}
+
+.container {
+    width: 100%;
+    max-width: 1800px;
+    background-color: #D9AFD9;
 }
 
 /* Common CSS */
