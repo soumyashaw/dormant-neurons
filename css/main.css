@@ -31,14 +31,8 @@ body {
     font-weight: 400;
     font-size: 15px;
     background-color: #FAF9F6;
-    position: relative;
     margin: 0px;
-}
-
-.container {
-    width: 100%;
-    max-width: 1800px;
-    background-color: #D9AFD9;
+    width:fit-content
 }
 
 /* Common CSS */
@@ -96,6 +90,7 @@ a:hover {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    max-width: 1500px;
 }
 
 .dormant-neurons-logo img{
@@ -188,16 +183,13 @@ a:hover {
     margin-top: 50px;
 }
 
-.home-content-left {
-    width: 500px;
-}
-
 .home-content-right {
     margin: 20px;
     text-align: right;
     margin: auto;
     padding: 50px;
     color: #13233e;
+    max-width: 1300px;
 }
 
 .home-content-right h1 {
