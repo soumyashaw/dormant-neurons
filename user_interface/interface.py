@@ -59,7 +59,7 @@ class MainWindow(QMainWindow):
         # Tab Widget Area
         self.tabs = QTabWidget()
 
-        labelStyle = "font-size: 20px; color: white; padding-left: 0px; margin-left: 0px;"
+        labelStyle = "font-size: 20px; color: white; padding-left: 0px;"
         textBoxStyle = "font-size: 18px; padding: 5px; border-radius: 10px; background-color: #d9d9d9; color: black;"
 
         # Create Tab for 'Add Paper'
@@ -120,6 +120,7 @@ class MainWindow(QMainWindow):
         bibtexLabel.setStyleSheet(labelStyle)
         extractButton = QPushButton("Extract")
         extractButton.setFixedWidth(140)
+        extractButton.clicked.connect(self.extractClicked)
         extractButton.setStyleSheet("font-size: 20px; padding: 10px; border-radius: 15px; background-color: #4972FD; color: white;")
         bibtexLayout.addWidget(bibtexLabel)
         bibtexLayout.addWidget(extractButton)
@@ -222,6 +223,9 @@ class MainWindow(QMainWindow):
 
     def submitPaperClicked(self):
         print("Submit Paper Clicked")
+
+    def extractClicked(self):
+        print("Extract Clicked")
 
 app = QApplication(sys.argv)
 font = QFont("Montserrat")
