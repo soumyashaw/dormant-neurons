@@ -59,7 +59,7 @@ class MainWindow(QMainWindow):
         # Tab Widget Area
         self.tabs = QTabWidget()
 
-        labelStyle = "font-size: 20px; color: white;"
+        labelStyle = "font-size: 20px; color: white; padding-left: 0px; margin-left: 0px;"
         textBoxStyle = "font-size: 18px; padding: 5px; border-radius: 10px; background-color: #d9d9d9; color: black;"
 
         # Create Tab for 'Add Paper'
@@ -119,13 +119,14 @@ class MainWindow(QMainWindow):
         bibtexLabel = QLabel("BibTex")
         bibtexLabel.setStyleSheet(labelStyle)
         extractButton = QPushButton("Extract")
+        extractButton.setFixedWidth(140)
         extractButton.setStyleSheet("font-size: 20px; padding: 10px; border-radius: 15px; background-color: #4972FD; color: white;")
         bibtexLayout.addWidget(bibtexLabel)
         bibtexLayout.addWidget(extractButton)
         bibtexTextBox = QTextEdit()
         bibtexTextBox.setStyleSheet("font-size: 18px; padding: 5px; border-radius: 10px; background-color: #d9d9d9; color: black;")
         bibtexTextBox.setPlaceholderText("Enter BibTex here")
-        bibtexTextBox.setFixedHeight(200)
+        bibtexTextBox.setFixedHeight(250)
         bibtexTextBox.setStyleSheet(textBoxStyle)
         
         layoutRow5.addLayout(bibtexLayout)
