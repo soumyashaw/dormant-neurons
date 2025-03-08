@@ -73,7 +73,7 @@ class MainWindow(QMainWindow):
         dateEdit.setStyleSheet(textBoxStyle)
         dateEdit.setDate(QDate.currentDate())
         
-        calendarIcon = QLabel("")  # Calendar icon
+        calendarIcon = QLabel("                    ")
         calendarIcon.setStyleSheet("font-size: 20px;")
         
         linkLabel = QLabel("Link")
@@ -108,34 +108,34 @@ class MainWindow(QMainWindow):
         bibtexTextBox.setStyleSheet(textBoxStyle)
         bibtexTextBox.setPlaceholderText("Enter BibTex here")
         bibtexTextBox.setFixedHeight(250)
-        
-        # Adding widgets to Grid Layout
-        formLayout.addWidget(dateLabel, 0, 0)
-        formLayout.addWidget(dateEdit, 0, 1)
-        formLayout.addWidget(calendarIcon, 0, 2)
-        formLayout.addWidget(linkLabel, 0, 3)
-        formLayout.addWidget(linkTextBox, 0, 4)
-        
-        formLayout.addWidget(titleLabel, 1, 0)
-        formLayout.addWidget(titleTextBox, 1, 1, 1, 4)
-        
-        formLayout.addWidget(authorLabel, 2, 0)
-        formLayout.addWidget(authorTextBox, 2, 1, 1, 4)
-        
-        formLayout.addWidget(conferenceLabel, 3, 0)
-        formLayout.addWidget(conferenceTextBox, 3, 1, 1, 4)
-        
-        formLayout.addWidget(bibtexLabel, 4, 0)
-        formLayout.addWidget(extractButton, 4, 4)
-        formLayout.addWidget(bibtexTextBox, 5, 0, 1, 5)
-        
+
         submitButton = QPushButton("Submit Paper")
         submitButton.setFixedWidth(300)
         submitButton.clicked.connect(self.submitPaperClicked)
         submitButton.setStyleSheet("font-size: 20px; padding: 10px; border-radius: 15px; background-color: #4972FD; color: white;")
         
+        # Adding widgets to Grid Layout
+        formLayout.addWidget(dateLabel, 0, 0, 1, 2)
+        formLayout.addWidget(dateEdit, 0, 1, 1, 1)
+        formLayout.addWidget(linkLabel, 0, 3, alignment=Qt.AlignmentFlag.AlignRight)
+        formLayout.addWidget(linkTextBox, 0, 4, 1, 2)
+        
+        formLayout.addWidget(titleLabel, 1, 0)
+        formLayout.addWidget(titleTextBox, 1, 1, 1, 5)
+        
+        formLayout.addWidget(authorLabel, 2, 0)
+        formLayout.addWidget(authorTextBox, 2, 1, 1, 5)
+        
+        formLayout.addWidget(conferenceLabel, 3, 0)
+        formLayout.addWidget(conferenceTextBox, 3, 1, 1, 5)
+        
+        formLayout.addWidget(bibtexLabel, 4, 0)
+        formLayout.addWidget(extractButton, 4, 5, alignment=Qt.AlignmentFlag.AlignRight)
+        formLayout.addWidget(bibtexTextBox, 5, 0, 1, 6)
+
+        formLayout.addWidget(submitButton, 6, 0, 1, 6, alignment=Qt.AlignmentFlag.AlignCenter)
+        
         layoutAddPaper.addLayout(formLayout)
-        layoutAddPaper.addWidget(submitButton, alignment=Qt.AlignmentFlag.AlignCenter)
         tabAddPaper.setLayout(layoutAddPaper)
 
         # Create Tab for 'Modify Paper'
