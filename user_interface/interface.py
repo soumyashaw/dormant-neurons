@@ -56,7 +56,7 @@ class MainWindow(QMainWindow):
         # Tab Widget
         self.tabs = QTabWidget()
         
-        labelStyle = "font-size: 20px; color: white;"
+        labelStyle = "font-size: 20px; color: white; padding-left: 0px;"
         textBoxStyle = "font-size: 18px; padding: 5px; border-radius: 10px; background-color: #d9d9d9; color: black;"
         
         # Tab: Add Paper
@@ -73,7 +73,7 @@ class MainWindow(QMainWindow):
         dateEdit.setStyleSheet(textBoxStyle)
         dateEdit.setDate(QDate.currentDate())
         
-        calendarIcon = QLabel("\U0001F4C5")  # Calendar icon
+        calendarIcon = QLabel("")  # Calendar icon
         calendarIcon.setStyleSheet("font-size: 20px;")
         
         linkLabel = QLabel("Link")
