@@ -288,8 +288,10 @@ class MainWindow(QMainWindow):
                                     }
                                 """)
         
-        self.mainContextLayout = QVBoxLayout()
-        self.mainContextLayout.addWidget(self.tabsPaper)
+        self.mainContextPaper = QWidget()
+        paperLayout = QVBoxLayout(self.mainContextPaper)
+        paperLayout.addWidget(self.tabsPaper)
+        self.mainContextPaper.setLayout(paperLayout)
         
 ############################### Main Context: Team Area ###################################################
         # Tab Widget
@@ -512,11 +514,21 @@ class MainWindow(QMainWindow):
                                         font-weight: normal;
                                     }
                                 """)
-        self.mainContextLayout = QVBoxLayout()
-        self.mainContextLayout.addWidget(self.tabsTeam)
+        self.mainContextTeam = QWidget()
+        teamLayout = QVBoxLayout(self.mainContextTeam)
+        teamLayout.addWidget(self.tabsTeam)
+        self.mainContextTeam.setLayout(teamLayout)
+
+        ####### Main Context: Latest News ##########
+        self.mainContextNews = QWidget()
+        newsLayout = QVBoxLayout(self.mainContextNews)
+        newsLayout.addWidget(QLabel("Latest News Content Goes Here"))
+        self.mainContextNews.setLayout(newsLayout)
         
+        self.mainContextLayout = QVBoxLayout()
         self.mainContext = QWidget()
         self.mainContext.setLayout(self.mainContextLayout)
+        self.mainContextLayout.addWidget(self.mainContextPaper)
         self.mainContext.setStyleSheet("background-color: #00022D; padding: 10px; border-radius: 5px;")
         
         horizontalLayout.addWidget(navBar, 5)
@@ -527,12 +539,21 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(widget)
 
     def changeMainContextWidget(self, newWidget):
-        pass
+        # Remove existing widget
+        if self.mainContextLayout.count():
+            oldWidget = self.mainContextLayout.takeAt(0).widget()
+            if oldWidget:
+                oldWidget.setParent(None)  # Remove from UI
+        
+        # Add new widget
+        self.mainContextLayout.addWidget(newWidget)
 
     def papersButtonClicked(self, status):
         self.papersButton.setStyleSheet(self.buttonStyleDescriptionClicked)
         self.teamButton.setStyleSheet(self.buttonStyleDescriptionTransparent)
         self.latestNewsButton.setStyleSheet(self.buttonStyleDescriptionTransparent)
+
+        self.changeMainContextWidget(self.mainContextPaper)
 
         ## To Do: Change the layout or widget of the main context on Nav bar button click
 
@@ -541,12 +562,16 @@ class MainWindow(QMainWindow):
         self.papersButton.setStyleSheet(self.buttonStyleDescriptionTransparent)
         self.latestNewsButton.setStyleSheet(self.buttonStyleDescriptionTransparent)
 
+        self.changeMainContextWidget(self.mainContextTeam)
+
         ## To Do: Change the layout or widget of the main context on Nav bar button click
 
     def latestNewsButtonClicked(self, status):
         self.latestNewsButton.setStyleSheet(self.buttonStyleDescriptionClicked)
         self.teamButton.setStyleSheet(self.buttonStyleDescriptionTransparent)
         self.papersButton.setStyleSheet(self.buttonStyleDescriptionTransparent)
+
+        self.changeMainContextWidget(self.mainContextNews)
 
         ## To Do: Change the layout or widget of the main context on Nav bar button click
 
