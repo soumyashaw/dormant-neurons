@@ -1,10 +1,11 @@
 import sys
 from PyQt6.QtWidgets import (
-    QApplication, QMainWindow, QWidget, QLabel, QLineEdit, QTextEdit, QPushButton,
-    QVBoxLayout, QHBoxLayout, QGridLayout, QTabWidget, QDateEdit, QScrollArea
+    QApplication, QMainWindow, QWidget, QLabel, QLineEdit, QTextEdit, QPushButton, QFileDialog,
+    QVBoxLayout, QHBoxLayout, QGridLayout, QTabWidget, QDateEdit, QScrollArea, QComboBox
 )
-from PyQt6.QtGui import QFont
+from PyQt6.QtGui import QFont, QPixmap
 from PyQt6.QtCore import QDate, Qt
+from pyqt6_multiselect_combobox import MultiSelectComboBox
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -122,7 +123,7 @@ class MainWindow(QMainWindow):
         
         # Adding widgets to Grid Layout
         formLayout.addWidget(dateLabel, 0, 0, 1, 2)
-        formLayout.addWidget(dateEdit, 0, 1, 1, 1)
+        formLayout.addWidget(dateEdit, 0, 1, 1, 2)
         formLayout.addWidget(linkLabel, 0, 3, alignment=Qt.AlignmentFlag.AlignRight)
         formLayout.addWidget(linkTextBox, 0, 4, 1, 2)
         
@@ -303,71 +304,69 @@ class MainWindow(QMainWindow):
         
         formLayout4 = QGridLayout()
         
-        dateLabel4 = QLabel("Date")
-        dateLabel4.setStyleSheet(labelStyle)
-        
-        dateEdit4 = QDateEdit()
-        dateEdit4.setCalendarPopup(True)
-        dateEdit4.setStyleSheet(textBoxStyle)
-        dateEdit4.setDate(QDate.currentDate())
-        
-        linkLabel4 = QLabel("Link")
-        linkLabel4.setStyleSheet(labelStyle)
-        linkTextBox4 = QLineEdit()
-        linkTextBox4.setStyleSheet(textBoxStyle)
-        
-        titleLabel4 = QLabel("Name")
-        titleLabel4.setStyleSheet(labelStyle)
-        titleTextBox4 = QLineEdit()
-        titleTextBox4.setStyleSheet(textBoxStyle)
-        
-        authorLabel4 = QLabel("Author")
-        authorLabel4.setStyleSheet(labelStyle)
-        authorTextBox4 = QLineEdit()
-        authorTextBox4.setStyleSheet(textBoxStyle)
-        
-        conferenceLabel4 = QLabel("Conference")
-        conferenceLabel4.setStyleSheet(labelStyle)
-        conferenceTextBox4 = QLineEdit()
-        conferenceTextBox4.setStyleSheet(textBoxStyle)
-        
-        bibtexLabel4 = QLabel("BibTex")
-        bibtexLabel4.setStyleSheet(labelStyle)
-        
-        extractButton4 = QPushButton("Extract")
-        extractButton4.setFixedWidth(140)
-        extractButton4.clicked.connect(self.extractClicked)
-        extractButton4.setStyleSheet("font-size: 20px; padding: 10px; border-radius: 15px; background-color: #4972FD; color: white;")
-        
-        bibtexTextBox4 = QTextEdit()
-        bibtexTextBox4.setStyleSheet(textBoxStyle)
-        bibtexTextBox4.setPlaceholderText("Enter BibTex here")
+        nameLabel4 = QLabel("Name")
+        nameLabel4.setStyleSheet(labelStyle)
+        nameTextBox4 = QLineEdit()
+        nameTextBox4.setStyleSheet(textBoxStyle)
 
-        submitButton4 = QPushButton("Submit Paper")
-        submitButton4.setFixedWidth(300)
-        submitButton4.clicked.connect(self.submitPaperClicked)
-        submitButton4.setStyleSheet("font-size: 20px; padding: 10px; border-radius: 15px; background-color: #4972FD; color: white;")
+        roleLabel4 = QLabel("Job Role")
+        roleLabel4.setStyleSheet(labelStyle)
+        roleBox4 = QComboBox()
+        roleBox4.addItem("")
+        roleBox4.setCurrentIndex(0)
+        roleBox4.setItemData(0, 0, Qt.ItemDataRole.UserRole - 1)
+        roleBox4.addItems(['PhD', 'HiWi', 'Intern'])
+        roleBox4.setStyleSheet(textBoxStyle+"padding-left: 15px;")
+
+        researchLabel4 = QLabel("Research Tags")
+        researchLabel4.setStyleSheet(labelStyle)
+        researchBox4 = MultiSelectComboBox()
+        researchBox4.addItems(["Placeholder 1", "Placeholder 2"])
+        researchBox4.setStyleSheet(textBoxStyle+"padding-left: 15px;")
+
+        infoLabel4 = QLabel("Additional Info")
+        infoLabel4.setStyleSheet(labelStyle)
+        infoTextBox4 = QLineEdit()
+        infoTextBox4.setStyleSheet(textBoxStyle)
+        
+        pictureLabel4 = QLabel("Picture Upload")
+        pictureLabel4.setStyleSheet(labelStyle)
+        pictureUploadButton4 = QPushButton("Upload Image")
+        pictureUploadButton4.clicked.connect(self.uploadImage)
+        pictureUploadButton4.setStyleSheet("font-size: 20px; padding: 10px; border-radius: 15px; background-color: #4972FD; color: white;")
+        pictureUploadButton4.setFixedWidth(300)
+        
+        aboutLabel4 = QLabel("About")
+        aboutLabel4.setStyleSheet(labelStyle)
+                
+        aboutTextBox4 = QTextEdit()
+        aboutTextBox4.setStyleSheet(textBoxStyle)
+        aboutTextBox4.setPlaceholderText("Enter the Background of the Member")
+
+        addMemberButton4 = QPushButton("Add Member")
+        addMemberButton4.setFixedWidth(300)
+        addMemberButton4.clicked.connect(self.addMemberClicked)
+        addMemberButton4.setStyleSheet("font-size: 20px; padding: 10px; border-radius: 15px; background-color: #4972FD; color: white;")
         
         # Adding widgets to Grid Layout
-        formLayout4.addWidget(dateLabel4, 0, 0, 1, 2)
-        formLayout4.addWidget(dateEdit4, 0, 1, 1, 1)
-        formLayout4.addWidget(linkLabel4, 0, 3, alignment=Qt.AlignmentFlag.AlignRight)
-        formLayout4.addWidget(linkTextBox4, 0, 4, 1, 2)
-        
-        formLayout4.addWidget(titleLabel4, 1, 0)
-        formLayout4.addWidget(titleTextBox4, 1, 1, 1, 5)
-        
-        formLayout4.addWidget(authorLabel4, 2, 0)
-        formLayout4.addWidget(authorTextBox4, 2, 1, 1, 5)
-        
-        formLayout4.addWidget(conferenceLabel4, 3, 0)
-        formLayout4.addWidget(conferenceTextBox4, 3, 1, 1, 5)
-        
-        formLayout4.addWidget(bibtexLabel4, 4, 0)
-        formLayout4.addWidget(extractButton4, 4, 5, alignment=Qt.AlignmentFlag.AlignRight)
-        formLayout4.addWidget(bibtexTextBox4, 5, 0, 1, 6)
+        formLayout4.addWidget(nameLabel4, 0, 0)
+        formLayout4.addWidget(nameTextBox4, 0, 1, 1, 5)
 
-        formLayout4.addWidget(submitButton4, 6, 0, 1, 6, alignment=Qt.AlignmentFlag.AlignCenter)
+        formLayout4.addWidget(roleLabel4, 1, 0, 1, 2)
+        formLayout4.addWidget(roleBox4, 1, 1, 1, 2)
+        formLayout4.addWidget(researchLabel4, 1, 3, alignment=Qt.AlignmentFlag.AlignRight)
+        formLayout4.addWidget(researchBox4, 1, 4, 1, 2)
+        
+        formLayout4.addWidget(infoLabel4, 2, 0)
+        formLayout4.addWidget(infoTextBox4, 2, 1, 1, 5)
+        
+        formLayout4.addWidget(pictureLabel4, 3, 0)
+        formLayout4.addWidget(pictureUploadButton4, 3, 1, 1, 5, alignment=Qt.AlignmentFlag.AlignCenter)
+        
+        formLayout4.addWidget(aboutLabel4, 4, 0)
+        formLayout4.addWidget(aboutTextBox4, 5, 0, 1, 6)
+
+        formLayout4.addWidget(addMemberButton4, 6, 0, 1, 6, alignment=Qt.AlignmentFlag.AlignCenter)
         
         layoutAddMember.addLayout(formLayout4)
         layoutAddMember.setContentsMargins(50, 50, 50, 50)
@@ -378,85 +377,71 @@ class MainWindow(QMainWindow):
         layoutModifyMember = QVBoxLayout()
         
         formLayout5 = QGridLayout()
+        
+        nameLabel5 = QLabel("Name")
+        nameLabel5.setStyleSheet(labelStyle)
+        nameTextBox5 = QLineEdit()
+        nameTextBox5.setStyleSheet(textBoxStyle)
 
-        scroll5 = QScrollArea()
-        scroll5.setWidgetResizable(True)
-        scroll5.setStyleSheet("background-color: #d9d9d9; margin-bottom: 30px;")
-        
-        dateLabel5 = QLabel("Date")
-        dateLabel5.setStyleSheet(labelStyle)
-        
-        dateEdit5 = QDateEdit()
-        dateEdit5.setCalendarPopup(True)
-        dateEdit5.setStyleSheet(textBoxStyle)
-        dateEdit5.setDate(QDate.currentDate())
-        
-        linkLabel5 = QLabel("Link")
-        linkLabel5.setStyleSheet(labelStyle)
-        linkTextBox5 = QLineEdit()
-        linkTextBox5.setStyleSheet(textBoxStyle)
-        
-        titleLabel5 = QLabel("Name")
-        titleLabel5.setStyleSheet(labelStyle)
-        titleTextBox5 = QLineEdit()
-        titleTextBox5.setStyleSheet(textBoxStyle)
-        
-        authorLabel5 = QLabel("Author")
-        authorLabel5.setStyleSheet(labelStyle)
-        authorTextBox5 = QLineEdit()
-        authorTextBox5.setStyleSheet(textBoxStyle)
-        
-        conferenceLabel5 = QLabel("Conference")
-        conferenceLabel5.setStyleSheet(labelStyle)
-        conferenceTextBox5 = QLineEdit()
-        conferenceTextBox5.setStyleSheet(textBoxStyle)
-        
-        bibtexLabel5 = QLabel("BibTex")
-        bibtexLabel5.setStyleSheet(labelStyle)
-        
-        extractButton5 = QPushButton("Extract")
-        extractButton5.setFixedWidth(140)
-        extractButton5.clicked.connect(self.extractClicked)
-        extractButton5.setStyleSheet("font-size: 20px; padding: 10px; border-radius: 15px; background-color: #4972FD; color: white;")
-        
-        bibtexTextBox5 = QTextEdit()
-        bibtexTextBox5.setStyleSheet(textBoxStyle)
-        bibtexTextBox5.setPlaceholderText("Enter BibTex here")
+        roleLabel5 = QLabel("Job Role")
+        roleLabel5.setStyleSheet(labelStyle)
+        roleBox5 = QComboBox()
+        roleBox5.addItem("")
+        roleBox5.setCurrentIndex(0)
+        roleBox5.setItemData(0, 0, Qt.ItemDataRole.UserRole - 1)
+        roleBox5.addItems(['Post Doc', 'PhD', 'HiWi', 'Intern'])
+        roleBox5.setStyleSheet(textBoxStyle+"padding-left: 15px;")
 
-        idLabel5 = QLabel("Paper ID")
-        idLabel5.setStyleSheet(labelStyle)
-        idTextBox5 = QLineEdit()
-        idTextBox5.setStyleSheet(textBoxStyle)
+        researchLabel5 = QLabel("Research Tags")
+        researchLabel5.setStyleSheet(labelStyle)
+        researchBox5 = MultiSelectComboBox()
+        researchBox5.addItems(["Placeholder 1", "Placeholder 2"])
+        researchBox5.setStyleSheet(textBoxStyle+"padding-left: 15px;")
 
-        submitButton5 = QPushButton("Submit Paper")
-        submitButton5.setFixedWidth(300)
-        submitButton5.clicked.connect(self.submitPaperClicked)
-        submitButton5.setStyleSheet("font-size: 20px; padding: 10px; border-radius: 15px; background-color: #4972FD; color: white;")
+        infoLabel5 = QLabel("Additional Info")
+        infoLabel5.setStyleSheet(labelStyle)
+        infoTextBox5 = QLineEdit()
+        infoTextBox5.setStyleSheet(textBoxStyle)
+        
+        pictureLabel5 = QLabel("Picture Upload")
+        pictureLabel5.setStyleSheet(labelStyle)
+        pictureUploadButton5 = QPushButton("Upload Image")
+        pictureUploadButton5.clicked.connect(self.uploadImage)
+        pictureUploadButton5.setStyleSheet("font-size: 20px; padding: 10px; border-radius: 15px; background-color: #4972FD; color: white;")
+        pictureUploadButton5.setFixedWidth(300)
+        
+        aboutLabel5 = QLabel("About")
+        aboutLabel5.setStyleSheet(labelStyle)
+                
+        aboutTextBox5 = QTextEdit()
+        aboutTextBox5.setStyleSheet(textBoxStyle)
+        aboutTextBox5.setPlaceholderText("Enter the Background of the Member")
+
+        addMemberButton5 = QPushButton("Modify Member")
+        addMemberButton5.setFixedWidth(300)
+        addMemberButton5.clicked.connect(self.addMemberClicked)
+        addMemberButton5.setStyleSheet("font-size: 20px; padding: 10px; border-radius: 15px; background-color: #4972FD; color: white;")
         
         # Adding widgets to Grid Layout
-        formLayout5.addWidget(scroll5, 0, 0, 1, 6)
+        formLayout5.addWidget(nameLabel5, 0, 0)
+        formLayout5.addWidget(nameTextBox5, 0, 1, 1, 5)
 
-        formLayout5.addWidget(dateLabel5, 1, 0, 1, 2)
-        formLayout5.addWidget(dateEdit5, 1, 1, 1, 1)
-        formLayout5.addWidget(linkLabel5, 1, 3, alignment=Qt.AlignmentFlag.AlignRight)
-        formLayout5.addWidget(linkTextBox5, 1, 4, 1, 2)
+        formLayout5.addWidget(roleLabel5, 1, 0, 1, 2)
+        formLayout5.addWidget(roleBox5, 1, 1, 1, 2)
+        formLayout5.addWidget(researchLabel5, 1, 3, alignment=Qt.AlignmentFlag.AlignRight)
+        formLayout5.addWidget(researchBox5, 1, 4, 1, 2)
         
-        formLayout5.addWidget(titleLabel5, 2, 0)
-        formLayout5.addWidget(titleTextBox5, 2, 1, 1, 5)
+        formLayout5.addWidget(infoLabel5, 2, 0)
+        formLayout5.addWidget(infoTextBox5, 2, 1, 1, 5)
         
-        formLayout5.addWidget(authorLabel5, 3, 0)
-        formLayout5.addWidget(authorTextBox5, 3, 1, 1, 5)
+        formLayout5.addWidget(pictureLabel5, 3, 0)
+        formLayout5.addWidget(pictureUploadButton5, 3, 1, 1, 5, alignment=Qt.AlignmentFlag.AlignCenter)
         
-        formLayout5.addWidget(conferenceLabel5, 4, 0)
-        formLayout5.addWidget(conferenceTextBox5, 4, 1, 1, 5)
-        
-        formLayout5.addWidget(bibtexLabel5, 5, 0)
-        formLayout5.addWidget(extractButton5, 5, 5, alignment=Qt.AlignmentFlag.AlignRight)
-        formLayout5.addWidget(bibtexTextBox5, 6, 0, 1, 6)
+        formLayout5.addWidget(aboutLabel5, 4, 0)
+        formLayout5.addWidget(aboutTextBox5, 5, 0, 1, 6)
 
-        formLayout5.addWidget(idLabel5, 7, 0)
-        formLayout5.addWidget(idTextBox5, 7, 1, 1, 2)
-        formLayout5.addWidget(submitButton5, 7, 0, 4, 6, alignment=Qt.AlignmentFlag.AlignRight)
+        formLayout5.addWidget(addMemberButton5, 6, 0, 1, 6, alignment=Qt.AlignmentFlag.AlignCenter)
+
         layoutModifyMember.addLayout(formLayout5)
         layoutModifyMember.setContentsMargins(50, 50, 50, 50)
         tabModifyMember.setLayout(layoutModifyMember)
@@ -471,13 +456,12 @@ class MainWindow(QMainWindow):
         scroll6.setWidgetResizable(True)
         scroll6.setStyleSheet("background-color: #d9d9d9; margin-bottom: 30px;")
 
-        idLabel6 = QLabel("Paper ID")
-        idLabel6.setStyleSheet(labelStyle+"padding-right: 50px;")
+        idLabel6 = QLabel("Full Name")
+        idLabel6.setStyleSheet(labelStyle)
         idTextBox6 = QLineEdit()
         idTextBox6.setStyleSheet(textBoxStyle)
-        idTextBox6.setMaximumWidth(145)
 
-        deleteButton6 = QPushButton("Delete Paper")
+        deleteButton6 = QPushButton("Delete Member")
         deleteButton6.setFixedWidth(300)
         deleteButton6.clicked.connect(self.deletePaperClicked)
         deleteButton6.setStyleSheet("font-size: 20px; padding: 10px; border-radius: 15px; background-color: #4972FD; color: white;")
@@ -485,8 +469,8 @@ class MainWindow(QMainWindow):
         # Adding widgets to Grid Layout
         formLayout6.addWidget(scroll6, 0, 0, 4, 6)
 
-        formLayout6.addWidget(idLabel6, 4, 0, 1, 3, alignment=Qt.AlignmentFlag.AlignRight)
-        formLayout6.addWidget(idTextBox6, 4, 3, 1, 3, alignment=Qt.AlignmentFlag.AlignLeft)
+        formLayout6.addWidget(idLabel6, 4, 0)
+        formLayout6.addWidget(idTextBox6, 4, 1, 1, 5)
         formLayout6.addWidget(deleteButton6, 5, 0, 1, 6, alignment=Qt.AlignmentFlag.AlignCenter)
         layoutDeleteMember.addLayout(formLayout6)
         layoutDeleteMember.setContentsMargins(50, 50, 50, 50)
@@ -577,18 +561,32 @@ class MainWindow(QMainWindow):
 
     def submitPaperClicked(self):
         print("Submit Paper Clicked")
+        # Check if all the field are filled. Show warning if not.
 
     def extractClicked(self):
         print("Extract Clicked")
 
     def deletePaperClicked(self):
         print("Delete Paper Clicked")
+        # Check if all the field are filled. Show warning if not.
 
     def addPapersFromDatabase(self, layout):
         print("Adding Papers from Database")
         """for i in range(1, 21):
             layout.addWidget(QLabel("This is the function"))
         return layout"""
+
+    def uploadImage(self):
+        filePath, _ = QFileDialog.getOpenFileName(self, "Select an Image", "", "Images (*.png *.jpg *.jpeg *.bmp *.gif)")
+        print("Upload Image Clicked", filePath)
+
+    def addMemberClicked(self):
+        print("Add Member Clicked")
+        # Check if all the field are filled. Show warning if not.
+
+    def deleteMemberClicked(self):
+        print("Delete Member Clicked")
+        # Check if all the field are filled. Show warning if not.
 
 app = QApplication(sys.argv)
 app.setFont(QFont("Montserrat"))
