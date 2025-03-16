@@ -1,7 +1,8 @@
 import sys
+import json
 from PyQt6.QtWidgets import (
     QApplication, QMainWindow, QWidget, QLabel, QLineEdit, QTextEdit, QPushButton, QFileDialog,
-    QVBoxLayout, QHBoxLayout, QGridLayout, QTabWidget, QDateEdit, QScrollArea, QComboBox
+    QVBoxLayout, QHBoxLayout, QGridLayout, QTabWidget, QDateEdit, QScrollArea, QComboBox, QMessageBox
 )
 from PyQt6.QtGui import QFont, QPixmap
 from PyQt6.QtCore import QDate, Qt
@@ -79,30 +80,30 @@ class MainWindow(QMainWindow):
         dateLabel = QLabel("Date")
         dateLabel.setStyleSheet(labelStyle)
         
-        dateEdit = QDateEdit()
-        dateEdit.setCalendarPopup(True)
-        dateEdit.setStyleSheet(textBoxStyle)
-        dateEdit.setDate(QDate.currentDate())
+        self.dateEdit = QDateEdit()
+        self.dateEdit.setCalendarPopup(True)
+        self.dateEdit.setStyleSheet(textBoxStyle)
+        self.dateEdit.setDate(QDate.currentDate())
         
         linkLabel = QLabel("Link")
         linkLabel.setStyleSheet(labelStyle)
-        linkTextBox = QLineEdit()
-        linkTextBox.setStyleSheet(textBoxStyle)
+        self.linkTextBox = QLineEdit()
+        self.linkTextBox.setStyleSheet(textBoxStyle)
         
-        titleLabel = QLabel("Name")
+        titleLabel = QLabel("Title")
         titleLabel.setStyleSheet(labelStyle)
-        titleTextBox = QLineEdit()
-        titleTextBox.setStyleSheet(textBoxStyle)
+        self.titleTextBox = QLineEdit()
+        self.titleTextBox.setStyleSheet(textBoxStyle)
         
         authorLabel = QLabel("Author")
         authorLabel.setStyleSheet(labelStyle)
-        authorTextBox = QLineEdit()
-        authorTextBox.setStyleSheet(textBoxStyle)
+        self.authorTextBox = QLineEdit()
+        self.authorTextBox.setStyleSheet(textBoxStyle)
         
         conferenceLabel = QLabel("Conference")
         conferenceLabel.setStyleSheet(labelStyle)
-        conferenceTextBox = QLineEdit()
-        conferenceTextBox.setStyleSheet(textBoxStyle)
+        self.conferenceTextBox = QLineEdit()
+        self.conferenceTextBox.setStyleSheet(textBoxStyle)
         
         bibtexLabel = QLabel("BibTex")
         bibtexLabel.setStyleSheet(labelStyle)
@@ -112,9 +113,9 @@ class MainWindow(QMainWindow):
         extractButton.clicked.connect(self.extractClicked)
         extractButton.setStyleSheet("font-size: 20px; padding: 10px; border-radius: 15px; background-color: #4972FD; color: white;")
         
-        bibtexTextBox = QTextEdit()
-        bibtexTextBox.setStyleSheet(textBoxStyle)
-        bibtexTextBox.setPlaceholderText("Enter BibTex here")
+        self.bibtexTextBox = QTextEdit()
+        self.bibtexTextBox.setStyleSheet(textBoxStyle)
+        self.bibtexTextBox.setPlaceholderText("Enter BibTex here")
 
         submitButton = QPushButton("Submit Paper")
         submitButton.setFixedWidth(300)
@@ -123,22 +124,22 @@ class MainWindow(QMainWindow):
         
         # Adding widgets to Grid Layout
         formLayout.addWidget(dateLabel, 0, 0, 1, 2)
-        formLayout.addWidget(dateEdit, 0, 1, 1, 2)
+        formLayout.addWidget(self.dateEdit, 0, 1, 1, 2)
         formLayout.addWidget(linkLabel, 0, 3, alignment=Qt.AlignmentFlag.AlignRight)
-        formLayout.addWidget(linkTextBox, 0, 4, 1, 2)
+        formLayout.addWidget(self.linkTextBox, 0, 4, 1, 2)
         
         formLayout.addWidget(titleLabel, 1, 0)
-        formLayout.addWidget(titleTextBox, 1, 1, 1, 5)
+        formLayout.addWidget(self.titleTextBox, 1, 1, 1, 5)
         
         formLayout.addWidget(authorLabel, 2, 0)
-        formLayout.addWidget(authorTextBox, 2, 1, 1, 5)
+        formLayout.addWidget(self.authorTextBox, 2, 1, 1, 5)
         
         formLayout.addWidget(conferenceLabel, 3, 0)
-        formLayout.addWidget(conferenceTextBox, 3, 1, 1, 5)
+        formLayout.addWidget(self.conferenceTextBox, 3, 1, 1, 5)
         
         formLayout.addWidget(bibtexLabel, 4, 0)
         formLayout.addWidget(extractButton, 4, 5, alignment=Qt.AlignmentFlag.AlignRight)
-        formLayout.addWidget(bibtexTextBox, 5, 0, 1, 6)
+        formLayout.addWidget(self.bibtexTextBox, 5, 0, 1, 6)
 
         formLayout.addWidget(submitButton, 6, 0, 1, 6, alignment=Qt.AlignmentFlag.AlignCenter)
         
@@ -560,7 +561,27 @@ class MainWindow(QMainWindow):
         ## To Do: Change the layout or widget of the main context on Nav bar button click
 
     def submitPaperClicked(self):
+        # Check if all the fields are filled. Show warning if not.
+        checkList = [self.linkTextBox, self.titleTextBox, self.authorTextBox, self.conferenceTextBox, self.bibtexTextBox]
+        status = self.checkFields(checkList)
+
+        if status:
+            papers = self.importPapers()
+            newPaper = {
+                "id": self.getPaperID(self.titleTextBox.text(), self.dateEdit.date().toString("dd-MM-yyyy")),
+                "title": self.titleTextBox.text(),
+                "authors": self.authorTextBox.text(),
+                "date": self.dateEdit.date().toString("dd-MM-yyyy"),
+                "journal": self.conferenceTextBox.text(),
+                "link": self.linkTextBox.text(),
+                "bibtex": self.bibtexTextBox.toPlainText()
+            }
+            papers.append(newPaper)
+
+            self.exportPapers(papers)
+            self.importPapers()
         print("Submit Paper Clicked")
+        
         # Check if all the field are filled. Show warning if not.
 
     def extractClicked(self):
@@ -572,6 +593,7 @@ class MainWindow(QMainWindow):
 
     def addPapersFromDatabase(self, layout):
         print("Adding Papers from Database")
+        papers = self.importPapers()
         """for i in range(1, 21):
             layout.addWidget(QLabel("This is the function"))
         return layout"""
@@ -587,6 +609,46 @@ class MainWindow(QMainWindow):
     def deleteMemberClicked(self):
         print("Delete Member Clicked")
         # Check if all the field are filled. Show warning if not.
+
+    def importPapers(self):
+        print("Import Papers Function Called")
+        ##### Replace the file path before deployment
+        with open("../data/trial_papers.json", "r") as file:
+            papers = json.load(file)
+
+        print(json.dumps(papers, indent=4))
+
+        return papers
+    
+    def exportPapers(self, papers):
+        print("Export Papers Function Called")
+        ##### Replace the file path before deployment
+        with open("../data/trial_papers.json", "w") as file:
+            json.dump(papers, file)
+    
+    def checkFields(self, fieldsList):
+        flag = 0
+        for field in fieldsList:
+            if isinstance(field, QLineEdit):
+                if field.text().strip() == "":
+                    flag += 1
+            elif isinstance(field, QTextEdit):
+                if field.toPlainText().strip() == "":
+                    flag += 1
+        if flag == 0:
+            QMessageBox.information(self, "Success", "Paper Submitted Successfully!")
+            return True
+        else:
+            QMessageBox.warning(self, "Warning", "One or more fields are empty!")
+            return False
+        
+    def getPaperID(self, paperTitle, publicationDate):
+        date = publicationDate.split('-')
+        title = "".join(char for char in list(paperTitle) if char.isalnum())
+        id = (date[0] + date[1]) + '-' + (title[0:4])
+
+        return id
+        
 
 app = QApplication(sys.argv)
 app.setFont(QFont("Montserrat"))
