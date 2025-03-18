@@ -1,11 +1,13 @@
 import os
+import re
 import sys
 import json
+from datetime import datetime
 from PyQt6.QtWidgets import (
     QApplication, QMainWindow, QWidget, QLabel, QLineEdit, QTextEdit, QPushButton, QFileDialog,
     QVBoxLayout, QHBoxLayout, QGridLayout, QTabWidget, QDateEdit, QScrollArea, QComboBox, QMessageBox
 )
-from PyQt6.QtGui import QFont, QPixmap
+from PyQt6.QtGui import QFont
 from PyQt6.QtCore import QDate, Qt
 from pyqt6_multiselect_combobox import MultiSelectComboBox
 
@@ -111,10 +113,11 @@ class MainWindow(QMainWindow):
         
         extractButton = QPushButton("Extract")
         extractButton.setFixedWidth(140)
-        extractButton.clicked.connect(self.extractClicked)
+        extractButton.clicked.connect(lambda: self.extractClicked(1))
         extractButton.setStyleSheet("font-size: 20px; padding: 10px; border-radius: 15px; background-color: #4972FD; color: white;")
         
         self.bibtexTextBox = QTextEdit()
+        self.bibtexTextBox.setAcceptRichText(False)
         self.bibtexTextBox.setStyleSheet(textBoxStyle)
         self.bibtexTextBox.setPlaceholderText("Enter BibTex here")
 
@@ -191,10 +194,11 @@ class MainWindow(QMainWindow):
         
         extractButton2 = QPushButton("Extract")
         extractButton2.setFixedWidth(140)
-        extractButton2.clicked.connect(self.extractClicked)
+        extractButton2.clicked.connect(lambda: self.extractClicked(2))
         extractButton2.setStyleSheet("font-size: 20px; padding: 10px; border-radius: 15px; background-color: #4972FD; color: white;")
         
         self.bibtexTextBox2 = QTextEdit()
+        self.bibtexTextBox2.setAcceptRichText(False)
         self.bibtexTextBox2.setStyleSheet(textBoxStyle)
         self.bibtexTextBox2.setPlaceholderText("Enter BibTex here")
 
@@ -203,9 +207,9 @@ class MainWindow(QMainWindow):
         self.idTextBox2 = QLineEdit()
         self.idTextBox2.setStyleSheet(textBoxStyle)
 
-        submitButton2 = QPushButton("Submit Paper")
+        submitButton2 = QPushButton("Modify Paper")
         submitButton2.setFixedWidth(300)
-        submitButton2.clicked.connect(self.submitPaperClicked)
+        submitButton2.clicked.connect(self.modifyPaperClicked)
         submitButton2.setStyleSheet("font-size: 20px; padding: 10px; border-radius: 15px; background-color: #4972FD; color: white;")
         
         # Adding widgets to Grid Layout
@@ -342,6 +346,7 @@ class MainWindow(QMainWindow):
         aboutLabel4.setStyleSheet(labelStyle)
                 
         aboutTextBox4 = QTextEdit()
+        aboutTextBox4.setAcceptRichText(False)
         aboutTextBox4.setStyleSheet(textBoxStyle)
         aboutTextBox4.setPlaceholderText("Enter the Background of the Member")
 
@@ -416,6 +421,7 @@ class MainWindow(QMainWindow):
         aboutLabel5.setStyleSheet(labelStyle)
                 
         aboutTextBox5 = QTextEdit()
+        aboutTextBox5.setAcceptRichText(False)
         aboutTextBox5.setStyleSheet(textBoxStyle)
         aboutTextBox5.setPlaceholderText("Enter the Background of the Member")
 
@@ -562,12 +568,35 @@ class MainWindow(QMainWindow):
         ## To Do: Change the layout or widget of the main context on Nav bar button click
 
     def submitPaperClicked(self):
-        # Check if all the fields are filled. Show warning if not.
-        checkList = [self.linkTextBox, self.titleTextBox, self.authorTextBox, self.conferenceTextBox, self.bibtexTextBox]
+        """
+        Handles the event when the 'Submit Paper' button is clicked.
+        
+        - Checks if all required fields are filled.
+        - Imports existing papers from storage.
+        - Creates a new paper entry with user-provided details.
+        - Appends the new paper to the existing list.
+        - Exports the updated paper list back to storage.
+        - Displays a success message.
+        - Clears the input fields for a new entry.
+        """
+        
+        # List of required input fields to be checked
+        checkList = [
+            self.linkTextBox, 
+            self.titleTextBox, 
+            self.authorTextBox, 
+            self.conferenceTextBox, 
+            self.bibtexTextBox
+        ]
+        
+        # Validate if all required fields are filled
         status = self.checkFields(checkList)
 
         if status:
+            # Import existing papers from storage
             papers = self.importPapers()
+
+            # Create a new paper entry
             newPaper = {
                 "id": self.getPaperID(self.titleTextBox.text(), self.dateEdit.date().toString("dd-MM-yyyy")),
                 "title": self.titleTextBox.text(),
@@ -577,59 +606,327 @@ class MainWindow(QMainWindow):
                 "link": self.linkTextBox.text(),
                 "bibtex": self.bibtexTextBox.toPlainText()
             }
+
+            # Add the new paper to the existing list
             papers.append(newPaper)
 
+            # Export the updated list back to storage
             self.exportPapers(papers)
 
+            # Show a success message to the user
+            QMessageBox.information(self, "Success", "Paper Submitted Successfully!")
+
+            # Clear input fields for the next entry
             self.clearFields(checkList)
 
-            #self.importPapers()
-        print("Submit Paper Clicked")
-        
-        # Check if all the field are filled. Show warning if not.
-
     def modifyPaperClicked(self):
-        ############# Incomplete Function #############
+        """
+        Handles the event when the 'Modify Paper' button is clicked.
+
+        - Prints a debug message to indicate the function is triggered.
+        - Checks if all required fields are filled.
+        - Imports existing papers from storage.
+        - Searches for the paper with the specified ID.
+        - Updates the paper details with new user-provided values.
+        - Exports the updated paper list back to storage.
+        - Displays a success message if modification is successful.
+        - Clears the input fields after modification.
+        - Displays a warning message if any field is empty.
+        """
+
+        # Debug message to indicate function execution
         print("Modify Paper Clicked")
 
-        checkList = [self.linkTextBox, self.titleTextBox, self.authorTextBox, self.conferenceTextBox, self.bibtexTextBox, self.idTextBox2]
+        # List of required input fields to be checked
+        checkList = [
+            self.linkTextBox2, 
+            self.titleTextBox2, 
+            self.authorTextBox2, 
+            self.conferenceTextBox2, 
+            self.bibtexTextBox2, 
+            self.idTextBox2
+        ]
+        
+        # Validate if all required fields are filled
         status = self.checkFields(checkList)
 
         if status:
+            # Import existing papers from storage
             papers = self.importPapers()
 
+            # Iterate over the paper list to find the matching ID
             for paper in papers:
                 if paper["id"] == self.idTextBox2.text():
+                    # Update the paper details with new input values
                     paper["title"] = self.titleTextBox2.text()
                     paper["authors"] = self.authorTextBox2.text()
                     paper["date"] = self.dateEdit2.date().toString("dd-MM-yyyy")
                     paper["journal"] = self.conferenceTextBox2.text()
                     paper["link"] = self.linkTextBox2.text()
                     paper["bibtex"] = self.bibtexTextBox2.toPlainText()
-                    break
+                    break  # Exit loop after finding the paper
 
+            # Export the updated paper list back to storage
             self.exportPapers(papers)
 
-            self.clearFields(checkList)
-        
-    def deletePaperClicked(self):
-        print("Delete Paper Clicked")
+            # Show a success message to the user
+            QMessageBox.information(self, "Success", "Paper Modified Successfully!")
 
+            # Clear input fields for the next modification
+            self.clearFields(checkList)
+
+        else:
+            # Show a warning message if any field is empty
+            QMessageBox.warning(self, "Warning", "One or more fields are empty!")        
+    
+    def deletePaperClicked(self):
+        """
+        Handles the event when the 'Delete Paper' button is clicked.
+
+        - Checks if the Paper ID field is filled.
+        - Displays a warning confirmation message.
+        - If confirmed, imports existing papers from storage.
+        - Filters out the paper with the matching ID.
+        - Exports the updated paper list back to storage.
+        - Clears the input field after deletion.
+        - Displays a warning if the Paper ID is empty.
+        """
+
+        # List of required input fields to be checked
         checkList = [self.idTextBox3]
+
+        # Validate if the Paper ID field is filled
         status = self.checkFields(checkList)
 
         if status:
+            # Display a warning confirmation before deletion
             QMessageBox.warning(self, "Warning", "Are you sure you want to delete the paper?")
-
-        if status:
+            
+            # Import existing papers from storage
             papers = self.importPapers()
+
+            # Filter out the paper with the matching ID
             updatedPapers = [paper for paper in papers if paper["id"] != self.idTextBox3.text()]
+
+            # Export the updated paper list back to storage
             self.exportPapers(updatedPapers)
 
+            # Clear the Paper ID field after deletion
             self.clearFields(checkList)
+        else:
+            # Show a warning message if Paper ID is empty
+            QMessageBox.warning(self, "Warning", "Paper ID is empty!")
+            
+    def importPapers(self):
+        """
+        Imports papers from a JSON file.
+
+        - Reads the paper data from the specified JSON file.
+        - Prints the JSON data in a well-formatted manner for debugging.
+        - Returns the list of papers.
+
+        Note: Ensure the file path is correctly set before deployment.
+        """
+
+        # Define the file path (Replace before deployment if necessary)
+        file_path = os.path.join(os.getcwd(), "data", "trial_papers.json")
+
+        # Open and read the JSON file
+        with open(file_path, "r") as file:
+            papers = json.load(file)  # Load the JSON content as a Python list
+
+        # Print the JSON data in a readable format (for debugging purposes)
+        print(json.dumps(papers, indent=4))
+
+        # Return the loaded papers list
+        return papers
+    
+    def parseDate(self, paper):
+        """
+        Parses the date string from a paper dictionary and converts it to a datetime object.
+
+        - Extracts the "date" field from the given paper dictionary.
+        - Converts the date string from the format "dd-mm-yyyy" to a datetime object.
+
+        Args:
+            paper (dict): A dictionary containing paper details, including a "date" field.
+
+        Returns:
+            datetime: A datetime object representing the parsed date.
+        """
+
+        return datetime.strptime(paper["date"], "%d-%m-%Y")
+    
+    def exportPapers(self, papers):
+        """
+        Exports the given list of papers to a JSON file after sorting them in reverse chronological order.
+
+        - Sorts the papers list by date in descending order (latest papers first).
+        - Writes the sorted list back to the specified JSON file.
+
+        Args:
+            papers (list): A list of dictionaries where each dictionary represents a paper.
+
+        Note: Ensure the file path is correctly set before deployment.
+        """
+
+        # Sort papers by date in descending order (latest papers first)
+        papers.sort(key=self.parseDate, reverse=True)
+
+        # Define the file path (Replace before deployment if necessary)
+        file_path = os.path.join(os.getcwd(), "data", "trial_papers.json")
+
+        # Open and write the sorted papers to the JSON file
+        with open(file_path, "w") as file:
+            json.dump(papers, file, indent=4)
+    
+    def checkFields(self, fieldsList):
+        """
+        Checks if all required input fields in the given list are filled.
+
+        - Iterates over each field in `fieldsList`.
+        - If the field is a `QLineEdit`, checks if its text is empty after stripping whitespace.
+        - If the field is a `QTextEdit`, checks if its plain text is empty after stripping whitespace.
+        - Returns `True` if all fields are filled, otherwise returns `False`.
+
+        Args:
+            fieldsList (list): A list of input fields (`QLineEdit` or `QTextEdit`) to be checked.
+
+        Returns:
+            bool: `True` if all fields are filled, otherwise `False`.
+        """
+
+        flag = 0  
+
+        for field in fieldsList:
+            if isinstance(field, QLineEdit):  
+                if field.text().strip() == "":  
+                    flag += 1
+            elif isinstance(field, QTextEdit):  
+                if field.toPlainText().strip() == "":  
+                    flag += 1
+
+        # Return True if no empty fields are found, otherwise return False
+        return flag == 0
         
-    def extractClicked(self):
-        print("Extract Clicked")
+    def clearFields(self, fieldsList):
+        """
+        Clears the content of all input fields in the given list.
+
+        - Iterates over each field in `fieldsList`.
+        - If the field is a `QLineEdit`, clears its text.
+        - If the field is a `QTextEdit`, clears its text.
+
+        Args:
+            fieldsList (list): A list of input fields (`QLineEdit` or `QTextEdit`) to be cleared.
+        """
+
+        for field in fieldsList:
+            if isinstance(field, QLineEdit): 
+                field.clear()  
+            elif isinstance(field, QTextEdit):
+                field.clear() 
+        
+    def getPaperID(self, paperTitle, publicationDate):
+        """
+        Generates a unique Paper ID based on the publication date and title.
+
+        - Extracts the day and month from the publication date.
+        - Removes non-alphanumeric characters from the paper title.
+        - Constructs an ID in the format "DDMM-TTTT", where:
+        - "DDMM" represents the day and month of publication.
+        - "TTTT" represents the first four alphanumeric characters of the title.
+
+        Args:
+            paperTitle (str): The title of the paper.
+            publicationDate (str): The publication date in the format "DD-MM-YYYY".
+
+        Returns:
+            str: A unique paper ID in the format "DDMM-TTTT".
+        """
+
+        # Extract day and month from the publication date
+        date = publicationDate.split('-')
+
+        # Remove non-alphanumeric characters from the paper title
+        title = "".join(char for char in list(paperTitle) if char.isalnum())
+
+        # Generate the Paper ID using the first four characters of the sanitized title
+        paper_id = (date[0] + date[1]) + '-' + (title[0:4])
+
+        return paper_id
+    
+
+    def extractClicked(self, layout):
+        """
+        Extracts properties from a BibTeX string including:
+        - title
+        - authors
+        - date (year)
+        - journal
+        - link (if available)
+
+        Args:
+            bibtexString (str): A string containing the BibTeX entry.
+
+        Returns:
+            None
+        """
+
+        bibtexString = self.bibtexTextBox.toPlainText() if layout == 1 else self.bibtexTextBox2.toPlainText()
+
+        # Extract the title
+        title_match = re.search(r'title\s*=\s*{(.*?)}', bibtexString, re.IGNORECASE)
+        title = title_match.group(1) if title_match else None
+        
+        if title != None:
+            if layout == 1:
+                self.titleTextBox.setText(title)
+            elif layout == 2:
+                self.titleTextBox2.setText(title)
+
+        # Extract the authors
+        authorsMatch = re.search(r'author\s*=\s*{(.*?)}', bibtexString, re.IGNORECASE)
+        authors = authorsMatch.group(1) if authorsMatch else None
+
+        if authorsMatch:
+            authors = authorsMatch.group(1)
+            first_author = authors.split(" and ")[0]
+            authors = (first_author.strip().split(",")[0] + first_author.strip().split(",")[1] if "," in first_author else first_author.strip()) + " et al."
+
+        if authors != None:
+            if layout == 1:
+                self.authorTextBox.setText(authors)
+            elif layout == 2:
+                self.authorTextBox2.setText(authors)
+        
+        # Extract the date (year)
+        date_match = re.search(r'year\s*=\s*{(\d{4})}', bibtexString, re.IGNORECASE)
+        date = date_match.group(1) if date_match else None
+        
+        print(date)
+
+        # Extract the journal
+        journal_match = re.search(r'journal\s*=\s*{(.*?)}', bibtexString, re.IGNORECASE)
+        journal = journal_match.group(1) if journal_match else None
+        
+        if journal != None:
+            if layout == 1:
+                self.conferenceTextBox.setText(journal)
+            elif layout == 2:
+                self.conferenceTextBox2.setText(journal)
+
+        # Extract the link (if present)
+        link_match = re.search(r'url\s*=\s*{(.*?)}', bibtexString, re.IGNORECASE)
+        link = link_match.group(1) if link_match else None
+        
+        if link != None:
+            if layout == 1:
+                self.linkTextBox.setText(link)
+            elif layout == 2:
+                self.linkTextBox2.setText(link)
+
+        return None
 
     def addPapersFromDatabase(self, layout):
         print("Adding Papers from Database")
@@ -650,53 +947,7 @@ class MainWindow(QMainWindow):
         print("Delete Member Clicked")
         # Check if all the field are filled. Show warning if not.
 
-    def importPapers(self):
-        print("Import Papers Function Called")
-        ##### Replace the file path before deployment
-        with open(os.getcwd() + "/data/trial_papers.json", "r") as file:
-            papers = json.load(file)
-
-        print(json.dumps(papers, indent=4))
-
-        return papers
     
-    def exportPapers(self, papers):
-        print("Export Papers Function Called")
-        ##### Replace the file path before deployment
-        with open(os.getcwd() + "/data/trial_papers.json", "w") as file:
-            json.dump(papers, file, indent=4)
-    
-    def checkFields(self, fieldsList):
-        flag = 0
-        for field in fieldsList:
-            if isinstance(field, QLineEdit):
-                if field.text().strip() == "":
-                    flag += 1
-                    print(field.text())
-            elif isinstance(field, QTextEdit):
-                if field.toPlainText().strip() == "":
-                    flag += 1
-                    print(field.toPlainText())
-        if flag == 0:
-            QMessageBox.information(self, "Success", "Paper Submitted Successfully!")
-            return True
-        else:
-            QMessageBox.warning(self, "Warning", "One or more fields are empty!")
-            return False
-        
-    def clearFields(self, fieldsList):
-        for field in fieldsList:
-            if isinstance(field, QLineEdit):
-                field.setText("")
-            elif isinstance(field, QTextEdit):
-                field.setText("")
-        
-    def getPaperID(self, paperTitle, publicationDate):
-        date = publicationDate.split('-')
-        title = "".join(char for char in list(paperTitle) if char.isalnum())
-        id = (date[0] + date[1]) + '-' + (title[0:4])
-
-        return id
         
 
 app = QApplication(sys.argv)
