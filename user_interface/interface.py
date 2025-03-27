@@ -4,7 +4,7 @@ import sys
 import json
 from datetime import datetime
 from PyQt6.QtWidgets import (
-    QApplication, QMainWindow, QWidget, QLabel, QLineEdit, QTextEdit, QPushButton, QFileDialog,
+    QApplication, QMainWindow, QWidget, QLabel, QLineEdit, QTextEdit, QPushButton, QFileDialog, QFrame,
     QVBoxLayout, QHBoxLayout, QGridLayout, QTabWidget, QDateEdit, QScrollArea, QComboBox, QMessageBox
 )
 from PyQt6.QtGui import QFont
@@ -160,7 +160,17 @@ class MainWindow(QMainWindow):
         scroll2 = QScrollArea()
         scroll2.setWidgetResizable(True)
         scroll2.setStyleSheet("background-color: #d9d9d9; margin-bottom: 30px;")
-        
+
+        # Widget to hold the scrollable Paper's content
+        paperBox2 = QWidget()
+        scroll2.setWidget(paperBox2)
+
+        # Layout to hold the content inside paperBox
+        self.scrollableLayout2 = QVBoxLayout(paperBox2)
+
+        # Add papers from Database to the scrollable layout
+        self.addPapersFromDatabase(self.scrollableLayout2)
+
         dateLabel2 = QLabel("Date")
         dateLabel2.setStyleSheet(labelStyle)
         
@@ -250,6 +260,16 @@ class MainWindow(QMainWindow):
         scroll3.setWidgetResizable(True)
         scroll3.setStyleSheet("background-color: #d9d9d9; margin-bottom: 30px;")
 
+        # Widget to hold the scrollable Paper's content
+        paperBox3 = QWidget()
+        scroll3.setWidget(paperBox3)
+
+        # Layout to hold the content inside paperBox
+        self.scrollableLayout3 = QVBoxLayout(paperBox3)
+
+        # Add papers from Database to the scrollable layout
+        self.addPapersFromDatabase(self.scrollableLayout3)
+
         idLabel3 = QLabel("Paper ID")
         idLabel3.setStyleSheet(labelStyle+"padding-right: 50px;")
         self.idTextBox3 = QLineEdit()
@@ -312,28 +332,29 @@ class MainWindow(QMainWindow):
         
         nameLabel4 = QLabel("Name")
         nameLabel4.setStyleSheet(labelStyle)
-        nameTextBox4 = QLineEdit()
-        nameTextBox4.setStyleSheet(textBoxStyle)
+        self.nameTextBox4 = QLineEdit()
+        self.nameTextBox4.setStyleSheet(textBoxStyle)
 
         roleLabel4 = QLabel("Job Role")
         roleLabel4.setStyleSheet(labelStyle)
-        roleBox4 = QComboBox()
-        roleBox4.addItem("")
-        roleBox4.setCurrentIndex(0)
-        roleBox4.setItemData(0, 0, Qt.ItemDataRole.UserRole - 1)
-        roleBox4.addItems(['PhD', 'HiWi', 'Intern'])
-        roleBox4.setStyleSheet(textBoxStyle+"padding-left: 15px;")
+        self.roleBox4 = QComboBox()
+        self.roleBox4.addItem("")
+        self.roleBox4.setCurrentIndex(0)
+        self.roleBox4.setItemData(0, 0, Qt.ItemDataRole.UserRole - 1)
+        self.roleBox4.addItems(['PhD', 'HiWi', 'Intern'])
+        self.roleBox4.setStyleSheet(textBoxStyle+"padding-left: 15px;")
 
         researchLabel4 = QLabel("Research Tags")
         researchLabel4.setStyleSheet(labelStyle)
-        researchBox4 = MultiSelectComboBox()
-        researchBox4.addItems(["Placeholder 1", "Placeholder 2"])
-        researchBox4.setStyleSheet(textBoxStyle+"padding-left: 15px;")
+        self.researchBox4 = MultiSelectComboBox()
+        self.researchBox4.addItems(["Placeholder 1", "Placeholder 2"])
+        self.researchBox4.setStyleSheet(textBoxStyle+"padding-left: 15px;")
 
         infoLabel4 = QLabel("Additional Info")
         infoLabel4.setStyleSheet(labelStyle)
-        infoTextBox4 = QLineEdit()
-        infoTextBox4.setStyleSheet(textBoxStyle)
+        self.infoTextBox4 = QLineEdit()
+        self.infoTextBox4.setStyleSheet(textBoxStyle)
+        self.infoTextBox4.setPlaceholderText("Optional")
         
         pictureLabel4 = QLabel("Picture Upload")
         pictureLabel4.setStyleSheet(labelStyle)
@@ -345,10 +366,10 @@ class MainWindow(QMainWindow):
         aboutLabel4 = QLabel("About")
         aboutLabel4.setStyleSheet(labelStyle)
                 
-        aboutTextBox4 = QTextEdit()
-        aboutTextBox4.setAcceptRichText(False)
-        aboutTextBox4.setStyleSheet(textBoxStyle)
-        aboutTextBox4.setPlaceholderText("Enter the Background of the Member")
+        self.aboutTextBox4 = QTextEdit()
+        self.aboutTextBox4.setAcceptRichText(False)
+        self.aboutTextBox4.setStyleSheet(textBoxStyle)
+        self.aboutTextBox4.setPlaceholderText("Enter the Background of the Member")
 
         addMemberButton4 = QPushButton("Add Member")
         addMemberButton4.setFixedWidth(300)
@@ -357,21 +378,21 @@ class MainWindow(QMainWindow):
         
         # Adding widgets to Grid Layout
         formLayout4.addWidget(nameLabel4, 0, 0)
-        formLayout4.addWidget(nameTextBox4, 0, 1, 1, 5)
+        formLayout4.addWidget(self.nameTextBox4, 0, 1, 1, 5)
 
         formLayout4.addWidget(roleLabel4, 1, 0, 1, 2)
-        formLayout4.addWidget(roleBox4, 1, 1, 1, 2)
+        formLayout4.addWidget(self.roleBox4, 1, 1, 1, 2)
         formLayout4.addWidget(researchLabel4, 1, 3, alignment=Qt.AlignmentFlag.AlignRight)
-        formLayout4.addWidget(researchBox4, 1, 4, 1, 2)
+        formLayout4.addWidget(self.researchBox4, 1, 4, 1, 2)
         
         formLayout4.addWidget(infoLabel4, 2, 0)
-        formLayout4.addWidget(infoTextBox4, 2, 1, 1, 5)
+        formLayout4.addWidget(self.infoTextBox4, 2, 1, 1, 5)
         
         formLayout4.addWidget(pictureLabel4, 3, 0)
         formLayout4.addWidget(pictureUploadButton4, 3, 1, 1, 5, alignment=Qt.AlignmentFlag.AlignCenter)
         
         formLayout4.addWidget(aboutLabel4, 4, 0)
-        formLayout4.addWidget(aboutTextBox4, 5, 0, 1, 6)
+        formLayout4.addWidget(self.aboutTextBox4, 5, 0, 1, 6)
 
         formLayout4.addWidget(addMemberButton4, 6, 0, 1, 6, alignment=Qt.AlignmentFlag.AlignCenter)
         
@@ -409,6 +430,7 @@ class MainWindow(QMainWindow):
         infoLabel5.setStyleSheet(labelStyle)
         infoTextBox5 = QLineEdit()
         infoTextBox5.setStyleSheet(textBoxStyle)
+        infoTextBox5.setPlaceholderText("Optional")
         
         pictureLabel5 = QLabel("Picture Upload")
         pictureLabel5.setStyleSheet(labelStyle)
@@ -464,10 +486,20 @@ class MainWindow(QMainWindow):
         scroll6.setWidgetResizable(True)
         scroll6.setStyleSheet("background-color: #d9d9d9; margin-bottom: 30px;")
 
+        # Widget to hold the scrollable Member's content
+        memberBox6 = QWidget()
+        scroll6.setWidget(memberBox6)
+
+        # Layout to hold the content inside memberBox
+        self.scrollableLayout6 = QVBoxLayout(memberBox6)
+
+        # Add members from Database to the scrollable layout
+        self.addMembersFromDatabase(self.scrollableLayout6)
+
         idLabel6 = QLabel("Full Name")
         idLabel6.setStyleSheet(labelStyle)
-        idTextBox6 = QLineEdit()
-        idTextBox6.setStyleSheet(textBoxStyle)
+        self.idTextBox6 = QLineEdit()
+        self.idTextBox6.setStyleSheet(textBoxStyle)
 
         deleteButton6 = QPushButton("Delete Member")
         deleteButton6.setFixedWidth(300)
@@ -478,7 +510,7 @@ class MainWindow(QMainWindow):
         formLayout6.addWidget(scroll6, 0, 0, 4, 6)
 
         formLayout6.addWidget(idLabel6, 4, 0)
-        formLayout6.addWidget(idTextBox6, 4, 1, 1, 5)
+        formLayout6.addWidget(self.idTextBox6, 4, 1, 1, 5)
         formLayout6.addWidget(deleteButton6, 5, 0, 1, 6, alignment=Qt.AlignmentFlag.AlignCenter)
         layoutDeleteMember.addLayout(formLayout6)
         layoutDeleteMember.setContentsMargins(50, 50, 50, 50)
@@ -675,6 +707,10 @@ class MainWindow(QMainWindow):
             # Clear input fields for the next modification
             self.clearFields(checkList)
 
+            # Refresh the paper list after modification
+            self.clearLayout(self.scrollableLayout2)
+            self.addPapersFromDatabase(self.scrollableLayout2)
+
         else:
             # Show a warning message if any field is empty
             QMessageBox.warning(self, "Warning", "One or more fields are empty!")        
@@ -713,6 +749,10 @@ class MainWindow(QMainWindow):
 
             # Clear the Paper ID field after deletion
             self.clearFields(checkList)
+
+            # Refresh the paper list after modification
+            self.clearLayout(self.scrollableLayout3)
+            self.addPapersFromDatabase(self.scrollableLayout3)
         else:
             # Show a warning message if Paper ID is empty
             QMessageBox.warning(self, "Warning", "Paper ID is empty!")
@@ -795,19 +835,17 @@ class MainWindow(QMainWindow):
         Returns:
             bool: `True` if all fields are filled, otherwise `False`.
         """
-
-        flag = 0  
-
         for field in fieldsList:
-            if isinstance(field, QLineEdit):  
-                if field.text().strip() == "":  
-                    flag += 1
-            elif isinstance(field, QTextEdit):  
-                if field.toPlainText().strip() == "":  
-                    flag += 1
-
-        # Return True if no empty fields are found, otherwise return False
-        return flag == 0
+            if isinstance(field, QLineEdit):
+                if not field.text().strip():
+                    return False
+            elif isinstance(field, QTextEdit):
+                if not field.toPlainText().strip():
+                    return False
+            elif isinstance(field, QComboBox):
+                if field.currentIndex() == -1 or not field.currentText().strip():
+                    return False
+        return True
         
     def clearFields(self, fieldsList):
         """
@@ -927,25 +965,265 @@ class MainWindow(QMainWindow):
                 self.linkTextBox2.setText(link)
 
         return None
-
+    
     def addPapersFromDatabase(self, layout):
-        print("Adding Papers from Database")
+        # Adding sample content dynamically
         papers = self.importPapers()
-        """for i in range(1, 21):
-            layout.addWidget(QLabel("This is the function"))
-        return layout"""
+        
+        for p in papers:
+            paperFrame = QFrame()
+            paperFrame.setFrameShape(QFrame.Shape.Box)
+            paperFrame.setLineWidth(1)
+            paperFrame.setStyleSheet("""
+                QFrame {
+                    background-color: #F3EBEB;
+                    padding: 0px;
+                    margin-left: 5px;
+                    margin-right: 5px;
+                    margin-bottom: 1px;
+                    margin-top: 0px;
+                    color: black;
+                    border-radius: 5px;
+                }
+            """)
+
+            # Label for the ID
+            paperIDinBox = QLabel(f"<b>ID</b>: {p['id']}")
+            paperIDinBox.setAlignment(Qt.AlignmentFlag.AlignLeft)
+
+            # Label for the Title
+            paperTitleinBox = QLabel(f"<b>Title</b>: {p['title']}")
+            paperTitleinBox.setAlignment(Qt.AlignmentFlag.AlignLeft)
+
+            # Label for the Authors
+            paperAuthorsinBox = QLabel(f"<b>Authors</b>: {p['authors']}")
+            paperAuthorsinBox.setAlignment(Qt.AlignmentFlag.AlignLeft)
+
+            # Label for the Conference
+            paperConferenceinBox = QLabel(f"<b>Conference</b>: {p['journal']}")
+            paperConferenceinBox.setAlignment(Qt.AlignmentFlag.AlignLeft)
+
+            # Layout inside each rectangular box
+            frameLayout = QVBoxLayout(paperFrame)
+            frameLayout.setSpacing(0)
+            frameLayout.setContentsMargins(1, 1, 1, 1)
+
+            frameLayout.addWidget(paperIDinBox)
+            frameLayout.addWidget(paperTitleinBox)
+            frameLayout.addWidget(paperAuthorsinBox)
+            frameLayout.addWidget(paperConferenceinBox)
+
+            # Add rectangle to scrollable layout
+            layout.addWidget(paperFrame)
+        return None
+    
+    def clearLayout(self, layout):
+        """
+        Clears the content of the given layout."
+        """
+        while layout.count():
+            item = layout.takeAt(0)
+            widget = item.widget()
+            if widget:
+                widget.deleteLater()
+
+    def importMembers(self):
+        """
+        Imports members from a JSON file.
+
+        - Reads the member data from the specified JSON file.
+        - Prints the JSON data in a well-formatted manner for debugging.
+        - Returns the list of members.
+
+        Note: Ensure the file path is correctly set before deployment.
+        """
+
+        # Define the file path (Replace before deployment if necessary)
+        file_path = os.path.join(os.getcwd(), "data", "trial_members.json")
+
+        # Open and read the JSON file
+        with open(file_path, "r") as file:
+            members = json.load(file)  # Load the JSON content as a Python list
+
+        # Print the JSON data in a readable format (for debugging purposes)
+        print(json.dumps(members, indent=4))
+
+        # Return the loaded papers list
+        return members
+    
+    def exportMembers(self, members):
+        """
+        Exports the given list of members to a JSON file after sorting them in importance order.
+
+        - Sorts the members list by importance order (Group Leader, Post Doc, PhD, HiWi, Intern).
+        - Writes the sorted list back to the specified JSON file.
+
+        Args:
+            members (list): A list of dictionaries where each dictionary represents a member.
+
+        Note: Ensure the file path is correctly set before deployment.
+        """
+
+        # Sort members by importance order
+        positionOrder = ['Group Leader', 'Post Doc', 'PhD', 'HiWi', 'Intern']
+        members = sorted(members, key=lambda x: positionOrder.index(x['position']))
+
+        # Define the file path (Replace before deployment if necessary)
+        file_path = os.path.join(os.getcwd(), "data", "trial_members.json")
+
+        # Open and write the sorted papers to the JSON file
+        with open(file_path, "w") as file:
+            json.dump(members, file, indent=4)
 
     def uploadImage(self):
-        filePath, _ = QFileDialog.getOpenFileName(self, "Select an Image", "", "Images (*.png *.jpg *.jpeg *.bmp *.gif)")
-        print("Upload Image Clicked", filePath)
+        self.filePath, _ = QFileDialog.getOpenFileName(self, "Select an Image", "", "Images (*.png *.jpg *.jpeg *.bmp *.gif)")
+        print("Upload Image Clicked", self.filePath)
 
     def addMemberClicked(self):
         print("Add Member Clicked")
-        # Check if all the field are filled. Show warning if not.
+        """
+        Handles the event when the 'Add member' button is clicked.
+        
+        - Checks if all required fields are filled.
+        - Imports existing members from storage.
+        - Creates a new member entry with user-provided details.
+        - Appends the new member to the existing list.
+        - Exports the updated member list back to storage.
+        - Displays a success message.
+        - Clears the input fields for a new entry.
+        """
+        
+        # List of required input fields to be checked
+        #### Check Picture Upload
+        checkList = [
+            self.nameTextBox4, 
+            self.roleBox4, 
+            self.researchBox4, 
+            self.aboutTextBox4, 
+            self.bibtexTextBox
+        ]
+        
+        # Validate if all required fields are filled
+        status = self.checkFields(checkList)
+
+        if status:
+            # Import existing members from storage
+            members = self.importMembers()
+
+            # Create a new member entry
+            newMember = {
+                "name": self.nameTextBox4.text(),
+                "position": self.roleBox4.currentText(),
+                "image": "img/team/lea.png",
+                "research": "['placeholder']",
+                "about": self.aboutTextBox4.toPlainText()
+            }
+
+            # Add the new paper to the existing list
+            members.append(newMember)
+
+            # Export the updated list back to storage
+            self.exportMembers(members)
+
+            # Show a success message to the user
+            QMessageBox.information(self, "Success", "Paper Submitted Successfully!")
+
+            # Clear input fields for the next entry
+            self.clearFields(checkList)
 
     def deleteMemberClicked(self):
         print("Delete Member Clicked")
-        # Check if all the field are filled. Show warning if not.
+        """
+        Handles the event when the 'Delete Member' button is clicked.
+
+        - Checks if the Member Name field is filled.
+        - Displays a warning confirmation message.
+        - If confirmed, imports existing members from storage.
+        - Filters out the member with the matching ID.
+        - Exports the updated member list back to storage.
+        - Clears the input field after deletion.
+        - Displays a warning if the Member Name is empty.
+        """
+
+        # List of required input fields to be checked
+        checkList = [self.idTextBox6]
+
+        # Validate if the Member ID field is filled
+        status = self.checkFields(checkList)
+
+        if status:
+            # Display a warning confirmation before deletion
+            QMessageBox.warning(self, "Warning", "Are you sure you want to delete the member?")
+            
+            # Import existing papers from storage
+            members = self.importPapers()
+
+            # Filter out the paper with the matching ID
+            updatedMembers = [member for member in members if member["id"] != self.idTextBox6.text()]
+
+            # Export the updated paper list back to storage
+            self.exportPapers(updatedMembers)
+
+            # Clear the Paper ID field after deletion
+            self.clearFields(checkList)
+
+            # Refresh the paper list after modification
+            self.clearLayout(self.scrollableLayout6)
+            self.addPapersFromDatabase(self.scrollableLayout6)
+        else:
+            # Show a warning message if Paper ID is empty
+            QMessageBox.warning(self, "Warning", "Full Name is empty!")
+
+    def addMembersFromDatabase(self, layout):
+        # Adding sample content dynamically
+        members = self.importMembers()
+        
+        for m in members:
+            memberFrame = QFrame()
+            memberFrame.setFrameShape(QFrame.Shape.Box)
+            memberFrame.setLineWidth(1)
+            memberFrame.setStyleSheet("""
+                QFrame {
+                    background-color: #F3EBEB;
+                    padding: 0px;
+                    margin-left: 5px;
+                    margin-right: 5px;
+                    margin-bottom: 1px;
+                    margin-top: 0px;
+                    color: black;
+                    border-radius: 5px;
+                }
+            """)
+
+            # Label for the ID
+            memberNameinBox = QLabel(f"<b>Name</b>: {m['name']}")
+            memberNameinBox.setAlignment(Qt.AlignmentFlag.AlignLeft)
+
+            # Label for the Title
+            memberPositioninBox = QLabel(f"<b>Position</b>: {m['position']}")
+            memberPositioninBox.setAlignment(Qt.AlignmentFlag.AlignLeft)
+
+            # Label for the Authors
+            memberResearchinBox = QLabel(f"<b>Research</b>: {m['research']}")
+            memberResearchinBox.setAlignment(Qt.AlignmentFlag.AlignLeft)
+
+            # Label for the Conference
+            memberAboutinBox = QLabel(f"<b>About</b>: {m['about']}")
+            memberAboutinBox.setAlignment(Qt.AlignmentFlag.AlignLeft)
+
+            # Layout inside each rectangular box
+            frameLayout = QVBoxLayout(memberFrame)
+            frameLayout.setSpacing(0)
+            frameLayout.setContentsMargins(1, 1, 1, 1)
+
+            frameLayout.addWidget(memberNameinBox)
+            frameLayout.addWidget(memberPositioninBox)
+            frameLayout.addWidget(memberResearchinBox)
+            frameLayout.addWidget(memberAboutinBox)
+
+            # Add rectangle to scrollable layout
+            layout.addWidget(memberFrame)
+        return None
 
     
         
