@@ -1,30 +1,44 @@
 [
     {
-        "name": "Lea Schönherr",
+        "name": "Lea Sch\u00f6nherr",
         "position": "Group Leader",
         "image": "img/team/lea.png",
         "research": "['placeholder']",
         "about": "Lorem Ipsum"
     },
     {
-        "name": "Lea Schönherr",
+        "name": "Lea Sch\u00f6nherr",
         "position": "Group Leader",
         "image": "img/team/lea.png",
         "research": "['placeholder']",
         "about": "Lorem Ipsum"
     },
     {
-        "name": "Lea Schönherr",
+        "name": "Lea Sch\u00f6nherr",
         "position": "Group Leader",
         "image": "img/team/lea.png",
         "research": "['placeholder']",
         "about": "Lorem Ipsum"
     },
     {
-        "name": "Lea Schönherr",
+        "name": "Lea Sch\u00f6nherr",
         "position": "Group Leader",
         "image": "img/team/lea.png",
         "research": "['placeholder']",
         "about": "Lorem Ipsum"
+    },
+    {
+        "name": "awa",
+        "position": "Post Doc",
+        "image": "img/team/lea.png",
+        "research": "['placeholder']",
+        "about": " asdsdf"
+    },
+    {
+        "name": "Yo yo",
+        "position": "Intern",
+        "image": "img/team/lea.png",
+        "research": "['placeholder']",
+        "about": "nnjvh"
     }
 ]

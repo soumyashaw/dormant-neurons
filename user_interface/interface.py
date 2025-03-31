@@ -2,6 +2,7 @@ import os
 import re
 import sys
 import json
+import shutil
 from datetime import datetime
 from PyQt6.QtWidgets import (
     QApplication, QMainWindow, QWidget, QLabel, QLineEdit, QTextEdit, QPushButton, QFileDialog, QFrame,
@@ -341,7 +342,7 @@ class MainWindow(QMainWindow):
         self.roleBox4.addItem("")
         self.roleBox4.setCurrentIndex(0)
         self.roleBox4.setItemData(0, 0, Qt.ItemDataRole.UserRole - 1)
-        self.roleBox4.addItems(['PhD', 'HiWi', 'Intern'])
+        self.roleBox4.addItems(['Post Doc','PhD', 'HiWi', 'Intern'])
         self.roleBox4.setStyleSheet(textBoxStyle+"padding-left: 15px;")
 
         researchLabel4 = QLabel("Research Tags")
@@ -358,10 +359,11 @@ class MainWindow(QMainWindow):
         
         pictureLabel4 = QLabel("Picture Upload")
         pictureLabel4.setStyleSheet(labelStyle)
-        pictureUploadButton4 = QPushButton("Upload Image")
-        pictureUploadButton4.clicked.connect(self.uploadImage)
-        pictureUploadButton4.setStyleSheet("font-size: 20px; padding: 10px; border-radius: 15px; background-color: #4972FD; color: white;")
-        pictureUploadButton4.setFixedWidth(300)
+        self.pictureUploadButton4 = QPushButton("Upload Image")
+        self.pictureUploadButton4.clicked.connect(lambda: self.uploadImage(self.pictureUploadButton4))
+        self.pictureUploadButton4.setStyleSheet("font-size: 20px; padding: 10px; border-radius: 15px; background-color: #4972FD; color: white;")
+        self.pictureUploadButton4.setFixedWidth(300)
+        self.imageFilePath = ""
         
         aboutLabel4 = QLabel("About")
         aboutLabel4.setStyleSheet(labelStyle)
@@ -389,7 +391,7 @@ class MainWindow(QMainWindow):
         formLayout4.addWidget(self.infoTextBox4, 2, 1, 1, 5)
         
         formLayout4.addWidget(pictureLabel4, 3, 0)
-        formLayout4.addWidget(pictureUploadButton4, 3, 1, 1, 5, alignment=Qt.AlignmentFlag.AlignCenter)
+        formLayout4.addWidget(self.pictureUploadButton4, 3, 1, 1, 5, alignment=Qt.AlignmentFlag.AlignCenter)
         
         formLayout4.addWidget(aboutLabel4, 4, 0)
         formLayout4.addWidget(self.aboutTextBox4, 5, 0, 1, 6)
@@ -408,23 +410,23 @@ class MainWindow(QMainWindow):
         
         nameLabel5 = QLabel("Name")
         nameLabel5.setStyleSheet(labelStyle)
-        nameTextBox5 = QLineEdit()
-        nameTextBox5.setStyleSheet(textBoxStyle)
+        self.nameTextBox5 = QLineEdit()
+        self.nameTextBox5.setStyleSheet(textBoxStyle)
 
         roleLabel5 = QLabel("Job Role")
         roleLabel5.setStyleSheet(labelStyle)
-        roleBox5 = QComboBox()
-        roleBox5.addItem("")
-        roleBox5.setCurrentIndex(0)
-        roleBox5.setItemData(0, 0, Qt.ItemDataRole.UserRole - 1)
-        roleBox5.addItems(['Post Doc', 'PhD', 'HiWi', 'Intern'])
-        roleBox5.setStyleSheet(textBoxStyle+"padding-left: 15px;")
+        self.roleBox5 = QComboBox()
+        self.roleBox5.addItem("")
+        self.roleBox5.setCurrentIndex(0)
+        self.roleBox5.setItemData(0, 0, Qt.ItemDataRole.UserRole - 1)
+        self.roleBox5.addItems(['Post Doc', 'PhD', 'HiWi', 'Intern'])
+        self.roleBox5.setStyleSheet(textBoxStyle+"padding-left: 15px;")
 
         researchLabel5 = QLabel("Research Tags")
         researchLabel5.setStyleSheet(labelStyle)
-        researchBox5 = MultiSelectComboBox()
-        researchBox5.addItems(["Placeholder 1", "Placeholder 2"])
-        researchBox5.setStyleSheet(textBoxStyle+"padding-left: 15px;")
+        self.researchBox5 = MultiSelectComboBox()
+        self.researchBox5.addItems(["Placeholder 1", "Placeholder 2"])
+        self.researchBox5.setStyleSheet(textBoxStyle+"padding-left: 15px;")
 
         infoLabel5 = QLabel("Additional Info")
         infoLabel5.setStyleSheet(labelStyle)
@@ -434,43 +436,43 @@ class MainWindow(QMainWindow):
         
         pictureLabel5 = QLabel("Picture Upload")
         pictureLabel5.setStyleSheet(labelStyle)
-        pictureUploadButton5 = QPushButton("Upload Image")
-        pictureUploadButton5.clicked.connect(self.uploadImage)
-        pictureUploadButton5.setStyleSheet("font-size: 20px; padding: 10px; border-radius: 15px; background-color: #4972FD; color: white;")
-        pictureUploadButton5.setFixedWidth(300)
+        self.pictureUploadButton5 = QPushButton("Upload Image")
+        self.pictureUploadButton5.clicked.connect(lambda: self.uploadImage(self.pictureUploadButton5))
+        self.pictureUploadButton5.setStyleSheet("font-size: 20px; padding: 10px; border-radius: 15px; background-color: #4972FD; color: white;")
+        self.pictureUploadButton5.setFixedWidth(300)
         
         aboutLabel5 = QLabel("About")
         aboutLabel5.setStyleSheet(labelStyle)
                 
-        aboutTextBox5 = QTextEdit()
-        aboutTextBox5.setAcceptRichText(False)
-        aboutTextBox5.setStyleSheet(textBoxStyle)
-        aboutTextBox5.setPlaceholderText("Enter the Background of the Member")
+        self.aboutTextBox5 = QTextEdit()
+        self.aboutTextBox5.setAcceptRichText(False)
+        self.aboutTextBox5.setStyleSheet(textBoxStyle)
+        self.aboutTextBox5.setPlaceholderText("Enter the Background of the Member")
 
-        addMemberButton5 = QPushButton("Modify Member")
-        addMemberButton5.setFixedWidth(300)
-        addMemberButton5.clicked.connect(self.addMemberClicked)
-        addMemberButton5.setStyleSheet("font-size: 20px; padding: 10px; border-radius: 15px; background-color: #4972FD; color: white;")
+        self.modifyMemberButton5 = QPushButton("Modify Member")
+        self.modifyMemberButton5.setFixedWidth(300)
+        self.modifyMemberButton5.clicked.connect(self.modifyMemberClicked)
+        self.modifyMemberButton5.setStyleSheet("font-size: 20px; padding: 10px; border-radius: 15px; background-color: #4972FD; color: white;")
         
         # Adding widgets to Grid Layout
         formLayout5.addWidget(nameLabel5, 0, 0)
-        formLayout5.addWidget(nameTextBox5, 0, 1, 1, 5)
+        formLayout5.addWidget(self.nameTextBox5, 0, 1, 1, 5)
 
         formLayout5.addWidget(roleLabel5, 1, 0, 1, 2)
-        formLayout5.addWidget(roleBox5, 1, 1, 1, 2)
+        formLayout5.addWidget(self.roleBox5, 1, 1, 1, 2)
         formLayout5.addWidget(researchLabel5, 1, 3, alignment=Qt.AlignmentFlag.AlignRight)
-        formLayout5.addWidget(researchBox5, 1, 4, 1, 2)
+        formLayout5.addWidget(self.researchBox5, 1, 4, 1, 2)
         
         formLayout5.addWidget(infoLabel5, 2, 0)
         formLayout5.addWidget(infoTextBox5, 2, 1, 1, 5)
         
         formLayout5.addWidget(pictureLabel5, 3, 0)
-        formLayout5.addWidget(pictureUploadButton5, 3, 1, 1, 5, alignment=Qt.AlignmentFlag.AlignCenter)
+        formLayout5.addWidget(self.pictureUploadButton5, 3, 1, 1, 5, alignment=Qt.AlignmentFlag.AlignCenter)
         
         formLayout5.addWidget(aboutLabel5, 4, 0)
-        formLayout5.addWidget(aboutTextBox5, 5, 0, 1, 6)
+        formLayout5.addWidget(self.aboutTextBox5, 5, 0, 1, 6)
 
-        formLayout5.addWidget(addMemberButton5, 6, 0, 1, 6, alignment=Qt.AlignmentFlag.AlignCenter)
+        formLayout5.addWidget(self.modifyMemberButton5, 6, 0, 1, 6, alignment=Qt.AlignmentFlag.AlignCenter)
 
         layoutModifyMember.addLayout(formLayout5)
         layoutModifyMember.setContentsMargins(50, 50, 50, 50)
@@ -503,7 +505,7 @@ class MainWindow(QMainWindow):
 
         deleteButton6 = QPushButton("Delete Member")
         deleteButton6.setFixedWidth(300)
-        deleteButton6.clicked.connect(self.deletePaperClicked)
+        deleteButton6.clicked.connect(self.deleteMemberClicked)
         deleteButton6.setStyleSheet("font-size: 20px; padding: 10px; border-radius: 15px; background-color: #4972FD; color: white;")
         
         # Adding widgets to Grid Layout
@@ -625,6 +627,11 @@ class MainWindow(QMainWindow):
         status = self.checkFields(checkList)
 
         if status:
+            # Check if the Paper ID field is present in the database
+            if self.isPaperPresent:
+                QMessageBox.warning(self, "Warning", "Paper ID already exists in the database!")
+                return
+
             # Import existing papers from storage
             papers = self.importPapers()
 
@@ -650,6 +657,12 @@ class MainWindow(QMainWindow):
 
             # Clear input fields for the next entry
             self.clearFields(checkList)
+
+            # Refresh the paper list after modification
+            self.clearLayout(self.scrollableLayout2)
+            self.addPapersFromDatabase(self.scrollableLayout2)
+            self.clearLayout(self.scrollableLayout3)
+            self.addPapersFromDatabase(self.scrollableLayout3)
 
     def modifyPaperClicked(self):
         """
@@ -683,6 +696,11 @@ class MainWindow(QMainWindow):
         status = self.checkFields(checkList)
 
         if status:
+            # Check if the Paper ID field is present in the database
+            if not self.isPaperPresent:
+                QMessageBox.warning(self, "Warning", "Paper ID not found in the database!")
+                return
+
             # Import existing papers from storage
             papers = self.importPapers()
 
@@ -710,6 +728,8 @@ class MainWindow(QMainWindow):
             # Refresh the paper list after modification
             self.clearLayout(self.scrollableLayout2)
             self.addPapersFromDatabase(self.scrollableLayout2)
+            self.clearLayout(self.scrollableLayout3)
+            self.addPapersFromDatabase(self.scrollableLayout3)
 
         else:
             # Show a warning message if any field is empty
@@ -735,6 +755,11 @@ class MainWindow(QMainWindow):
         status = self.checkFields(checkList)
 
         if status:
+            # Check if the Paper ID field is present in the database
+            if not self.isPaperPresent:
+                QMessageBox.warning(self, "Warning", "Paper ID not found in the database!")
+                return
+
             # Display a warning confirmation before deletion
             QMessageBox.warning(self, "Warning", "Are you sure you want to delete the paper?")
             
@@ -751,6 +776,8 @@ class MainWindow(QMainWindow):
             self.clearFields(checkList)
 
             # Refresh the paper list after modification
+            self.clearLayout(self.scrollableLayout2)
+            self.addPapersFromDatabase(self.scrollableLayout2)
             self.clearLayout(self.scrollableLayout3)
             self.addPapersFromDatabase(self.scrollableLayout3)
         else:
@@ -845,6 +872,12 @@ class MainWindow(QMainWindow):
             elif isinstance(field, QComboBox):
                 if field.currentIndex() == -1 or not field.currentText().strip():
                     return False
+            elif isinstance(field, MultiSelectComboBox):
+                if not field.currentData().strip(): 
+                    return False
+            elif isinstance(field, str):
+                if not field.strip():
+                    return False
         return True
         
     def clearFields(self, fieldsList):
@@ -863,7 +896,13 @@ class MainWindow(QMainWindow):
             if isinstance(field, QLineEdit): 
                 field.clear()  
             elif isinstance(field, QTextEdit):
-                field.clear() 
+                field.clear()
+            elif isinstance(field, QComboBox):
+                field.setCurrentIndex(0)
+            elif isinstance(field, MultiSelectComboBox):
+                field.setCurrentIndex(0)
+            elif isinstance(field, str):
+                field = ""
         
     def getPaperID(self, paperTitle, publicationDate):
         """
@@ -942,8 +981,6 @@ class MainWindow(QMainWindow):
         date_match = re.search(r'year\s*=\s*{(\d{4})}', bibtexString, re.IGNORECASE)
         date = date_match.group(1) if date_match else None
         
-        print(date)
-
         # Extract the journal
         journal_match = re.search(r'journal\s*=\s*{(.*?)}', bibtexString, re.IGNORECASE)
         journal = journal_match.group(1) if journal_match else None
@@ -1075,9 +1112,13 @@ class MainWindow(QMainWindow):
         with open(file_path, "w") as file:
             json.dump(members, file, indent=4)
 
-    def uploadImage(self):
-        self.filePath, _ = QFileDialog.getOpenFileName(self, "Select an Image", "", "Images (*.png *.jpg *.jpeg *.bmp *.gif)")
-        print("Upload Image Clicked", self.filePath)
+    def uploadImage(self, button):
+        self.imageFilePath, _ = QFileDialog.getOpenFileName(self, "Select an Image", "", "Images (*.png *.jpg *.jpeg *.bmp *.gif)")
+
+        if self.imageFilePath:
+            button.setText("Image Uploaded ✅")
+        
+        print("Upload Image Clicked", self.imageFilePath)
 
     def addMemberClicked(self):
         print("Add Member Clicked")
@@ -1094,19 +1135,27 @@ class MainWindow(QMainWindow):
         """
         
         # List of required input fields to be checked
-        #### Check Picture Upload
         checkList = [
             self.nameTextBox4, 
             self.roleBox4, 
             self.researchBox4, 
-            self.aboutTextBox4, 
-            self.bibtexTextBox
+            self.aboutTextBox4,
+            self.imageFilePath
         ]
         
         # Validate if all required fields are filled
         status = self.checkFields(checkList)
 
         if status:
+            # Check if the name is already present
+            if self.isNamePresent(self.nameTextBox4.text()):
+                QMessageBox.warning(self, "Warning", "Member already exists!")
+                return
+            
+            # Transfer the image to the website directory location
+            fileFormat = os.path.splitext(self.imageFilePath)[1]
+            shutil.copy(self.imageFilePath, os.path.join(os.getcwd(), "img", "team", self.nameTextBox4.text() + fileFormat))
+            
             # Import existing members from storage
             members = self.importMembers()
 
@@ -1115,7 +1164,7 @@ class MainWindow(QMainWindow):
                 "name": self.nameTextBox4.text(),
                 "position": self.roleBox4.currentText(),
                 "image": "img/team/lea.png",
-                "research": "['placeholder']",
+                "research": self.researchBox4.currentData(),
                 "about": self.aboutTextBox4.toPlainText()
             }
 
@@ -1126,10 +1175,94 @@ class MainWindow(QMainWindow):
             self.exportMembers(members)
 
             # Show a success message to the user
-            QMessageBox.information(self, "Success", "Paper Submitted Successfully!")
+            QMessageBox.information(self, "Success", "Member added Successfully!")
 
             # Clear input fields for the next entry
-            self.clearFields(checkList)
+            self.clearFields(checkList.append(self.infoTextBox4))
+
+            # Refresh Image Upload Button
+            self.pictureUploadButton4.setText("Upload Image")
+
+            # Refresh the member list after modification
+            self.clearLayout(self.scrollableLayout6)
+            self.addMembersFromDatabase(self.scrollableLayout6)
+
+        else:
+            # Show a warning message if any of the fields is empty
+            QMessageBox.warning(self, "Warning", "One or more field is empty!")
+
+    def modifyMemberClicked(self):
+        print("Modify Member Clicked")
+        """
+        Handles the event when the 'Modify member' button is clicked.
+        
+        - Checks if all required fields are filled.
+        - Imports existing members from storage.
+        - Creates a new member entry with user-provided details.
+        - Appends the new member to the existing list.
+        - Exports the updated member list back to storage.
+        - Displays a success message.
+        - Clears the input fields for a new entry.
+        """
+        
+        # List of required input fields to be checked
+        checkList = [
+            self.nameTextBox5, 
+            self.roleBox5,
+            self.researchBox5, 
+            self.aboutTextBox5,
+            self.imageFilePath
+        ]
+        
+        # Validate if all required fields are filled
+        status = self.checkFields(checkList)
+
+        print("status", status)
+
+        if status:
+            # Check if the name is already present
+            if self.isNamePresent(self.nameTextBox5.text()):
+                QMessageBox.warning(self, "Warning", "Member already exists!")
+                return
+            
+            # Transfer the image to the website directory location
+            fileFormat = os.path.splitext(self.imageFilePath)[1]
+            shutil.copy(self.imageFilePath, os.path.join(os.getcwd(), "img", "team", self.nameTextBox5.text() + fileFormat))
+
+            # Import existing members from storage
+            members = self.importMembers()
+
+            # Create a new member entry
+            newMember = {
+                "name": self.nameTextBox5.text(),
+                "position": self.roleBox5.currentText(),
+                "image": "img/team/lea.png",
+                "research": self.researchBox5.currentData(),
+                "about": self.aboutTextBox5.toPlainText()
+            }
+
+            # Add the new paper to the existing list
+            members.append(newMember)
+
+            # Export the updated list back to storage
+            self.exportMembers(members)
+
+            # Show a success message to the user
+            QMessageBox.information(self, "Success", "Member added Successfully!")
+
+            # Clear input fields for the next entry
+            self.clearFields(checkList.append(self.infoTextBox5))
+
+            # Refresh Image Upload Button
+            self.pictureUploadButton5.setText("Upload Image")
+
+            # Refresh the member list after modification
+            self.clearLayout(self.scrollableLayout6)
+            self.addMembersFromDatabase(self.scrollableLayout6)
+
+        else:
+            # Show a warning message if any of the fields is empty
+            QMessageBox.warning(self, "Warning", "One or more field is empty!")
 
     def deleteMemberClicked(self):
         print("Delete Member Clicked")
@@ -1152,24 +1285,29 @@ class MainWindow(QMainWindow):
         status = self.checkFields(checkList)
 
         if status:
+            # Check if the name is already present
+            if not self.isNamePresent(self.idTextBox6.text()):
+                QMessageBox.warning(self, "Warning", "Member does not exist! Check Spelling.")
+                return
+
             # Display a warning confirmation before deletion
             QMessageBox.warning(self, "Warning", "Are you sure you want to delete the member?")
             
             # Import existing papers from storage
-            members = self.importPapers()
+            members = self.importMembers()
 
             # Filter out the paper with the matching ID
-            updatedMembers = [member for member in members if member["id"] != self.idTextBox6.text()]
+            updatedMembers = [member for member in members if member["name"] != self.idTextBox6.text()]
 
             # Export the updated paper list back to storage
-            self.exportPapers(updatedMembers)
+            self.exportMembers(updatedMembers)
 
             # Clear the Paper ID field after deletion
             self.clearFields(checkList)
 
             # Refresh the paper list after modification
             self.clearLayout(self.scrollableLayout6)
-            self.addPapersFromDatabase(self.scrollableLayout6)
+            self.addMembersFromDatabase(self.scrollableLayout6)
         else:
             # Show a warning message if Paper ID is empty
             QMessageBox.warning(self, "Warning", "Full Name is empty!")
@@ -1224,6 +1362,38 @@ class MainWindow(QMainWindow):
             # Add rectangle to scrollable layout
             layout.addWidget(memberFrame)
         return None
+    
+    def isNamePresent(self, name):
+        """
+        Checks if a given name is present in the list of members.
+
+        Args:
+            name (str): The name to check.
+
+        Returns:
+            bool: True if the name is present, False otherwise.
+        """
+        members = self.importMembers()
+        for member in members:
+            if member["name"] == name:
+                return True
+        return False
+    
+    def isPaperPresent(self, name):
+        """
+        Checks if a given paper ID is present in the list of papers.
+
+        Args:
+            name (str): The paper ID to check.
+
+        Returns:
+            bool: True if the paper ID is present, False otherwise.
+        """
+        papers = self.importPapers()
+        for paper in papers:
+            if paper["id"] == name:
+                return True
+        return False
 
     
         
