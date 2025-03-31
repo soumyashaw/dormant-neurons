@@ -430,9 +430,9 @@ class MainWindow(QMainWindow):
 
         infoLabel5 = QLabel("Additional Info")
         infoLabel5.setStyleSheet(labelStyle)
-        infoTextBox5 = QLineEdit()
-        infoTextBox5.setStyleSheet(textBoxStyle)
-        infoTextBox5.setPlaceholderText("Optional")
+        self.infoTextBox5 = QLineEdit()
+        self.infoTextBox5.setStyleSheet(textBoxStyle)
+        self.infoTextBox5.setPlaceholderText("Optional")
         
         pictureLabel5 = QLabel("Picture Upload")
         pictureLabel5.setStyleSheet(labelStyle)
@@ -464,7 +464,7 @@ class MainWindow(QMainWindow):
         formLayout5.addWidget(self.researchBox5, 1, 4, 1, 2)
         
         formLayout5.addWidget(infoLabel5, 2, 0)
-        formLayout5.addWidget(infoTextBox5, 2, 1, 1, 5)
+        formLayout5.addWidget(self.infoTextBox5, 2, 1, 1, 5)
         
         formLayout5.addWidget(pictureLabel5, 3, 0)
         formLayout5.addWidget(self.pictureUploadButton5, 3, 1, 1, 5, alignment=Qt.AlignmentFlag.AlignCenter)
@@ -1154,7 +1154,7 @@ class MainWindow(QMainWindow):
             
             # Transfer the image to the website directory location
             fileFormat = os.path.splitext(self.imageFilePath)[1]
-            shutil.copy(self.imageFilePath, os.path.join(os.getcwd(), "img", "team", self.nameTextBox4.text() + fileFormat))
+            shutil.copy(self.imageFilePath, os.path.join(os.getcwd(), "img", "team", self.nameTextBox4.text().lower().replace(" ", "_") + fileFormat))
             
             # Import existing members from storage
             members = self.importMembers()
@@ -1163,8 +1163,9 @@ class MainWindow(QMainWindow):
             newMember = {
                 "name": self.nameTextBox4.text(),
                 "position": self.roleBox4.currentText(),
-                "image": "img/team/lea.png",
+                "image": os.path.join("img", "team", self.nameTextBox4.text() + fileFormat),
                 "research": self.researchBox4.currentData(),
+                "info": self.infoTextBox4.text(),
                 "about": self.aboutTextBox4.toPlainText()
             }
 
@@ -1177,8 +1178,11 @@ class MainWindow(QMainWindow):
             # Show a success message to the user
             QMessageBox.information(self, "Success", "Member added Successfully!")
 
-            # Clear input fields for the next entry
-            self.clearFields(checkList.append(self.infoTextBox4))
+            if self.infoTextBox4.text() != "":
+                checkList.append(self.infoTextBox4)
+                self.clearFields(checkList)
+            else:
+                self.clearFields(checkList)
 
             # Refresh Image Upload Button
             self.pictureUploadButton4.setText("Upload Image")
@@ -1227,7 +1231,7 @@ class MainWindow(QMainWindow):
             
             # Transfer the image to the website directory location
             fileFormat = os.path.splitext(self.imageFilePath)[1]
-            shutil.copy(self.imageFilePath, os.path.join(os.getcwd(), "img", "team", self.nameTextBox5.text() + fileFormat))
+            shutil.copy(self.imageFilePath, os.path.join(os.getcwd(), "img", "team", self.nameTextBox5.text().lower().replace(" ", "_") + fileFormat))
 
             # Import existing members from storage
             members = self.importMembers()
@@ -1236,8 +1240,9 @@ class MainWindow(QMainWindow):
             newMember = {
                 "name": self.nameTextBox5.text(),
                 "position": self.roleBox5.currentText(),
-                "image": "img/team/lea.png",
+                "image": os.path.join("img", "team", self.nameTextBox4.text() + fileFormat),
                 "research": self.researchBox5.currentData(),
+                "info": self.infoTextBox5.text(),
                 "about": self.aboutTextBox5.toPlainText()
             }
 
@@ -1251,7 +1256,11 @@ class MainWindow(QMainWindow):
             QMessageBox.information(self, "Success", "Member added Successfully!")
 
             # Clear input fields for the next entry
-            self.clearFields(checkList.append(self.infoTextBox5))
+            if self.infoTextBox5.text() != "":
+                checkList.append(self.infoTextBox5)
+                self.clearFields(checkList)
+            else:
+                self.clearFields(checkList)
 
             # Refresh Image Upload Button
             self.pictureUploadButton5.setText("Upload Image")
@@ -1292,9 +1301,20 @@ class MainWindow(QMainWindow):
 
             # Display a warning confirmation before deletion
             QMessageBox.warning(self, "Warning", "Are you sure you want to delete the member?")
-            
+
             # Import existing papers from storage
             members = self.importMembers()
+
+            # Extract the image key from the member dictionary
+            for member in members:
+                if member["name"] == self.idTextBox6.text():
+                    imagePath = member["image"]
+                    break
+            
+            # Delete the image file from the directory
+            if os.path.exists(imagePath):
+                os.remove(imagePath)
+            
 
             # Filter out the paper with the matching ID
             updatedMembers = [member for member in members if member["name"] != self.idTextBox6.text()]

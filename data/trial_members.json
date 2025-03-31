@@ -26,19 +26,5 @@
         "image": "img/team/lea.png",
         "research": "['placeholder']",
         "about": "Lorem Ipsum"
-    },
-    {
-        "name": "awa",
-        "position": "Post Doc",
-        "image": "img/team/lea.png",
-        "research": "['placeholder']",
-        "about": " asdsdf"
-    },
-    {
-        "name": "Yo yo",
-        "position": "Intern",
-        "image": "img/team/lea.png",
-        "research": "['placeholder']",
-        "about": "nnjvh"
     }
 ]
