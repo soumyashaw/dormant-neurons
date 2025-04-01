@@ -61,6 +61,20 @@ document.addEventListener("DOMContentLoaded", () => {
                 paperInner.appendChild(paperAuth);
                 paperInner.appendChild(paperJournal);
 
+                // Create BibTex button ////////////////////////////////////
+                //const bibtexButton = document.createElement("button");
+                //dateDiv.classList.add("date");
+
+                //const calendarIcon = document.createElement("i");
+                //calendarIcon.classList.add("fa-solid", "fa-calendar-days");
+
+                //const dateStrong = document.createElement("strong");
+                //dateStrong.textContent = paper.date;
+
+                //dateDiv.appendChild(calendarIcon);
+                //dateDiv.appendChild(dateStrong);
+                /////////////////////////////////////////////////////////////
+
                 paperOuter.appendChild(dateDiv);
                 paperOuter.appendChild(paperInner);
 

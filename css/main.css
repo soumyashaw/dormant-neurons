@@ -674,7 +674,12 @@ a:hover {
 
 .paper-inner {
     display: flex;
+}
+
+.bibtex {
     margin-bottom: 25px;
+    background-color: green;
+    color: turquoise;
 }
 
 hr {
