@@ -194,18 +194,20 @@ a:hover {
     width: 100%;
     display: flex;
     margin-top: 50px;
+    min-height: 600px;
 }
 
-.home-content-right {
+.home-content-left {
     margin: 20px;
-    text-align: right;
+    text-align: left;
     margin: auto;
     padding: 50px;
     color: #13233e;
     max-width: 1300px;
+    width: 50%;
 }
 
-.home-content-right h1 {
+.home-content-left h1 {
     font-family: "Kanit", serif;
     font-weight: 500;
     font-style: normal;
@@ -214,7 +216,7 @@ a:hover {
     color: #13233e;
 }
 
-.home-content-right em {
+.home-content-left em {
     font-family: "Kanit", serif;
     font-weight: 500;
     font-style: normal;
@@ -223,12 +225,37 @@ a:hover {
     color: #13233e;
 }
 
-.home-content-right p {
+.home-content-left p {
     font-size: 1.3em;
     line-height: 1.2em;
     font-weight: 500;
     color: #13233e;
-    margin-left: 50px;
+}
+
+.home-content-right {
+    width: 50%;
+    margin: auto;
+    height: 500px;
+    padding: 20px;
+}
+
+.home-content-right img {
+    height: auto;
+    width: 100%;
+    border-radius: 15px;
+    margin: auto;
+}
+
+.caption-overlay {
+    float: right;
+    text-align: right;
+    width:fit-content;
+    background-color: #272D33;
+    padding: 5px;
+    color: #FFFFFF;
+    opacity: 0.7;
+    border-radius: 5px;
+    transform: translateY(-40px);
 }
 
 
@@ -346,7 +373,6 @@ a:hover {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: #FFCC70;
 }
 
 .research-header-1 h1 {
@@ -368,7 +394,6 @@ a:hover {
 
 .research-right {
     width: 40%;
-    background-color: #C850C0;
 }
 
 .research-right video {
@@ -678,6 +703,7 @@ a:hover {
 
 .bibtex {
     padding: 10px;
+    padding-top: 0px;
     margin-bottom: 25px;
 }
 
