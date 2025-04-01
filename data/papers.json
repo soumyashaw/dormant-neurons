@@ -5,7 +5,8 @@
       "authors": "Debenedetti et al.",
       "date": "09-10-2024",
       "journal": "Conference on Neural Information Processing Systems (NeurIPS)",
-      "link": "https://arxiv.org/abs/2406.07954"
+      "link": "https://arxiv.org/abs/2406.07954",
+      "bibtex": "test"
     },
     {
       "id": "0910-Coop",
@@ -13,7 +14,8 @@
       "authors": "Abdelnabi et al.",
       "date": "09-10-2024",
       "journal": "Conference on Neural Information Processing Systems (NeurIPS)",
-      "link": "https://openreview.net/forum?id=59E19c6yrN#discussion"
+      "link": "https://openreview.net/forum?id=59E19c6yrN#discussion",
+      "bibtex": "test"
     },
     {
       "id": "1408-TheI",
@@ -21,7 +23,8 @@
       "authors": "Acharya et al.",
       "date": "14-08-2024",
       "journal": "Usenix Security Symposium (USENIX-Security)",
-      "link": "https://www.usenix.org/conference/usenixsecurity24/presentation/acharya"
+      "link": "https://www.usenix.org/conference/usenixsecurity24/presentation/acharya",
+      "bibtex": "test"
     },
     {
       "id": "0307-BUIL",
@@ -29,7 +32,8 @@
       "authors": "Gupta et al.",
       "date": "03-07-2024",
       "journal": "International Conference on Machine Learning (ICML)",
-      "link": "https://openreview.net/pdf?id=WaGj1QfgCH"
+      "link": "https://openreview.net/pdf?id=WaGj1QfgCH",
+      "bibtex": "test"
     },
     {
       "id": "2806-Gene",
@@ -37,6 +41,7 @@
       "authors": "Shaw et al.",
       "date": "28-06-2024",
       "journal": "International Conference on Machine Learning (ICML)",
-      "link": "https://openreview.net/forum?id=1R7RD1dfcC"
+      "link": "https://openreview.net/forum?id=1R7RD1dfcC",
+      "bibtex": "test"
     }
 ]

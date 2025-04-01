@@ -61,22 +61,27 @@ document.addEventListener("DOMContentLoaded", () => {
                 paperInner.appendChild(paperAuth);
                 paperInner.appendChild(paperJournal);
 
-                // Create BibTex button ////////////////////////////////////
-                //const bibtexButton = document.createElement("button");
-                //dateDiv.classList.add("date");
+                // Create BibTex button
+                const bibtexContainer = document.createElement("div");
+                bibtexContainer.classList.add("bibtex");
 
-                //const calendarIcon = document.createElement("i");
-                //calendarIcon.classList.add("fa-solid", "fa-calendar-days");
+                const pre = document.createElement("pre");
+                pre.classList.add("bibtex-entry");
+                pre.textContent = paper.bibtex;
 
-                //const dateStrong = document.createElement("strong");
-                //dateStrong.textContent = paper.date;
+                const copyButton = document.createElement("button");
+                copyButton.classList.add("copy-button");
+                copyButton.innerHTML = '<i class="fa-solid fa-copy"></i> Copy BibTeX';
+                copyButton.onclick = function () {
+                    copyBibtex(this);
+                };
 
-                //dateDiv.appendChild(calendarIcon);
-                //dateDiv.appendChild(dateStrong);
-                /////////////////////////////////////////////////////////////
-
+                bibtexContainer.appendChild(pre);
+                bibtexContainer.appendChild(copyButton);
+                
                 paperOuter.appendChild(dateDiv);
                 paperOuter.appendChild(paperInner);
+                paperOuter.appendChild(bibtexContainer);
 
                 // Separator
                 const separator = document.createElement("hr");

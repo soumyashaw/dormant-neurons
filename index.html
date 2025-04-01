@@ -39,6 +39,7 @@ Developed By: Soumya Shaw
     <!-- Javascript -->
     <script src="js/jquery.js"></script>
     <script src="js/paper-loader.js"></script>
+    <script src="js/copyBibTex.js"></script>
 </head>
 
 <body>
@@ -330,7 +331,15 @@ Developed By: Soumya Shaw
                       <div class="paper-journal">Conference on Machine Learning, 2023</div>
                     </div>
                     <div class="bibtex">
-                        <button class="copy-button" onclick="copyBibtex('bibtex-1')">
+                        <pre class="bibtex-entry">
+                            @article{doe2023transformers,
+                            title={Understanding Transformers},
+                            author={Doe, Jane and Smith, John},
+                            journal={Conference on Machine Learning},
+                            year={2023}
+                          }
+                        </pre>
+                        <button class="copy-button" onclick="copyBibtex(this)">
                             <i class="fa-solid fa-copy"></i> Copy BibTeX
                         </button>
                     </div>

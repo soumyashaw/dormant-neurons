@@ -677,9 +677,27 @@ a:hover {
 }
 
 .bibtex {
+    padding: 10px;
     margin-bottom: 25px;
-    background-color: green;
-    color: turquoise;
+}
+
+.bibtex-entry {
+    display: none;
+}
+
+.copy-button {
+    background-color: #5B9792;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    width: 150px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.copy-button:hover {
+    background-color: #4a7f7c;
 }
 
 hr {
