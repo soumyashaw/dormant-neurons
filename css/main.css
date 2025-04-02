@@ -495,199 +495,46 @@ a:hover {
     margin-bottom: 50px;
 }
 
-
-/* ------------------------------- */
 .team-container {
-    height: 100vh;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 50% 50%;
-  }
-  
-  .team-container > div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    object-fit: contain;
-  }
-  
-  .team-container > div > img {
-    max-height: 100%;
-    max-width: 100%;
-  }
-  
-  .team-container > div {
-    border: 2px solid red;
-  }
-  
-
-/* ------------------------------- */
-    
-
-.about-us-inner {
+    grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+    max-width: 1100px;
+    column-gap: 50px;
+    row-gap: 50px;
     margin: auto;
-    display: flex;
-    margin-bottom: 30px;
-    justify-content: center;
+    justify-items: center;
+    align-items: center;
+}
+  
+.team-member {
+    padding: 10px;
 }
 
-.card-outer {
-    height: 390px;
-    width: 320px;
-    background: linear-gradient(#EDEDED, #F5F5F5);
-    padding: 56px;
-    border-radius: 12px;
-}
-
-.portrait {
-    display: flex;
-    justify-content: center;
-}
-
-.portrait img {
-    width: 200px;
+.team-member img {
+    width: 100%;
+    max-width: 150px;
     height: auto;
     border-radius: 50%;
-    margin-bottom: 50px;
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    -ms-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-}
-
-.portrait img:hover {
-    transform: scale(1.05);
 }
 
 .name {
     font-family: "Kanit", serif;
-    font-weight: 500;
-    font-style: normal;
-    font-size: 35px;
+    margin: 10px;
+    margin-bottom: 0px;
+    font-size: 20px;
     color: #13233e;
-    margin: 20px;
+    min-height: 60px;
     text-align: center;
 }
 
 .position {
     font-family: "Kanit", serif;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 28px;
+    font-size: 16px;
     color: #13233e;
-    margin: 15px;
+    margin: 7px;
+    margin-top: 0px;
     text-align: center;
 }
-
-.card-outer-phd {
-    height: 340px;
-    margin: 15px;
-    width: 20%;
-    background: linear-gradient(#EDEDED, #F5F5F5);
-    padding: 50px;
-    border-radius: 12px;
-}
-
-.portrait-phd {
-    display: flex;
-    justify-content: center;
-}
-
-.portrait-phd img {
-    width: 150px;
-    height: auto;
-    border-radius: 50%;
-    margin-bottom: 50px;
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    -ms-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-}
-
-.portrait-phd img:hover {
-    transform: scale(1.05);
-}
-
-.name-phd {
-    font-family: "Kanit", serif;
-    font-weight: 500;
-    font-style: normal;
-    font-size: 30px;
-    color: #13233e;
-    margin: 20px;
-    text-align: center;
-}
-
-.position-phd {
-    font-family: "Kanit", serif;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 25px;
-    color: #13233e;
-    margin: 15px;
-    text-align: center;
-}
-
-.card-outer-hiwi {
-    height: 290px;
-    margin: 10px;
-    width: 13%;
-    background: linear-gradient(#EDEDED, #F5F5F5);
-    padding: 25px;
-    border-radius: 12px;
-}
-
-.portrait-hiwi {
-    display: flex;
-    justify-content: center;
-}
-
-.portrait-hiwi img {
-    width: 130px;
-    height: auto;
-    border-radius: 50%;
-    margin-bottom: 25px;
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    -ms-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-}
-
-.portrait-hiwi img:hover {
-    transform: scale(1.05);
-}
-
-.name-hiwi {
-    font-family: "Kanit", serif;
-    font-weight: 500;
-    font-style: normal;
-    font-size: 25px;
-    color: #13233e;
-    margin: 10px;
-    text-align: center;
-}
-
-.position-hiwi {
-    font-family: "Kanit", serif;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 25px;
-    color: #13233e;
-    margin: 10px;
-    text-align: center;
-}
-
-.about-us-inner-intern {
-    margin: auto;
-    display: flex;
-    margin-bottom: 30px;
-    justify-content:space-evenly;
-}
-
-
 
 /*-------------------------------
     07. Publications CSS
