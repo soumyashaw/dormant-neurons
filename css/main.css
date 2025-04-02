@@ -495,6 +495,35 @@ a:hover {
     margin-bottom: 50px;
 }
 
+
+/* ------------------------------- */
+.team-container {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 50% 50%;
+  }
+  
+  .team-container > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    object-fit: contain;
+  }
+  
+  .team-container > div > img {
+    max-height: 100%;
+    max-width: 100%;
+  }
+  
+  .team-container > div {
+    border: 2px solid red;
+  }
+  
+
+/* ------------------------------- */
+    
+
 .about-us-inner {
     margin: auto;
     display: flex;
