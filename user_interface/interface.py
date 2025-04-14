@@ -68,7 +68,7 @@ class MainWindow(QMainWindow):
         navBar.setLayout(navBarLayout)
         navBar.setStyleSheet("background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #B721FF, stop: 1 #21D4FD);")
         
-####### Main Context: Paper Area ###################################################
+################################## Main Context: Paper Area ###################################################
         # Tab Widget
         self.tabsPaper = QTabWidget()
         
@@ -545,11 +545,200 @@ class MainWindow(QMainWindow):
         teamLayout.addWidget(self.tabsTeam)
         self.mainContextTeam.setLayout(teamLayout)
 
-        ####### Main Context: Latest News ##########
+############################### Main Context: Latest News #################################################
+        # Tab Widget
+        self.tabsLatestNews = QTabWidget()
+        
+        # Tab: Add Latest News
+        tabAddNews = QWidget()
+        layoutAddNews = QVBoxLayout()
+        
+        formLayout7 = QGridLayout()
+
+        dateLabel7 = QLabel("Date")
+        dateLabel7.setStyleSheet(labelStyle)
+        
+        self.dateEdit7 = QDateEdit()
+        self.dateEdit7.setCalendarPopup(True)
+        self.dateEdit7.setStyleSheet(textBoxStyle)
+        self.dateEdit7.setDate(QDate.currentDate())
+        
+        headerLabel7 = QLabel("News Header")
+        headerLabel7.setStyleSheet(labelStyle)
+        self.headerTextBox7 = QLineEdit()
+        self.headerTextBox7.setStyleSheet(textBoxStyle)
+        
+        contentsLabel7 = QLabel("Contents")
+        contentsLabel7.setStyleSheet(labelStyle)
+                
+        self.contentsTextBox7 = QTextEdit()
+        self.contentsTextBox7.setAcceptRichText(False)
+        self.contentsTextBox7.setStyleSheet(textBoxStyle)
+        self.contentsTextBox7.setPlaceholderText("Enter the Contents (body) of the News")
+
+        noteLabel7 = QLabel("Note: To add hyperlinks, use the format: [text](link)")
+
+        addNewsButton7 = QPushButton("Add News")
+        addNewsButton7.setFixedWidth(300)
+        addNewsButton7.clicked.connect(self.addNewsClicked)
+        addNewsButton7.setStyleSheet("font-size: 20px; padding: 10px; border-radius: 15px; background-color: #4972FD; color: white;")
+        
+        # Adding widgets to Grid Layout
+        formLayout7.addWidget(dateLabel7, 0, 0)
+        formLayout7.addWidget(self.dateEdit7, 0, 1, 1, 5)
+
+        formLayout7.addWidget(headerLabel7, 1, 0, 1, 2)
+        formLayout7.addWidget(self.headerTextBox7, 1, 1, 1, 5)
+        
+        formLayout7.addWidget(contentsLabel7, 2, 0)
+        formLayout7.addWidget(self.contentsTextBox7, 3, 0, 1, 6)
+
+        formLayout7.addWidget(noteLabel7, 4, 0, 1, 6)
+
+        formLayout7.addWidget(addNewsButton7, 5, 0, 1, 6, alignment=Qt.AlignmentFlag.AlignCenter)
+        
+        layoutAddNews.addLayout(formLayout7)
+        layoutAddNews.setContentsMargins(50, 50, 50, 50)
+        tabAddNews.setLayout(layoutAddNews)
+
+        # Tab: Modify Latest News
+        tabModifyNews = QWidget()
+        layoutModifyNews = QVBoxLayout()
+        
+        formLayout8 = QGridLayout()
+
+        scroll8 = QScrollArea()
+        scroll8.setWidgetResizable(True)
+        scroll8.setStyleSheet("background-color: #d9d9d9; margin-bottom: 30px;")
+
+        # Widget to hold the scrollable Paper's content
+        newsBox8 = QWidget()
+        scroll8.setWidget(newsBox8)
+
+        # Layout to hold the content inside paperBox
+        self.scrollableLayout8 = QVBoxLayout(newsBox8)
+
+        # Add papers from Database to the scrollable layout
+        self.addPapersFromDatabase(self.scrollableLayout8)
+        
+        dateLabel8 = QLabel("Date")
+        dateLabel8.setStyleSheet(labelStyle)
+        
+        self.dateEdit8 = QDateEdit()
+        self.dateEdit8.setCalendarPopup(True)
+        self.dateEdit8.setStyleSheet(textBoxStyle)
+        self.dateEdit8.setDate(QDate.currentDate())
+
+        headerLabel8 = QLabel("News Header")
+        headerLabel8.setStyleSheet(labelStyle)
+        self.headerTextBox8 = QLineEdit()
+        self.headerTextBox8.setStyleSheet(textBoxStyle)
+        
+        contentsLabel8 = QLabel("Contents")
+        contentsLabel8.setStyleSheet(labelStyle)
+                
+        self.contentsTextBox8 = QTextEdit()
+        self.contentsTextBox8.setAcceptRichText(False)
+        self.contentsTextBox8.setStyleSheet(textBoxStyle)
+        self.contentsTextBox8.setPlaceholderText("Enter the Contents (body) of the News")
+
+        noteLabel8 = QLabel("Note: To add hyperlinks, use the format: [text](link)")
+
+        self.modifyNewsButton8 = QPushButton("Modify News")
+        self.modifyNewsButton8.setFixedWidth(300)
+        self.modifyNewsButton8.clicked.connect(self.modifyNewsClicked)
+        self.modifyNewsButton8.setStyleSheet("font-size: 20px; padding: 10px; border-radius: 15px; background-color: #4972FD; color: white;")
+        
+        # Adding widgets to Grid Layout
+        formLayout8.addWidget(scroll8, 0, 0, 1, 6)
+
+        formLayout8.addWidget(dateLabel8, 1, 0)
+        formLayout8.addWidget(self.dateEdit8, 1, 1, 1, 5)
+
+        formLayout8.addWidget(headerLabel8, 2, 0, 1, 2)
+        formLayout8.addWidget(self.headerTextBox8, 2, 1, 1, 5)
+        
+        formLayout8.addWidget(contentsLabel8, 3, 0)
+        formLayout8.addWidget(self.contentsTextBox8, 4, 0, 1, 6)
+
+        formLayout8.addWidget(noteLabel8, 5, 0, 1, 6)
+
+        formLayout8.addWidget(self.modifyNewsButton8, 6, 0, 1, 6, alignment=Qt.AlignmentFlag.AlignCenter)
+
+        layoutModifyNews.addLayout(formLayout8)
+        layoutModifyNews.setContentsMargins(50, 50, 50, 50)
+        tabModifyNews.setLayout(layoutModifyNews)
+
+        # Tab: Delete News
+        tabDeleteNews = QWidget()
+        layoutDeleteNews = QVBoxLayout()
+        
+        formLayout9 = QGridLayout()
+
+        scroll9 = QScrollArea()
+        scroll9.setWidgetResizable(True)
+        scroll9.setStyleSheet("background-color: #d9d9d9; margin-bottom: 30px;")
+
+        # Widget to hold the scrollable Member's content
+        newsBox9 = QWidget()
+        scroll9.setWidget(newsBox9)
+
+        # Layout to hold the content inside memberBox
+        self.scrollableLayout9 = QVBoxLayout(newsBox9)
+
+        # Add members from Database to the scrollable layout
+        self.addMembersFromDatabase(self.scrollableLayout9)
+
+        idLabel9 = QLabel("News ID")
+        idLabel9.setStyleSheet(labelStyle+"padding-right: 50px;")
+        self.idTextBox9 = QLineEdit()
+        self.idTextBox9.setStyleSheet(textBoxStyle)
+        self.idTextBox9.setMaximumWidth(145)
+
+        deleteButton9 = QPushButton("Delete News")
+        deleteButton9.setFixedWidth(300)
+        deleteButton9.clicked.connect(self.deleteNewsClicked)
+        deleteButton9.setStyleSheet("font-size: 20px; padding: 10px; border-radius: 15px; background-color: #4972FD; color: white;")
+        
+        # Adding widgets to Grid Layout
+        formLayout9.addWidget(scroll9, 0, 0, 4, 6)
+
+        formLayout9.addWidget(idLabel9, 4, 0, 1, 3, alignment=Qt.AlignmentFlag.AlignRight)
+        formLayout9.addWidget(self.idTextBox9, 4, 3, 1, 3, alignment=Qt.AlignmentFlag.AlignLeft)
+        formLayout9.addWidget(deleteButton9, 5, 0, 1, 6, alignment=Qt.AlignmentFlag.AlignCenter)
+        layoutDeleteNews.addLayout(formLayout9)
+        layoutDeleteNews.setContentsMargins(50, 50, 50, 50)
+        tabDeleteNews.setLayout(layoutDeleteNews)
+
+        # Add Tabs to the TabWidget
+        self.tabsLatestNews.addTab(tabAddNews, "ADD NEWS")
+        self.tabsLatestNews.addTab(tabModifyNews, "MODIFY NEWS")
+        self.tabsLatestNews.addTab(tabDeleteNews, "DELETE NEWS")
+
+        self.tabsLatestNews.setStyleSheet("""
+                                    QTabBar::tab {
+                                        width: 200px;
+                                        height: 50px;
+                                        font-size: 20px;
+                                        padding: 10px;
+                                        margin: 15px;
+                                        border-radius: 10px;
+                                    }
+                                    QTabBar::tab:selected {
+                                        background-color: rgba(255, 255, 255, 100);
+                                        font-weight: bold;
+                                    }
+                                    QTabBar::tab:!selected {
+                                        font-weight: normal;
+                                    }
+                                """)
+
         self.mainContextNews = QWidget()
         newsLayout = QVBoxLayout(self.mainContextNews)
-        newsLayout.addWidget(QLabel("Latest News Content Goes Here"))
+        newsLayout.addWidget(self.tabsLatestNews)
         self.mainContextNews.setLayout(newsLayout)
+
+########################################################################################################
         
         self.mainContextLayout = QVBoxLayout()
         self.mainContext = QWidget()
@@ -1414,6 +1603,39 @@ class MainWindow(QMainWindow):
             if paper["id"] == name:
                 return True
         return False
+    
+    def addNewsClicked(self):
+        """
+        Handles the event when the 'Add News' button is clicked.
+        
+        - Checks if all required fields are filled.
+        - Imports existing news from storage.
+        - Creates a new news entry with user-provided details.
+        - Appends the new news to the existing list.
+        - Exports the updated news list back to storage.
+        - Displays a success message.
+        - Clears the input fields for a new entry.
+        """
+        
+        print("Add News Clicked")
+
+    def modifyNewsClicked(self):
+        """
+        Handles the event when the 'Modify News' button is clicked.
+        
+        - Checks if all required fields are filled.
+        - Imports existing news from storage.
+        - Creates a new news entry with user-provided details.
+        - Appends the new news to the existing list.
+        - Exports the updated news list back to storage.
+        - Displays a success message.
+        - Clears the input fields for a new entry.
+        """
+        
+        print("Modify News Clicked")
+
+    def deleteNewsClicked(self):
+        print("Delete News Clicked")
 
     
         
