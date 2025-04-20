@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     console.log("Loading latest news...");
 
-    fetch("../data/trial_news.json")
+    fetch("./data/trial_news.json")
         .then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
