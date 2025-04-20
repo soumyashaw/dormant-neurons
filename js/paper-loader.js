@@ -1,7 +1,7 @@
 console.log("Loading papers...");
 document.addEventListener("DOMContentLoaded", () => {
     console.log("Script loaded and DOM fully loaded.");
-    fetch("../data/trial_papers.json")
+    fetch("./data/trial_papers.json")
         .then(response => {
             console.log("Fetching JSON file...");
             if (!response.ok) {
