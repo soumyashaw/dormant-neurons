@@ -2,28 +2,84 @@
     {
         "name": "Lea Sch\u00f6nherr",
         "position": "Group Leader",
-        "image": "img/team/lea.png",
+        "image": "img/team/lea.jpg",
         "research": "['placeholder']",
         "about": "Lorem Ipsum"
     },
     {
-        "name": "Lea Sch\u00f6nherr",
-        "position": "Group Leader",
-        "image": "img/team/lea.png",
+        "name": "David Pape",
+        "position": "PhD Student",
+        "image": "img/team/boss.png",
         "research": "['placeholder']",
         "about": "Lorem Ipsum"
     },
     {
-        "name": "Lea Sch\u00f6nherr",
-        "position": "Group Leader",
-        "image": "img/team/lea.png",
+        "name": "Jonathan Evertz",
+        "position": "PhD Student",
+        "image": "img/team/jonathan.jpeg",
         "research": "['placeholder']",
         "about": "Lorem Ipsum"
     },
     {
-        "name": "Lea Sch\u00f6nherr",
-        "position": "Group Leader",
-        "image": "img/team/lea.png",
+        "name": "Sina Mavali",
+        "position": "PhD Student",
+        "image": "img/team/boss.png",
+        "research": "['placeholder']",
+        "about": "Lorem Ipsum"
+    },
+    {
+        "name": "David Beste",
+        "position": "PhD Student",
+        "image": "img/team/boss.png",
+        "research": "['placeholder']",
+        "about": "Lorem Ipsum"
+    },
+    {
+        "name": "Soumya Shaw",
+        "position": "HiWi",
+        "image": "img/team/soumya.jpeg",
+        "research": "['placeholder']",
+        "about": "Lorem Ipsum"
+    },
+    {
+        "name": "Anupam Varshney",
+        "position": "HiWi",
+        "image": "img/team/boss.png",
+        "research": "['placeholder']",
+        "about": "Lorem Ipsum"
+    },
+    {
+        "name": "Jishitha Kondaveti",
+        "position": "HiWi",
+        "image": "img/team/boss.png",
+        "research": "['placeholder']",
+        "about": "Lorem Ipsum"
+    },
+    {
+        "name": "Yage Zhang",
+        "position": "HiWi",
+        "image": "img/team/boss.png",
+        "research": "['placeholder']",
+        "about": "Lorem Ipsum"
+    },
+    {
+        "name": "Abdul Rafay Syed",
+        "position": "HiWi",
+        "image": "img/team/boss.png",
+        "research": "['placeholder']",
+        "about": "Lorem Ipsum"
+    },
+    {
+        "name": "Srishti Gupta",
+        "position": "Intern",
+        "image": "img/team/srishti.png",
+        "research": "['placeholder']",
+        "about": "Lorem Ipsum"
+    },
+    {
+        "name": "Valentin Giraudeau",
+        "position": "Intern",
+        "image": "img/team/boss.png",
         "research": "['placeholder']",
         "about": "Lorem Ipsum"
     }
