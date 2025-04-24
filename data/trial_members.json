@@ -9,7 +9,7 @@
     {
         "name": "David Pape",
         "position": "PhD Student",
-        "image": "img/team/boss.png",
+        "image": "img/team/placeholder.png",
         "research": "['placeholder']",
         "about": "Lorem Ipsum"
     },
@@ -23,14 +23,14 @@
     {
         "name": "Sina Mavali",
         "position": "PhD Student",
-        "image": "img/team/boss.png",
+        "image": "img/team/placeholder.png",
         "research": "['placeholder']",
         "about": "Lorem Ipsum"
     },
     {
         "name": "David Beste",
         "position": "PhD Student",
-        "image": "img/team/boss.png",
+        "image": "img/team/placeholder.png",
         "research": "['placeholder']",
         "about": "Lorem Ipsum"
     },
@@ -44,28 +44,28 @@
     {
         "name": "Anupam Varshney",
         "position": "HiWi",
-        "image": "img/team/boss.png",
+        "image": "img/team/placeholder.png",
         "research": "['placeholder']",
         "about": "Lorem Ipsum"
     },
     {
         "name": "Jishitha Kondaveti",
         "position": "HiWi",
-        "image": "img/team/lady.jpg",
+        "image": "img/team/placeholder.png",
         "research": "['placeholder']",
         "about": "Lorem Ipsum"
     },
     {
         "name": "Yage Zhang",
         "position": "HiWi",
-        "image": "img/team/lady.jpg",
+        "image": "img/team/placeholder.png",
         "research": "['placeholder']",
         "about": "Lorem Ipsum"
     },
     {
         "name": "Abdul Rafay Syed",
         "position": "HiWi",
-        "image": "img/team/boss.png",
+        "image": "img/team/placeholder.png",
         "research": "['placeholder']",
         "about": "Lorem Ipsum"
     },
@@ -79,7 +79,7 @@
     {
         "name": "Valentin Giraudeau",
         "position": "Intern",
-        "image": "img/team/boss.png",
+        "image": "img/team/placeholder.png",
         "research": "['placeholder']",
         "about": "Lorem Ipsum"
     }
