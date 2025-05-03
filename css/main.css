@@ -32,7 +32,7 @@ body {
     font-size: 15px;
     background-color: #FAF9F6;
     margin: 0px;
-    width:fit-content
+    width:fit-content;
 }
 
 /* Common CSS */
@@ -705,9 +705,26 @@ hr {
 -------------------------------*/
 .footer-outer {
     background-color: #272D33;
-    padding: 20px;
+    padding: 2px;
     color: white;
     text-align: center;
+}
+
+.footer-inner {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 1500px;
+    margin: auto;
+}
+
+.footer-inner a {
+    color: #FFFFFF;
+    padding: 10px;
+}
+
+.footer-inner a:hover {
+    color: #5B9792;
 }
 
 .footer-inner img{
