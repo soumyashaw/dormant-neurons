@@ -1,7 +1,14 @@
+/*
+JavaScript Document
+Project Name: Dormant Neurons Website
+Version:  1.0
+Owner: Lea Schönherr
+Developed By: Soumya Shaw */
+
 document.addEventListener("DOMContentLoaded", () => {
     console.log("Loading team members...");
 
-    fetch("./data/trial_members.json")
+    fetch("./data/members.json")
         .then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
@@ -16,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 memberDiv.classList.add("team-member");
 
                 const img = document.createElement("img");
-                img.src = member.image || "img/team/boss.png";
+                img.src = member.image || "img/team/placeholder.png";
                 img.alt = member.name;
 
                 const nameP = document.createElement("p");

@@ -1,7 +1,14 @@
+/*
+JavaScript Document
+Project Name: Dormant Neurons Website
+Version:  1.0
+Owner: Lea Schönherr
+Developed By: Soumya Shaw */
+
 console.log("Loading papers...");
 document.addEventListener("DOMContentLoaded", () => {
     console.log("Script loaded and DOM fully loaded.");
-    fetch("./data/trial_papers.json")
+    fetch("./data/papers.json")
         .then(response => {
             console.log("Fetching JSON file...");
             if (!response.ok) {

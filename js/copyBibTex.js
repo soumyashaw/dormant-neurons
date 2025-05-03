@@ -1,3 +1,10 @@
+/*
+JavaScript Document
+Project Name: Dormant Neurons Website
+Version:  1.0
+Owner: Lea Schönherr
+Developed By: Soumya Shaw */
+
 function copyBibtex(button) {
     const bibtex = button.closest('.bibtex').querySelector('.bibtex-entry').innerText;
     navigator.clipboard.writeText(bibtex).then(() => {

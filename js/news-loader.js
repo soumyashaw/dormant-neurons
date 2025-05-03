@@ -1,3 +1,10 @@
+/*
+JavaScript Document
+Project Name: Dormant Neurons Website
+Version:  1.0
+Owner: Lea Schönherr
+Developed By: Soumya Shaw */
+
 document.addEventListener("DOMContentLoaded", () => {
     console.log("Loading latest news...");
 
