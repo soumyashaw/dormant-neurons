@@ -27,7 +27,7 @@ html {
 }
 
 body {
-    font-family: "Montserrat", serif;
+    font-family: "Montserrat", sans-serif;
     font-weight: 400;
     font-size: 15px;
     background-color: #FAF9F6;
@@ -42,7 +42,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Montserrat", serif;
+    font-family: "Montserrat", sans-serif;
     color: #111111;
     line-height: 1.2;
     font-weight: 400;
@@ -208,7 +208,7 @@ a:hover {
 }
 
 .home-content-left h1 {
-    font-family: "Kanit", serif;
+    font-family: "Kanit", sans-serif;
     font-weight: 500;
     font-style: normal;
     font-size: 65px;
@@ -217,7 +217,7 @@ a:hover {
 }
 
 .home-content-left em {
-    font-family: "Kanit", serif;
+    font-family: "Kanit", sans-serif;
     font-weight: 500;
     font-style: normal;
     font-size: 70px;
@@ -353,7 +353,7 @@ a:hover {
 
 
 .research-header h1{
-    font-family: "Kanit", serif;
+    font-family: "Kanit", sans-serif;
     font-weight: 500;
     font-style: normal;
     font-size: 90px;
@@ -376,7 +376,7 @@ a:hover {
 }
 
 .research-header-1 h1 {
-    font-family: "Kanit", serif;
+    font-family: "Kanit", sans-serif;
     font-weight: 500;
     font-style: normal;
     font-size: 75px;
@@ -464,7 +464,7 @@ a:hover {
 }
 
 .latest-news-header h1{
-    font-family: "Kanit", serif;
+    font-family: "Kanit", sans-serif;
     font-weight: 500;
     font-style: normal;
     font-size: 90px;
@@ -501,7 +501,7 @@ a:hover {
 }
 
 .news-item-header h1{
-    font-family: "Kanit", serif;
+    font-family: "Kanit", sans-serif;
     font-size: 25px;
     color: #13233e;
     text-align: center;
@@ -521,7 +521,7 @@ a:hover {
 }
 
 .about-us-header h1{
-    font-family: "Kanit", serif;
+    font-family: "Kanit", sans-serif;
     font-weight: 500;
     font-style: normal;
     font-size: 90px;
@@ -554,7 +554,7 @@ a:hover {
 }
 
 .name {
-    font-family: "Kanit", serif;
+    font-family: "Kanit", sans-serif;
     margin: 10px;
     margin-bottom: 0px;
     font-size: 20px;
@@ -564,7 +564,7 @@ a:hover {
 }
 
 .position {
-    font-family: "Kanit", serif;
+    font-family: "Kanit", sans-serif;
     font-size: 16px;
     color: #13233e;
     margin: 7px;
@@ -581,7 +581,7 @@ a:hover {
 }
 
 .publications-header h1{
-    font-family: "Kanit", serif;
+    font-family: "Kanit", sans-serif;
     font-weight: 500;
     font-style: normal;
     font-size: 90px;
@@ -596,7 +596,7 @@ a:hover {
 }
 
 .date {
-    font-family: "Montserrat", serif;
+    font-family: "Montserrat", sans-serif;
     font-weight: 400;
     font-size: 18px;
     color: #13233e;
@@ -652,7 +652,7 @@ hr {
 }
 
 .paper-title {
-    font-family: "Montserrat", serif;
+    font-family: "Montserrat", sans-serif;
     font-weight: 400;
     font-size: 22px;
     color: #13233e;
@@ -661,7 +661,7 @@ hr {
 }
 
 .paper-auth {
-    font-family: "Montserrat", serif;
+    font-family: "Montserrat", sans-serif;
     font-weight: 400;
     font-size: 20px;
     color: #13233e;
@@ -670,7 +670,7 @@ hr {
 }
 
 .paper-journal {
-    font-family: "Montserrat", serif;
+    font-family: "Montserrat", sans-serif;
     font-weight: 400;
     font-size: 20px;
     color: #13233e;
