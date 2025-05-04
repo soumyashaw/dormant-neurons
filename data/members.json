@@ -3,21 +3,21 @@
         "name": "Lea Sch\u00f6nherr",
         "position": "Group Leader",
         "image": "img/team/lea.jpg",
-        "research": "['placeholder']",
-        "about": "Lorem Ipsum"
+        "research": "['Data Privacy', 'Machine Learning', 'Federated Learning']",
+        "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et magna vel tortor efficitur lacinia ac id magna. Mauris sit amet nisi eget augue pulvinar sodales et ut purus. Phasellus elementum velit auctor porta porttitor. Donec ligula metus, placerat vitae tortor eu, porta cursus magna. Sed eleifend rhoncus sollicitudin. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque tellus mi, mollis imperdiet feugiat molestie, semper eget quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo placerat urna quis maximus. Nulla mollis magna sed quam vehicula fermentum. Fusce mollis condimentum lobortis. Vestibulum ante ipsum."
     },
     {
         "name": "David Pape",
         "position": "PhD Student",
         "image": "img/team/placeholder.png",
-        "research": "['placeholder']",
+        "research": "['Adversarial Robustness', 'Neural Networks', 'Machine Learning']",
         "about": "Lorem Ipsum"
     },
     {
         "name": "Jonathan Evertz",
         "position": "PhD Student",
         "image": "img/team/jonathan.jpeg",
-        "research": "['placeholder']",
+        "research": "['Machine Learning']",
         "about": "Lorem Ipsum"
     },
     {
