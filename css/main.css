@@ -553,6 +553,19 @@ a:hover {
     border-radius: 50%;
 }
 
+.img-hover {
+    display: none;
+    padding-bottom: 4px;
+}
+  
+.team-image:hover .img-hover {
+    display: block;
+}
+  
+.team-image:hover .img-default {
+    display: none;
+}
+
 .name {
     font-family: "Kanit", sans-serif;
     margin: 10px;
