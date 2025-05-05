@@ -544,6 +544,7 @@ a:hover {
   
 .team-member {
     padding: 10px;
+    cursor: pointer;
 }
 
 .team-member img {
@@ -551,11 +552,13 @@ a:hover {
     max-width: 150px;
     height: auto;
     border-radius: 50%;
+    cursor: pointer;
 }
 
 .img-hover {
     display: none;
     padding-bottom: 4px;
+    cursor: pointer;
 }
   
 .team-image:hover .img-hover {
