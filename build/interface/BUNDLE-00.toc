@@ -1,0 +1,3 @@
+([('interface',
+   '/Users/soumyashaw/Documents/GitHub/dormant-neurons/dist/interface',
+   'EXECUTABLE')],)

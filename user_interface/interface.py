@@ -342,14 +342,15 @@ class MainWindow(QMainWindow):
         self.roleBox4.addItem("")
         self.roleBox4.setCurrentIndex(0)
         self.roleBox4.setItemData(0, 0, Qt.ItemDataRole.UserRole - 1)
-        self.roleBox4.addItems(['Post Doc','PhD', 'HiWi', 'Intern'])
+        self.roleBox4.addItems(['Post Doc','PhD Student', 'HiWi', 'Intern'])
         self.roleBox4.setStyleSheet(textBoxStyle+"padding-left: 15px;")
 
         researchLabel4 = QLabel("Research Tags")
         researchLabel4.setStyleSheet(labelStyle)
-        self.researchBox4 = MultiSelectComboBox()
-        self.researchBox4.addItems(["Placeholder 1", "Placeholder 2"])
-        self.researchBox4.setStyleSheet(textBoxStyle+"padding-left: 15px;")
+        self.researchBox4 = QLineEdit()
+        self.researchBox4.setStyleSheet(textBoxStyle)
+        self.researchBox4.setPlaceholderText("Separate with commas")
+
 
         infoLabel4 = QLabel("Additional Info")
         infoLabel4.setStyleSheet(labelStyle)
@@ -359,11 +360,17 @@ class MainWindow(QMainWindow):
         
         pictureLabel4 = QLabel("Picture Upload")
         pictureLabel4.setStyleSheet(labelStyle)
-        self.pictureUploadButton4 = QPushButton("Upload Image")
+        self.pictureUploadButton4 = QPushButton("Default Image")
         self.pictureUploadButton4.clicked.connect(lambda: self.uploadImage(self.pictureUploadButton4))
         self.pictureUploadButton4.setStyleSheet("font-size: 20px; padding: 10px; border-radius: 15px; background-color: #4972FD; color: white;")
-        self.pictureUploadButton4.setFixedWidth(300)
+        self.pictureUploadButton4.setFixedWidth(260)
         self.imageFilePath = ""
+
+        self.hoverPictureUploadButton4 = QPushButton("Alternate Image")
+        self.hoverPictureUploadButton4.clicked.connect(lambda: self.hoverUploadImage(self.hoverPictureUploadButton4))
+        self.hoverPictureUploadButton4.setStyleSheet("font-size: 20px; padding: 10px; border-radius: 15px; background-color: #4972FD; color: white;")
+        self.hoverPictureUploadButton4.setFixedWidth(260)
+        self.hoverImageFilePath = ""
         
         aboutLabel4 = QLabel("About")
         aboutLabel4.setStyleSheet(labelStyle)
@@ -391,7 +398,8 @@ class MainWindow(QMainWindow):
         formLayout4.addWidget(self.infoTextBox4, 2, 1, 1, 5)
         
         formLayout4.addWidget(pictureLabel4, 3, 0)
-        formLayout4.addWidget(self.pictureUploadButton4, 3, 1, 1, 5, alignment=Qt.AlignmentFlag.AlignCenter)
+        formLayout4.addWidget(self.pictureUploadButton4, 3, 1, 1, 2, alignment=Qt.AlignmentFlag.AlignCenter)
+        formLayout4.addWidget(self.hoverPictureUploadButton4, 3, 4, 1, 2, alignment=Qt.AlignmentFlag.AlignCenter)
         
         formLayout4.addWidget(aboutLabel4, 4, 0)
         formLayout4.addWidget(self.aboutTextBox4, 5, 0, 1, 6)
@@ -419,14 +427,14 @@ class MainWindow(QMainWindow):
         self.roleBox5.addItem("")
         self.roleBox5.setCurrentIndex(0)
         self.roleBox5.setItemData(0, 0, Qt.ItemDataRole.UserRole - 1)
-        self.roleBox5.addItems(['Post Doc', 'PhD', 'HiWi', 'Intern'])
+        self.roleBox5.addItems(['Post Doc', 'PhD Student', 'HiWi', 'Intern'])
         self.roleBox5.setStyleSheet(textBoxStyle+"padding-left: 15px;")
 
         researchLabel5 = QLabel("Research Tags")
         researchLabel5.setStyleSheet(labelStyle)
-        self.researchBox5 = MultiSelectComboBox()
-        self.researchBox5.addItems(["Placeholder 1", "Placeholder 2"])
-        self.researchBox5.setStyleSheet(textBoxStyle+"padding-left: 15px;")
+        self.researchBox5 = QLineEdit()
+        self.researchBox5.setStyleSheet(textBoxStyle)
+        self.researchBox5.setPlaceholderText("Separate with commas")
 
         infoLabel5 = QLabel("Additional Info")
         infoLabel5.setStyleSheet(labelStyle)
@@ -436,10 +444,15 @@ class MainWindow(QMainWindow):
         
         pictureLabel5 = QLabel("Picture Upload")
         pictureLabel5.setStyleSheet(labelStyle)
-        self.pictureUploadButton5 = QPushButton("Upload Image")
+        self.pictureUploadButton5 = QPushButton("Default Image")
         self.pictureUploadButton5.clicked.connect(lambda: self.uploadImage(self.pictureUploadButton5))
         self.pictureUploadButton5.setStyleSheet("font-size: 20px; padding: 10px; border-radius: 15px; background-color: #4972FD; color: white;")
-        self.pictureUploadButton5.setFixedWidth(300)
+        self.pictureUploadButton5.setFixedWidth(260)
+
+        self.hoverPictureUploadButton5 = QPushButton("Alternate Image")
+        self.hoverPictureUploadButton5.clicked.connect(lambda: self.hoverUploadImage(self.hoverPictureUploadButton5))
+        self.hoverPictureUploadButton5.setStyleSheet("font-size: 20px; padding: 10px; border-radius: 15px; background-color: #4972FD; color: white;")
+        self.hoverPictureUploadButton5.setFixedWidth(260)
         
         aboutLabel5 = QLabel("About")
         aboutLabel5.setStyleSheet(labelStyle)
@@ -467,7 +480,8 @@ class MainWindow(QMainWindow):
         formLayout5.addWidget(self.infoTextBox5, 2, 1, 1, 5)
         
         formLayout5.addWidget(pictureLabel5, 3, 0)
-        formLayout5.addWidget(self.pictureUploadButton5, 3, 1, 1, 5, alignment=Qt.AlignmentFlag.AlignCenter)
+        formLayout5.addWidget(self.pictureUploadButton5, 3, 1, 1, 2, alignment=Qt.AlignmentFlag.AlignCenter)
+        formLayout5.addWidget(self.hoverPictureUploadButton5, 3, 4, 1, 2, alignment=Qt.AlignmentFlag.AlignCenter)
         
         formLayout5.addWidget(aboutLabel5, 4, 0)
         formLayout5.addWidget(self.aboutTextBox5, 5, 0, 1, 6)
@@ -619,7 +633,13 @@ class MainWindow(QMainWindow):
         self.scrollableLayout8 = QVBoxLayout(newsBox8)
 
         # Add papers from Database to the scrollable layout
-        self.addPapersFromDatabase(self.scrollableLayout8)
+        self.addNewsFromDatabase(self.scrollableLayout8)
+
+        idLabel8 = QLabel("News ID")
+        idLabel8.setStyleSheet(labelStyle)
+
+        self.idTextBox8 = QLineEdit()
+        self.idTextBox8.setStyleSheet(textBoxStyle)
         
         dateLabel8 = QLabel("Date")
         dateLabel8.setStyleSheet(labelStyle)
@@ -652,18 +672,21 @@ class MainWindow(QMainWindow):
         # Adding widgets to Grid Layout
         formLayout8.addWidget(scroll8, 0, 0, 1, 6)
 
-        formLayout8.addWidget(dateLabel8, 1, 0)
-        formLayout8.addWidget(self.dateEdit8, 1, 1, 1, 5)
+        formLayout8.addWidget(idLabel8, 1, 0)
+        formLayout8.addWidget(self.idTextBox8, 1, 1, 1, 5)
 
-        formLayout8.addWidget(headerLabel8, 2, 0, 1, 2)
-        formLayout8.addWidget(self.headerTextBox8, 2, 1, 1, 5)
+        formLayout8.addWidget(dateLabel8, 2, 0)
+        formLayout8.addWidget(self.dateEdit8, 2, 1, 1, 5)
+
+        formLayout8.addWidget(headerLabel8, 3, 0, 1, 2)
+        formLayout8.addWidget(self.headerTextBox8, 3, 1, 1, 5)
         
-        formLayout8.addWidget(contentsLabel8, 3, 0)
-        formLayout8.addWidget(self.contentsTextBox8, 4, 0, 1, 6)
+        formLayout8.addWidget(contentsLabel8, 4, 0)
+        formLayout8.addWidget(self.contentsTextBox8, 5, 0, 1, 6)
 
-        formLayout8.addWidget(noteLabel8, 5, 0, 1, 6)
+        formLayout8.addWidget(noteLabel8, 6, 0, 1, 6)
 
-        formLayout8.addWidget(self.modifyNewsButton8, 6, 0, 1, 6, alignment=Qt.AlignmentFlag.AlignCenter)
+        formLayout8.addWidget(self.modifyNewsButton8, 7, 0, 1, 6, alignment=Qt.AlignmentFlag.AlignCenter)
 
         layoutModifyNews.addLayout(formLayout8)
         layoutModifyNews.setContentsMargins(50, 50, 50, 50)
@@ -687,7 +710,7 @@ class MainWindow(QMainWindow):
         self.scrollableLayout9 = QVBoxLayout(newsBox9)
 
         # Add members from Database to the scrollable layout
-        self.addMembersFromDatabase(self.scrollableLayout9)
+        self.addNewsFromDatabase(self.scrollableLayout9)
 
         idLabel9 = QLabel("News ID")
         idLabel9.setStyleSheet(labelStyle+"padding-right: 50px;")
@@ -817,7 +840,7 @@ class MainWindow(QMainWindow):
 
         if status:
             # Check if the Paper ID field is present in the database
-            if self.isPaperPresent:
+            if self.isPaperPresent(self.getPaperID(self.titleTextBox.text(), self.dateEdit.date().toString("dd-MM-yyyy"))):
                 QMessageBox.warning(self, "Warning", "Paper ID already exists in the database!")
                 return
 
@@ -869,7 +892,7 @@ class MainWindow(QMainWindow):
         """
 
         # Debug message to indicate function execution
-        print("Modify Paper Clicked")
+        #print("Modify Paper Clicked")
 
         # List of required input fields to be checked
         checkList = [
@@ -886,7 +909,7 @@ class MainWindow(QMainWindow):
 
         if status:
             # Check if the Paper ID field is present in the database
-            if not self.isPaperPresent:
+            if not self.isPaperPresent(self.idTextBox2.text()):
                 QMessageBox.warning(self, "Warning", "Paper ID not found in the database!")
                 return
 
@@ -945,7 +968,7 @@ class MainWindow(QMainWindow):
 
         if status:
             # Check if the Paper ID field is present in the database
-            if not self.isPaperPresent:
+            if not self.isPaperPresent(self.idTextBox3.text()):
                 QMessageBox.warning(self, "Warning", "Paper ID not found in the database!")
                 return
 
@@ -985,14 +1008,14 @@ class MainWindow(QMainWindow):
         """
 
         # Define the file path (Replace before deployment if necessary)
-        file_path = os.path.join(os.getcwd(), "data", "trial_papers.json")
+        file_path = os.path.join(self.getBasePath(), "data", "papers.json")
 
         # Open and read the JSON file
         with open(file_path, "r") as file:
             papers = json.load(file)  # Load the JSON content as a Python list
 
         # Print the JSON data in a readable format (for debugging purposes)
-        print(json.dumps(papers, indent=4))
+        #print(json.dumps(papers, indent=4))
 
         # Return the loaded papers list
         return papers
@@ -1030,7 +1053,7 @@ class MainWindow(QMainWindow):
         papers.sort(key=self.parseDate, reverse=True)
 
         # Define the file path (Replace before deployment if necessary)
-        file_path = os.path.join(os.getcwd(), "data", "trial_papers.json")
+        file_path = os.path.join(self.getBasePath(), "data", "papers.json")
 
         # Open and write the sorted papers to the JSON file
         with open(file_path, "w") as file:
@@ -1216,18 +1239,22 @@ class MainWindow(QMainWindow):
             # Label for the ID
             paperIDinBox = QLabel(f"<b>ID</b>: {p['id']}")
             paperIDinBox.setAlignment(Qt.AlignmentFlag.AlignLeft)
+            paperIDinBox.setTextInteractionFlags(Qt.TextInteractionFlag.TextSelectableByMouse)
 
             # Label for the Title
             paperTitleinBox = QLabel(f"<b>Title</b>: {p['title']}")
             paperTitleinBox.setAlignment(Qt.AlignmentFlag.AlignLeft)
+            paperTitleinBox.setTextInteractionFlags(Qt.TextInteractionFlag.TextSelectableByMouse)
 
             # Label for the Authors
             paperAuthorsinBox = QLabel(f"<b>Authors</b>: {p['authors']}")
             paperAuthorsinBox.setAlignment(Qt.AlignmentFlag.AlignLeft)
+            paperAuthorsinBox.setTextInteractionFlags(Qt.TextInteractionFlag.TextSelectableByMouse)
 
             # Label for the Conference
             paperConferenceinBox = QLabel(f"<b>Conference</b>: {p['journal']}")
             paperConferenceinBox.setAlignment(Qt.AlignmentFlag.AlignLeft)
+            paperConferenceinBox.setTextInteractionFlags(Qt.TextInteractionFlag.TextSelectableByMouse)
 
             # Layout inside each rectangular box
             frameLayout = QVBoxLayout(paperFrame)
@@ -1265,14 +1292,14 @@ class MainWindow(QMainWindow):
         """
 
         # Define the file path (Replace before deployment if necessary)
-        file_path = os.path.join(os.getcwd(), "data", "trial_members.json")
+        file_path = os.path.join(self.getBasePath(), "data", "members.json")
 
         # Open and read the JSON file
         with open(file_path, "r") as file:
             members = json.load(file)  # Load the JSON content as a Python list
 
         # Print the JSON data in a readable format (for debugging purposes)
-        print(json.dumps(members, indent=4))
+        #print(json.dumps(members, indent=4))
 
         # Return the loaded papers list
         return members
@@ -1291,11 +1318,11 @@ class MainWindow(QMainWindow):
         """
 
         # Sort members by importance order
-        positionOrder = ['Group Leader', 'Post Doc', 'PhD', 'HiWi', 'Intern']
+        positionOrder = ['Group Leader', 'Post Doc', 'PhD Student', 'HiWi', 'Intern']
         members = sorted(members, key=lambda x: positionOrder.index(x['position']))
 
         # Define the file path (Replace before deployment if necessary)
-        file_path = os.path.join(os.getcwd(), "data", "trial_members.json")
+        file_path = os.path.join(self.getBasePath(), "data", "members.json")
 
         # Open and write the sorted papers to the JSON file
         with open(file_path, "w") as file:
@@ -1307,10 +1334,18 @@ class MainWindow(QMainWindow):
         if self.imageFilePath:
             button.setText("Image Uploaded ✅")
         
-        print("Upload Image Clicked", self.imageFilePath)
+        #print("Upload Image Clicked", self.imageFilePath)
+        
+    def hoverUploadImage(self, button):
+        self.hoverImageFilePath, _ = QFileDialog.getOpenFileName(self, "Select an Image", "", "Images (*.png *.jpg *.jpeg *.bmp *.gif)")
+
+        if self.hoverImageFilePath:
+            button.setText("Image Uploaded ✅")
+        
+        #print("Upload Hover Image Clicked", self.hoverImageFilePath)
 
     def addMemberClicked(self):
-        print("Add Member Clicked")
+        #print("Add Member Clicked")
         """
         Handles the event when the 'Add member' button is clicked.
         
@@ -1341,10 +1376,26 @@ class MainWindow(QMainWindow):
                 QMessageBox.warning(self, "Warning", "Member already exists!")
                 return
             
-            # Transfer the image to the website directory location
-            fileFormat = os.path.splitext(self.imageFilePath)[1]
-            shutil.copy(self.imageFilePath, os.path.join(os.getcwd(), "img", "team", self.nameTextBox4.text().lower().replace(" ", "_") + fileFormat))
+            if self.nameTextBox4.text() != "":
+                # Transfer the image to the website directory location
+                #print("self.imageFilePath", self.imageFilePath)
+                fileFormat = os.path.splitext(self.imageFilePath)[1]
+                shutil.copy(self.imageFilePath, os.path.join(os.getcwd(), "img", "team", self.nameTextBox4.text().lower().replace(" ", "_") + fileFormat))
+                
+                if self.hoverImageFilePath != "":
+                    # Transfer the Hover image to the website directory location
+                    #print("self.hoverImageFilePath", self.hoverImageFilePath)
+                    fileFormat = os.path.splitext(self.hoverImageFilePath)[1]
+                    shutil.copy(self.hoverImageFilePath, os.path.join(os.getcwd(), "img", "team", self.nameTextBox4.text().lower().replace(" ", "_") + "_alt" + fileFormat))
             
+            else:
+                QMessageBox.warning(self, "Warning", "Member Name is empty! Enter it first")
+                return
+            
+            # Process Research interests
+            researchInterests = self.researchBox4.text().split(",")
+            researchInterests = [interest.strip() for interest in researchInterests if interest.strip()]
+
             # Import existing members from storage
             members = self.importMembers()
 
@@ -1352,8 +1403,9 @@ class MainWindow(QMainWindow):
             newMember = {
                 "name": self.nameTextBox4.text(),
                 "position": self.roleBox4.currentText(),
-                "image": os.path.join("img", "team", self.nameTextBox4.text() + fileFormat),
-                "research": self.researchBox4.currentData(),
+                "image": os.path.join("img", "team", self.nameTextBox4.text().lower().replace(" ", "_") + fileFormat),
+                "image_alt": os.path.join("img", "team", self.nameTextBox4.text().lower().replace(" ", "_") + "_alt" + fileFormat),
+                "research": str(researchInterests),
                 "info": self.infoTextBox4.text(),
                 "about": self.aboutTextBox4.toPlainText()
             }
@@ -1385,7 +1437,7 @@ class MainWindow(QMainWindow):
             QMessageBox.warning(self, "Warning", "One or more field is empty!")
 
     def modifyMemberClicked(self):
-        print("Modify Member Clicked")
+        #print("Modify Member Clicked")
         """
         Handles the event when the 'Modify member' button is clicked.
         
@@ -1409,8 +1461,6 @@ class MainWindow(QMainWindow):
         
         # Validate if all required fields are filled
         status = self.checkFields(checkList)
-
-        print("status", status)
 
         if status:
             # Check if the name is already present
@@ -1463,7 +1513,7 @@ class MainWindow(QMainWindow):
             QMessageBox.warning(self, "Warning", "One or more field is empty!")
 
     def deleteMemberClicked(self):
-        print("Delete Member Clicked")
+        #print("Delete Member Clicked")
         """
         Handles the event when the 'Delete Member' button is clicked.
 
@@ -1545,18 +1595,23 @@ class MainWindow(QMainWindow):
             # Label for the ID
             memberNameinBox = QLabel(f"<b>Name</b>: {m['name']}")
             memberNameinBox.setAlignment(Qt.AlignmentFlag.AlignLeft)
+            memberNameinBox.setTextInteractionFlags(Qt.TextInteractionFlag.TextSelectableByMouse)
 
             # Label for the Title
             memberPositioninBox = QLabel(f"<b>Position</b>: {m['position']}")
             memberPositioninBox.setAlignment(Qt.AlignmentFlag.AlignLeft)
+            memberPositioninBox.setTextInteractionFlags(Qt.TextInteractionFlag.TextSelectableByMouse)
 
             # Label for the Authors
             memberResearchinBox = QLabel(f"<b>Research</b>: {m['research']}")
             memberResearchinBox.setAlignment(Qt.AlignmentFlag.AlignLeft)
+            memberResearchinBox.setTextInteractionFlags(Qt.TextInteractionFlag.TextSelectableByMouse)
 
             # Label for the Conference
             memberAboutinBox = QLabel(f"<b>About</b>: {m['about']}")
             memberAboutinBox.setAlignment(Qt.AlignmentFlag.AlignLeft)
+            memberAboutinBox.setWordWrap(True)
+            memberAboutinBox.setTextInteractionFlags(Qt.TextInteractionFlag.TextSelectableByMouse)
 
             # Layout inside each rectangular box
             frameLayout = QVBoxLayout(memberFrame)
@@ -1617,7 +1672,45 @@ class MainWindow(QMainWindow):
         - Clears the input fields for a new entry.
         """
         
-        print("Add News Clicked")
+        #print("Add News Clicked")
+        # List of required input fields to be checked
+        checkList = [
+            self.headerTextBox7, 
+            self.contentsTextBox7
+        ]
+        
+        # Validate if all required fields are filled
+        status = self.checkFields(checkList)
+
+        if status:
+            # Import existing papers from storage
+            news = self.importNews()
+
+            # Create a new paper entry
+            newNews = {
+                "id": self.getPaperID(self.headerTextBox7.text(), self.dateEdit7.date().toString("dd-MM-yyyy")),
+                "date": self.dateEdit7.date().toString("dd-MM-yyyy"),
+                "header": self.headerTextBox7.text(),
+                "body": self.contentsTextBox7.toPlainText(),
+            }
+
+            # Add the new paper to the existing list
+            news.append(newNews)
+
+            # Export the updated list back to storage
+            self.exportNews(news)
+
+            # Show a success message to the user
+            QMessageBox.information(self, "Success", "News Added Successfully!")
+
+            # Clear input fields for the next entry
+            self.clearFields(checkList)
+
+            # Refresh the paper list after modification
+            self.clearLayout(self.scrollableLayout8)
+            self.addNewsFromDatabase(self.scrollableLayout8)
+            self.clearLayout(self.scrollableLayout9)
+            self.addNewsFromDatabase(self.scrollableLayout9)
 
     def modifyNewsClicked(self):
         """
@@ -1632,14 +1725,239 @@ class MainWindow(QMainWindow):
         - Clears the input fields for a new entry.
         """
         
-        print("Modify News Clicked")
+        #print("Modify News Clicked")
+
+        # List of required input fields to be checked
+        checkList = [
+            self.idTextBox8,
+            self.headerTextBox8, 
+            self.contentsTextBox8
+        ]
+        
+        # Validate if all required fields are filled
+        status = self.checkFields(checkList)
+
+        if status:
+            # Check if the News ID field is present in the database
+            if not self.isNewsPresent(self.idTextBox8.text()):
+                QMessageBox.warning(self, "Warning", "News ID not found in the database!")
+                return
+
+            # Import existing papers from storage
+            news = self.importNews()
+
+            # Iterate over the paper list to find the matching ID
+            for n in news:
+                if n["id"] == self.idTextBox8.text():
+                    # Update the paper details with new input values
+                    n["date"] = self.dateEdit.date().toString("dd-MM-yyyy")
+                    n["header"] = self.headerTextBox8.text()
+                    n["body"] = self.contentsTextBox8.toPlainText()
+                    break  # Exit loop after finding the paper
+
+            # Export the updated paper list back to storage
+            self.exportNews(news)
+
+            # Show a success message to the user
+            QMessageBox.information(self, "Success", "News Modified Successfully!")
+
+            # Clear input fields for the next modification
+            self.clearFields(checkList)
+
+            # Refresh the paper list after modification
+            self.clearLayout(self.scrollableLayout8)
+            self.addNewsFromDatabase(self.scrollableLayout8)
+            self.clearLayout(self.scrollableLayout9)
+            self.addNewsFromDatabase(self.scrollableLayout9)
+
+        else:
+            # Show a warning message if any field is empty
+            QMessageBox.warning(self, "Warning", "One or more fields are empty!")        
 
     def deleteNewsClicked(self):
-        print("Delete News Clicked")
+        """
+        Handles the event when the 'Delete News' button is clicked.
+
+        - Checks if the News ID field is filled.
+        - Displays a warning confirmation message.
+        - If confirmed, imports existing news from storage.
+        - Filters out the news with the matching ID.
+        - Exports the updated news list back to storage.
+        - Clears the input field after deletion.
+        - Displays a warning if the News ID is empty.
+        """
+
+        # List of required input fields to be checked
+        checkList = [self.idTextBox9]
+
+        # Validate if the Paper ID field is filled
+        status = self.checkFields(checkList)
+
+        if status:
+            # Check if the Paper ID field is present in the database
+            if not self.isNewsPresent(self.idTextBox9.text()):
+                QMessageBox.warning(self, "Warning", "News ID not found in the database!")
+                return
+
+            # Display a warning confirmation before deletion
+            QMessageBox.warning(self, "Warning", "Are you sure you want to delete the news item?")
+            
+            # Import existing papers from storage
+            news = self.importNews()
+
+            # Filter out the paper with the matching ID
+            updatedNews = [news for news in news if news["id"] != self.idTextBox9.text()]
+
+            # Export the updated paper list back to storage
+            self.exportNews(updatedNews)
+
+            # Clear the Paper ID field after deletion
+            self.clearFields(checkList)
+
+            # Refresh the paper list after modification
+            self.clearLayout(self.scrollableLayout8)
+            self.addNewsFromDatabase(self.scrollableLayout8)
+            self.clearLayout(self.scrollableLayout9)
+            self.addNewsFromDatabase(self.scrollableLayout9)
+        else:
+            # Show a warning message if Paper ID is empty
+            QMessageBox.warning(self, "Warning", "News ID is empty!")
+
+    def importNews(self):
+        """
+        Imports news from a JSON file.
+
+        - Reads the news data from the specified JSON file.
+        - Prints the JSON data in a well-formatted manner for debugging.
+        - Returns the list of news.
+
+        Note: Ensure the file path is correctly set before deployment.
+        """
+
+        # Define the file path (Replace before deployment if necessary)
+        file_path = os.path.join(self.getBasePath(), "data", "news.json")
+
+        # Open and read the JSON file
+        with open(file_path, "r") as file:
+            news = json.load(file)  # Load the JSON content as a Python list
+
+        # Print the JSON data in a readable format (for debugging purposes)
+        #print(json.dumps(news, indent=4))
+
+        # Return the loaded papers list
+        return news
+    
+    def exportNews(self, news):
+        """
+        Exports the given list of news to a JSON file after sorting them in reverse chronological order.
+
+        - Sorts the news list by date in descending order (latest news first).
+        - Writes the sorted list back to the specified JSON file.
+
+        Args:
+            news (list): A list of dictionaries where each dictionary represents a news.
+
+        Note: Ensure the file path is correctly set before deployment.
+        """
+
+        # Sort papers by date in descending order (latest papers first)
+        news.sort(key=self.parseDate, reverse=True)
+
+        # Define the file path (Replace before deployment if necessary)
+        file_path = os.path.join(self.getBasePath(), "data", "news.json")
+
+        # Open and write the sorted papers to the JSON file
+        with open(file_path, "w") as file:
+            json.dump(news, file, indent=4)
+
+    def addNewsFromDatabase(self, layout):
+        # Adding sample content dynamically
+        news = self.importNews()
+        
+        for n in news:
+            newsFrame = QFrame()
+            newsFrame.setFrameShape(QFrame.Shape.Box)
+            newsFrame.setLineWidth(1)
+            newsFrame.setStyleSheet("""
+                QFrame {
+                    background-color: #F3EBEB;
+                    padding: 0px;
+                    margin-left: 5px;
+                    margin-right: 5px;
+                    margin-bottom: 1px;
+                    margin-top: 0px;
+                    color: black;
+                    border-radius: 5px;
+                }
+            """)
+
+            # Label for the ID
+            newsIDinBox = QLabel(f"<b>ID</b>: {n['id']}")
+            newsIDinBox.setAlignment(Qt.AlignmentFlag.AlignLeft)
+            newsIDinBox.setTextInteractionFlags(Qt.TextInteractionFlag.TextSelectableByMouse)
+
+            # Label for the Date
+            newsDateinBox = QLabel(f"<b>Date</b>: {n['date']}")
+            newsDateinBox.setAlignment(Qt.AlignmentFlag.AlignLeft)
+            newsDateinBox.setTextInteractionFlags(Qt.TextInteractionFlag.TextSelectableByMouse)
+
+            # Label for the Header
+            newsHeaderinBox = QLabel(f"<b>Header</b>: {n['header']}")
+            newsHeaderinBox.setAlignment(Qt.AlignmentFlag.AlignLeft)
+            newsHeaderinBox.setTextInteractionFlags(Qt.TextInteractionFlag.TextSelectableByMouse)
+
+            # Label for the Body
+            newsBodyinBox = QLabel(f"<b>Body</b>: {n['body']}")
+            newsBodyinBox.setAlignment(Qt.AlignmentFlag.AlignLeft)
+            newsBodyinBox.setWordWrap(True)
+            newsBodyinBox.setTextInteractionFlags(Qt.TextInteractionFlag.TextSelectableByMouse)
+
+            # Layout inside each rectangular box
+            frameLayout = QVBoxLayout(newsFrame)
+            frameLayout.setSpacing(0)
+            frameLayout.setContentsMargins(1, 1, 1, 1)
+
+            frameLayout.addWidget(newsIDinBox)
+            frameLayout.addWidget(newsDateinBox)
+            frameLayout.addWidget(newsHeaderinBox)
+            frameLayout.addWidget(newsBodyinBox)
+
+            # Add rectangle to scrollable layout
+            layout.addWidget(newsFrame)
+        return None
+    
+    def isNewsPresent(self, name):
+        """
+        Checks if a given News ID is present in the list of news.
+
+        Args:
+            name (str): The news ID to check.
+
+        Returns:
+            bool: True if the news ID is present, False otherwise.
+        """
+        news = self.importNews()
+        for n in news:
+            if n["id"] == name:
+                return True
+        return False
+    
+    def getBasePath(self):
+        """
+        Returns the base path of the application.
+
+        This method checks if the application is running as a bundled executable
+        or from a script and returns the appropriate base path.
+        """
+        #print("getBasePath", os.path.dirname(sys.executable))
+        if getattr(sys, 'frozen', False):
+            # If running as bundled exe
+            return os.path.dirname(sys.executable)
+        else:
+            # If running from script
+            return os.path.dirname(os.path.abspath(__file__))
 
     
-        
-
 app = QApplication(sys.argv)
 app.setFont(QFont("Montserrat"))
 window = MainWindow()
