@@ -10,7 +10,6 @@ from PyQt6.QtWidgets import (
 )
 from PyQt6.QtGui import QFont
 from PyQt6.QtCore import QDate, Qt
-from pyqt6_multiselect_combobox import MultiSelectComboBox
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -1955,7 +1954,7 @@ class MainWindow(QMainWindow):
             return os.path.dirname(sys.executable)
         else:
             # If running from script
-            return os.path.dirname(os.path.abspath(__file__))
+            return os.path.dirname(os.getcwd())
 
     
 app = QApplication(sys.argv)
