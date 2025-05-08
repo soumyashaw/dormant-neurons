@@ -25,7 +25,17 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Date
                 const dateDiv = document.createElement("div");
                 dateDiv.classList.add("news-item-date");
-                dateDiv.innerHTML = `<p><i>${news.date}</i></p>`;
+
+                // Format 'DD-MM-YYYY' to 'DD Month YYYY'
+                const [day, month, year] = news.date.split("-");
+                const dateObject = new Date(`${year}-${month}-${day}`);
+                const formattedDate = dateObject.toLocaleDateString("en-GB", {
+                    day: "numeric",
+                    month: "long",
+                    year: "numeric"
+                });
+
+                dateDiv.innerHTML = `<p><i>${formattedDate}</i></p>`;
 
                 // Container for header and body
                 const contentContainer = document.createElement("div");

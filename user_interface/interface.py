@@ -1954,7 +1954,7 @@ class MainWindow(QMainWindow):
             return os.path.dirname(sys.executable)
         else:
             # If running from script
-            return os.path.dirname(os.getcwd())
+            return os.getcwd()
 
     
 app = QApplication(sys.argv)
