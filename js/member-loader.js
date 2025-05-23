@@ -47,9 +47,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 positionP.classList.add("position");
                 positionP.textContent = member.position;
 
+                const infoP = document.createElement("p");
+                infoP.classList.add("info");
+                infoP.textContent = member.info;
+
                 memberDiv.appendChild(imageContainer);
                 memberDiv.appendChild(nameP);
                 memberDiv.appendChild(positionP);
+                if (member.info.trim() !== "") {
+                    memberDiv.appendChild(infoP);
+                }
 
                 const aboutHidden = document.createElement("div");
                 aboutHidden.classList.add("about-hidden");

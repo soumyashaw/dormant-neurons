@@ -5,6 +5,7 @@
         "image": "img/team/lea.jpg",
         "image_alt": "img/team/lea_alt.png",
         "research": "['Trustworthy Machine Learning', 'Trustworthy Generative AI']",
+        "info": "",
         "about": "I love growing plants (very often not successful) and baking.\n\nAlso, I am tenure-track faculty at CISPA Helmholtz Center for Information Security since 2022. My research focuses on information security, particularly adversarial machine learning, trustworthy generative AI, and ML security applications. I am especially interested in language as an interface to machine learning models, including their cognitive representations and code generation with LLMs and their interactions with humans. I have obtained my PhD from Ruhr University Bochum, Germany, in 2021."
     },
     {
@@ -12,6 +13,7 @@
         "position": "PhD Student",
         "image": "img/team/placeholder.png",
         "research": "['Adversarial Robustness', 'Neural Networks', 'Machine Learning']",
+        "info": "",
         "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et magna vel tortor efficitur lacinia ac id magna. Mauris sit amet nisi eget augue pulvinar sodales et ut purus. Phasellus elementum velit auctor porta porttitor. Donec ligula metus, placerat vitae tortor eu, porta cursus magna. Sed eleifend rhoncus sollicitudin. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque tellus mi, mollis imperdiet feugiat molestie, semper eget quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo placerat urna quis maximus. Nulla mollis magna sed quam vehicula fermentum. Fusce mollis condimentum lobortis. Vestibulum ante ipsum."
     },
     {
@@ -20,6 +22,7 @@
         "image": "img/team/jonathan.jpeg",
         "image_alt": "img/team/jonathan_alt.png",
         "research": "['LLMs', 'Trustworthy Machine Learning', 'GenAI', 'Bread']",
+        "info": "",
         "about": "My research interests center on the security and privacy implications of modern machine learning systems, with a particular emphasis on adversarial machine learning and generative artificial intelligence. My latest projects focused on Large Language Models and their relevance to the security and robustness of computer systems. In my spare time—when I am not tinkering on computers—I enjoy various sports, photography and cooking (and eating as well)."
     },
     {
@@ -27,6 +30,7 @@
         "position": "PhD Student",
         "image": "img/team/placeholder.png",
         "research": "['Machine Learning', 'Computer Security']",
+        "info": "",
         "about": "Hi there! I’m Sina, and I’m passionate about both the security of AI and using AI to improve computer security. My goal is to find effective ways to reduce the risks that come with deploying AI systems. Right now, I’m especially focused on making AI agents safer."
     },
     {
@@ -34,6 +38,7 @@
         "position": "PhD Student",
         "image": "img/team/placeholder.png",
         "research": "['Data Privacy', 'Machine Learning', 'Federated Learning']",
+        "info": "",
         "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et magna vel tortor efficitur lacinia ac id magna. Mauris sit amet nisi eget augue pulvinar sodales et ut purus. Phasellus elementum velit auctor porta porttitor. Donec ligula metus, placerat vitae tortor eu, porta cursus magna. Sed eleifend rhoncus sollicitudin. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque tellus mi, mollis imperdiet feugiat molestie, semper eget quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo placerat urna quis maximus. Nulla mollis magna sed quam vehicula fermentum. Fusce mollis condimentum lobortis. Vestibulum ante ipsum."
     },
     {
@@ -41,6 +46,7 @@
         "position": "PhD Student",
         "image": "img/team/placeholder.png",
         "research": "['Data Privacy', 'Machine Learning', 'Federated Learning']",
+        "info": "co-supervised by Thorsten Holz",
         "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et magna vel tortor efficitur lacinia ac id magna. Mauris sit amet nisi eget augue pulvinar sodales et ut purus. Phasellus elementum velit auctor porta porttitor. Donec ligula metus, placerat vitae tortor eu, porta cursus magna. Sed eleifend rhoncus sollicitudin. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque tellus mi, mollis imperdiet feugiat molestie, semper eget quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo placerat urna quis maximus. Nulla mollis magna sed quam vehicula fermentum. Fusce mollis condimentum lobortis. Vestibulum ante ipsum."
     },
     {
@@ -49,48 +55,55 @@
         "image": "img/team/soumya.jpeg",
         "image_alt": "img/team/soumya_alt.png",
         "research": "['Data Privacy', 'Machine Learning', 'Federated Learning']",
+        "info": "",
         "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et magna vel tortor efficitur lacinia ac id magna. Mauris sit amet nisi eget augue pulvinar sodales et ut purus. Phasellus elementum velit auctor porta porttitor. Donec ligula metus, placerat vitae tortor eu, porta cursus magna. Sed eleifend rhoncus sollicitudin. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque tellus mi, mollis imperdiet feugiat molestie, semper eget quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo placerat urna quis maximus. Nulla mollis magna sed quam vehicula fermentum. Fusce mollis condimentum lobortis. Vestibulum ante ipsum."
     },
     {
         "name": "Anupam Varshney",
         "position": "Student Assistant",
         "image": "img/team/placeholder.png",
-        "research": "",
-        "about": ""
+        "research": "['Data Privacy', 'Machine Learning', 'Federated Learning']",
+        "info": "",
+        "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et magna vel tortor efficitur lacinia ac id magna. Mauris sit amet nisi eget augue pulvinar sodales et ut purus. Phasellus elementum velit auctor porta porttitor. Donec ligula metus, placerat vitae tortor eu, porta cursus magna. Sed eleifend rhoncus sollicitudin. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque tellus mi, mollis imperdiet feugiat molestie, semper eget quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo placerat urna quis maximus. Nulla mollis magna sed quam vehicula fermentum. Fusce mollis condimentum lobortis. Vestibulum ante ipsum."
     },
     {
         "name": "Samira Abedini",
         "position": "Student Assistant",
         "image": "img/team/placeholder.png",
-        "research": "",
-        "about": ""
+        "research": "['Data Privacy', 'Machine Learning', 'Federated Learning']",
+        "info": "",
+        "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et magna vel tortor efficitur lacinia ac id magna. Mauris sit amet nisi eget augue pulvinar sodales et ut purus. Phasellus elementum velit auctor porta porttitor. Donec ligula metus, placerat vitae tortor eu, porta cursus magna. Sed eleifend rhoncus sollicitudin. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque tellus mi, mollis imperdiet feugiat molestie, semper eget quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo placerat urna quis maximus. Nulla mollis magna sed quam vehicula fermentum. Fusce mollis condimentum lobortis. Vestibulum ante ipsum."
     },
     {
         "name": "Yage Zhang",
         "position": "Student Assistant",
         "image": "img/team/placeholder.png",
-        "research": "",
-        "about": ""
+        "research": "['Data Privacy', 'Machine Learning', 'Federated Learning']",
+        "info": "",
+        "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et magna vel tortor efficitur lacinia ac id magna. Mauris sit amet nisi eget augue pulvinar sodales et ut purus. Phasellus elementum velit auctor porta porttitor. Donec ligula metus, placerat vitae tortor eu, porta cursus magna. Sed eleifend rhoncus sollicitudin. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque tellus mi, mollis imperdiet feugiat molestie, semper eget quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo placerat urna quis maximus. Nulla mollis magna sed quam vehicula fermentum. Fusce mollis condimentum lobortis. Vestibulum ante ipsum."
     },
     {
         "name": "Abdul Rafay Syed",
         "position": "Student Assistant",
         "image": "img/team/placeholder.png",
-        "research": "",
-        "about": ""
+        "research": "['Data Privacy', 'Machine Learning', 'Federated Learning']",
+        "info": "",
+        "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et magna vel tortor efficitur lacinia ac id magna. Mauris sit amet nisi eget augue pulvinar sodales et ut purus. Phasellus elementum velit auctor porta porttitor. Donec ligula metus, placerat vitae tortor eu, porta cursus magna. Sed eleifend rhoncus sollicitudin. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque tellus mi, mollis imperdiet feugiat molestie, semper eget quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo placerat urna quis maximus. Nulla mollis magna sed quam vehicula fermentum. Fusce mollis condimentum lobortis. Vestibulum ante ipsum."
     },
     {
         "name": "Srishti Gupta",
         "position": "Intern",
         "image": "img/team/srishti.png",
-        "research": "",
-        "about": ""
+        "research": "['Data Privacy', 'Machine Learning', 'Federated Learning']",
+        "info": "",
+        "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et magna vel tortor efficitur lacinia ac id magna. Mauris sit amet nisi eget augue pulvinar sodales et ut purus. Phasellus elementum velit auctor porta porttitor. Donec ligula metus, placerat vitae tortor eu, porta cursus magna. Sed eleifend rhoncus sollicitudin. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque tellus mi, mollis imperdiet feugiat molestie, semper eget quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo placerat urna quis maximus. Nulla mollis magna sed quam vehicula fermentum. Fusce mollis condimentum lobortis. Vestibulum ante ipsum."
     },
     {
         "name": "Valentin Giraudeau",
         "position": "Intern",
         "image": "img/team/placeholder.png",
-        "research": "",
-        "about": ""
+        "research": "['Data Privacy', 'Machine Learning', 'Federated Learning']",
+        "info": "",
+        "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et magna vel tortor efficitur lacinia ac id magna. Mauris sit amet nisi eget augue pulvinar sodales et ut purus. Phasellus elementum velit auctor porta porttitor. Donec ligula metus, placerat vitae tortor eu, porta cursus magna. Sed eleifend rhoncus sollicitudin. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque tellus mi, mollis imperdiet feugiat molestie, semper eget quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo placerat urna quis maximus. Nulla mollis magna sed quam vehicula fermentum. Fusce mollis condimentum lobortis. Vestibulum ante ipsum."
     }
 ]

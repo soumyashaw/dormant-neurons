@@ -537,6 +537,8 @@ a:hover {
 .team-member {
     padding: 10px;
     cursor: pointer;
+    min-height: 280px;
+    min-width: 160px;
 }
 
 .team-member img {
@@ -578,6 +580,15 @@ a:hover {
     margin: 7px;
     margin-top: 0px;
     text-align: center;
+}
+
+.info {
+    font-family: "Kanit", sans-serif;
+    font-size: 14px;
+    color: #13233e;
+    margin: 0px;
+    text-align: center;
+    line-height: 1;
 }
 
 .about-section {
