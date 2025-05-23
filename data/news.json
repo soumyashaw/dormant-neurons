@@ -1,5 +1,11 @@
 [
     {
+        "id": "1905-Pape",
+        "date": "19-05-2025",
+        "header": "Paper accepted at DIMVA",
+        "body": "Our <a href=\"https://eisenhofer.me/data/beste-25-exploring.pdf\">paper</a>  \"Exploring the Potential of LLMs for Code Deobfuscation\" has been accepted for DIMVA 2025."
+    },
+    {
         "id": "2404-OurW",
         "date": "24-04-2025",
         "header": "Our Website is Live",

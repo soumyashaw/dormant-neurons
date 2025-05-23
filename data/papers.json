@@ -1,47 +1,119 @@
 [
     {
-      "id": "0910-Data",
-      "title": "Dataset and Lessons Learned from the 2024 SaTML LLM Capture-the-Flag Competition",
-      "authors": "Debenedetti et al.",
-      "date": "09-10-2024",
-      "journal": "Conference on Neural Information Processing Systems (NeurIPS)",
-      "link": "https://arxiv.org/abs/2406.07954",
-      "bibtex": "@article{debenedetti2024dataset,\n  title={Dataset and lessons learned from the 2024 satml llm capture-the-flag competition},\n  author={Debenedetti, Edoardo and Rando, Javier and Paleka, Daniel and Florin, Silaghi and Albastroiu, Dragos and Cohen, Niv and Lemberg, Yuval and Ghosh, Reshmi and Wen, Rui and Salem, Ahmed and others},\n  journal={Advances in Neural Information Processing Systems},\n  volume={37},\n  pages={36914--36937},\n  year={2024}\n}"
+        "id": "2005-Expl",
+        "title": "Exploring the Potential of LLMs for Code Deobfuscation ",
+        "authors": "David Beste et al.",
+        "date": "20-06-2025",
+        "journal": "SIG SIDAR Conference on Detection of Intrusions and Malware & Vulnerability Assessment (DIMVA)",
+        "link": "https://eisenhofer.me/data/beste-25-exploring.pdf",
+        "bibtex": "@inproceedings{beste-25-deobfuscation,\n    author={David Beste and Gr{\\\u00b4e}goire Menguy and Hossein Hajipour and Mario Fritz and Antonio Emanuele Cin{\\`a} and S\u00e9bastien Bardin and Thorsten Holz and Thorsten Eisenhofer and Lea Sch{\\\"o}nherr},\n    title={Exploring the Potential of LLMs for Code Deobfuscation },\n    booktitle = {SIG SIDAR Conference on Detection of Intrusions and Malware \\& Vulnerability Assessment (DIMVA)},\n    year={2025}\n}"
     },
     {
-      "id": "0910-Coop",
-      "title": "Cooperation, Competition, and Maliciousness: LLM-Stakeholders Interactive Negotiation",
-      "authors": "Abdelnabi et al.",
-      "date": "09-10-2024",
-      "journal": "Conference on Neural Information Processing Systems (NeurIPS)",
-      "link": "https://openreview.net/forum?id=59E19c6yrN#discussion",
-      "bibtex": "@article{abdelnabi2024cooperation,\n  title={Cooperation, competition, and maliciousness: LLM-stakeholders interactive negotiation},\n  author={Abdelnabi, Sahar and Gomaa, Amr and Sivaprasad, Sarath and Sch{\"o}nherr, Lea and Fritz, Mario},\n  journal={Advances in Neural Information Processing Systems},\n  volume={37},\n  pages={83548--83599},\n  year={2024}\n}"
+        "id": "2004-sigm",
+        "title": "sigma-zero: Gradient-based Optimization of l0-norm Adversarial Examples",
+        "authors": "Antonio Emanuele Cin\u00e0 et al.",
+        "date": "20-04-2025",
+        "journal": "International Conference on Learning Representations (ICLR)",
+        "link": "https://arxiv.org/pdf/2402.01879.pdf",
+        "bibtex": "@inproceedings{cina-24-l0,\n    author={Antonio Emanuele Cin{\\`a} and Francesco Villani and Maura Pintor and Lea Sch{\\\"o}nherr and Battista Biggio and Marcello Pelillo},\n    title={sigma-zero: Gradient-based Optimization of l0-norm Adversarial Examples},\n    booktitle = {International Conference on Learning Representations (ICLR)},\n    year={20255}\n}"
     },
     {
-      "id": "1408-TheI",
-      "title": "The Imitation Game: Exploring Brand Impersonation Attacks on Social Media Platforms",
-      "authors": "Acharya et al.",
-      "date": "14-08-2024",
-      "journal": "Usenix Security Symposium (USENIX-Security)",
-      "link": "https://www.usenix.org/conference/usenixsecurity24/presentation/acharya",
-      "bibtex": "@inproceedings{acharya2024imitation,\n  title={The imitation game: Exploring brand impersonation attacks on social media platforms},\n  author={Acharya, Bhupendra and Lazzaro, Dario and L{\\'o}pez-Morales, Efr{\\'e}n and Oest, Adam and Saad, Muhammad and Cin{\\`a}, Antonio Emanuele and Sch{\"o}nherr, Lea and Holz, Thorsten},\n  booktitle={33rd USENIX Security Symposium (USENIX Security 24)},\n  pages={4427--4444},\n  year={2024}\n}"
+        "id": "0910-Data",
+        "title": "Dataset and Lessons Learned from the 2024 SaTML LLM Capture-the-Flag Competition",
+        "authors": "Debenedetti et al.",
+        "date": "09-10-2024",
+        "journal": "Conference on Neural Information Processing Systems (NeurIPS)",
+        "link": "https://arxiv.org/abs/2406.07954",
+        "bibtex": "@article{debenedetti2024dataset,\n  title={Dataset and lessons learned from the 2024 satml llm capture-the-flag competition},\n  author={Debenedetti, Edoardo and Rando, Javier and Paleka, Daniel and Florin, Silaghi and Albastroiu, Dragos and Cohen, Niv and Lemberg, Yuval and Ghosh, Reshmi and Wen, Rui and Salem, Ahmed and others},\n  journal={Advances in Neural Information Processing Systems},\n  volume={37},\n  pages={36914--36937},\n  year={2024}\n}"
     },
     {
-      "id": "0307-BUIL",
-      "title": "BUILD: Buffer-free Incremental Learning with OOD Detection for the Wild",
-      "authors": "Gupta et al.",
-      "date": "03-07-2024",
-      "journal": "International Conference on Machine Learning (ICML)",
-      "link": "https://openreview.net/pdf?id=WaGj1QfgCH",
-      "bibtex": "@article{gupta2024build,\n  title={BUILD: Buffer-free Incremental Learning with OOD Detection for the Wild},\n  author={Gupta, Srishti and Angioni, Daniele and Sch{\"o}nherr, Lea and Demontis, Ambra and Biggio, Battista},\n  year={2024},\n  publisher={CISPA}\n}"
+        "id": "0910-Coop",
+        "title": "Cooperation, Competition, and Maliciousness: LLM-Stakeholders Interactive Negotiation",
+        "authors": "Abdelnabi et al.",
+        "date": "09-10-2024",
+        "journal": "Conference on Neural Information Processing Systems (NeurIPS)",
+        "link": "https://openreview.net/forum?id=59E19c6yrN#discussion",
+        "bibtex": "@article{abdelnabi2024cooperation,\n  title={Cooperation, competition, and maliciousness: LLM-stakeholders interactive negotiation},\n  author={Abdelnabi, Sahar and Gomaa, Amr and Sivaprasad, Sarath and Sch{\"o}nherr, Lea and Fritz, Mario},\n  journal={Advances in Neural Information Processing Systems},\n  volume={37},\n  pages={83548--83599},\n  year={2024}\n}"
     },
     {
-      "id": "2806-Gene",
-      "title": "Generated Audio Detectors are Not Robust in Real-World Conditions",
-      "authors": "Shaw et al.",
-      "date": "28-06-2024",
-      "journal": "International Conference on Machine Learning (ICML)",
-      "link": "https://openreview.net/forum?id=1R7RD1dfcC",
-      "bibtex": "@article{shaw2024generated,\n  title={Generated Audio Detectors are Not Robust in Real-World Conditions},\n  author={Shaw, Soumya and Nassi, Ben and Sch{\"o}nherr, Lea},\n  year={2024},\n  publisher={CISPA}\n}"
+        "id": "1905-Gene",
+        "title": "Generated Audio Detectors are Not Robust in Real-World Conditions",
+        "authors": "Soumya Shaw et al.",
+        "date": "19-05-2024",
+        "journal": "ICML Workshop on Next Generation of AI Safety Workshop",
+        "link": "https://openreview.net/forum?id=1R7RD1dfcC",
+        "bibtex": "@inproceedings{shaw-24-wild,\n    author={Soumya Shaw and Ben Nassi and Lea Sch{\\\"o}nherr},\n    title={Generated Audio Detectors are Not Robust in Real-World Conditions},\n    booktitle = {ICML Workshop on Next Generation of AI Safety Workshop},\n    year={2024}\n}"
+    },
+    {
+        "id": "1905-BUIL",
+        "title": "BUILD: Buffer-free Incremental Learning with OOD Detection for the Wild",
+        "authors": "Srishti Gupta et al.",
+        "date": "19-05-2024",
+        "journal": "ICML Workshop on Foundation Models in the Wild",
+        "link": "https://openreview.net/pdf?id=WaGj1QfgCH",
+        "bibtex": "@inproceedings{gupta-24-build,\n    author={Srishti Gupta and Daniele Angioni and Lea Sch{\\\"o}nherr and Ambra Demontis and Battista Biggio},\n    title={BUILD: Buffer-free Incremental Learning with OOD Detection for the Wild},\n    booktitle = {ICML Workshop on Foundation Models in the Wild},\n    year={2024}\n}"
+    },
+    {
+        "id": "2005-TheI",
+        "title": "The Imitation Game: Exploring Brand Impersonation Attacks on Social Media Platforms",
+        "authors": "Bhupendra Acharya et al.",
+        "date": "20-08-2024",
+        "journal": "USENIX Security Symposium",
+        "link": "https://www.usenix.org/conference/usenixsecurity24/presentation/acharya",
+        "bibtex": "@inproceedings{acharya-24-imitation,\n    author={Bhupendra Acharya and Dario Lazzaro and Efren Lopez-Morales and Adam Oest and Muhammad Saad and Antonio Emanuele Cin{\\`a} and Lea Sch{\\\"o}nherr and Thorsten Holz},\n    title={The Imitation Game: Exploring Brand Impersonation Attacks on Social Media Platforms},\n    booktitle = {USENIX Security Symposium},\n    year={2024}\n}"
+    },
+    {
+        "id": "2005-ARep",
+        "title": "A Representative Study on Human Detection of Artificially Generated Media Across Countries",
+        "authors": "Joel Frank et al.",
+        "date": "20-05-2024",
+        "journal": "IEEE Security and Privacy (S&P)",
+        "link": "https://arxiv.org/pdf/2312.05976.pdf",
+        "bibtex": "@inproceedings{frank-24-human,\n    author={Joel Frank and Franziska Herbert and Jonas Ricker and Lea Sch{\\\"o}nherr and Thorsten Eisenhofer and Asja Fischer and Markus D{\\\"u}rmuth and Thorsten Holz},\n    title={A Representative Study on Human Detection of Artificially Generated Media Across Countries},\n    booktitle = {IEEE Security and Privacy (S\\&P)},\n    year={2024}\n}"
+    },
+    {
+        "id": "2005-Conn",
+        "title": "Conning the Crypto Conman: End-to-End Analysis of Cryptocurrency-based Technical Support Scams",
+        "authors": "Bhupendra Acharya et al.",
+        "date": "20-05-2024",
+        "journal": "IEEE Security and Privacy (S&P)",
+        "link": "https://arxiv.org/pdf/2401.09824.pdf",
+        "bibtex": "@inproceedings{acharya-24-crypto,\n    author={Bhupendra Acharya and Muhammad Saad and Antonio Emanuele Cin{\\`a} and Lea Sch{\\\"o}nherr and Hoang Dai Nguyen and Adam Oest and Phani Vadrevu and Thorsten Holz},\n    title={Conning the Crypto Conman: End-to-End Analysis of Cryptocurrency-based Technical Support Scams},\n    booktitle = {IEEE Security and Privacy (S\\&P)},\n    year={2024}\n}"
+    },
+    {
+        "id": "2005-Code",
+        "title": "CodeLMSec Benchmark: Systematically Evaluating and Finding Security Vulnerabilities in Black-Box Code Language Models",
+        "authors": "Hossein Hajipour et al.",
+        "date": "20-04-2024",
+        "journal": "IEEE Secure and Trustworthy Machine Learning (SatML)",
+        "link": "https://arxiv.org/pdf/2302.04012.pdf",
+        "bibtex": "@inproceedings{hajipour-24-codellm,\n    author={Hossein Hajipour and Keno Hassler and Thorsten Holz and Lea Sch{\\\"o}nherr and Mario Fritz},\n    title={CodeLMSec Benchmark: Systematically Evaluating and Finding Security Vulnerabilities in Black-Box Code Language Models},\n    booktitle = {IEEE Secure and Trustworthy Machine Learning (SatML)},\n    year={2024}\n}"
+    },
+    {
+        "id": "1905-Onth",
+        "title": "On the Limitations of Model Stealing with Uncertainty Quantification Models",
+        "authors": "David Pape et al.",
+        "date": "19-10-2023",
+        "journal": "European Symposium on Artificial Neural Networks, Computational Intelligence and Machine Learning (ESANN)",
+        "link": "https://arxiv.org/pdf/2305.05293.pdf",
+        "bibtex": "@inproceedings{pape-23-uncertainty,\n    author={David Pape and Sina D{\\\"a}ubener and Thorsten Eisenhofer and Antonio Emanuele Cin{\\`a} and Lea Sch{\\\"o}nherr},\n    title={On the Limitations of Model Stealing with Uncertainty Quantification Models},\n    booktitle = {European Symposium on Artificial Neural Networks, Computational Intelligence and Machine Learning (ESANN)},\n    year={2023}\n}"
+    },
+    {
+        "id": "1905-VENO",
+        "title": "VENOMAVE: Clean-Label Poisoning Against Speech Recognition",
+        "authors": "Hojjat Aghakhani et al.",
+        "date": "19-04-2023",
+        "journal": "IEEE Secure and Trustworthy Machine Learning (SatML)",
+        "link": "https://arxiv.org/pdf/2010.10682.pdf",
+        "bibtex": "@inproceedings{aghakhani-23-venomave,\n    author={Hojjat Aghakhani and Lea Sch{\\\"o}nherr and Thorsten Eisenhofer and Dorothea Kolossa and Thorsten Holz and Christopher Kruegel and Giovanni Vign},\n    title={VENOMAVE: Clean-Label Poisoning Against Speech Recognition},\n    booktitle = {IEEE Secure and Trustworthy Machine Learning (SatML)},\n    year={2023}\n}"
+    },
+    {
+        "id": "1905-Dron",
+        "title": "Drone Security and the Mysterious Case of DJI\u2019s DroneID",
+        "authors": "Nico Schiller et al.",
+        "date": "19-02-2023",
+        "journal": "Network and Distributed System Security Symposium (NDSS)",
+        "link": "https://www.ndss-symposium.org/wp-content/uploads/2023/02/ndss2023_f217_paper.pdf",
+        "bibtex": "@inproceedings{schiller-23-drone,\n    author={Nico Schiller and Merlin Chlosta and Moritz Schloegel and Nils Bars and Thorsten Eisenhofer and Tobias Scharnowski and Felix Domke and Lea Sch{\\\"o}nherr and Thorsten Holz},\n    title={Drone Security and the Mysterious Case of DJI\u2019s DroneID},\n    booktitle = {Network and Distributed System Security Symposium (NDSS)},\n    year={2023}\n}"
     }
-  ]
+]
